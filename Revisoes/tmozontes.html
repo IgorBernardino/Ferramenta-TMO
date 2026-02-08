@@ -17,17 +17,26 @@
         <p>Selecione o veículo e a quilometragem para ver as peças e os custos da revisão</p>
     </div>
 
-    <div class="controls">
-        <div class="select-group">
-            <select id="veiculoSelect">
+     <div class="controls">
+    <div class="select-group">
+      <label for="veiculoSelect"></label>
+      <select id="veiculoSelect" onchange="atualizarImagemVeiculo();">
                 <option value="">Selecione o Veículo</option>
                 <option value="V350">V 350</option>
                 <option value="T350">T 350 / T 350 X</option>
                 <option value="GK350">GK 350</option>
                 <option value="S350">S 350</option>
                 <option value="R350">R 350</option>
-                <option value="350E">350 E</option>
+                <option value="E350">350 E</option>
             </select>
+
+             <!--caixa da imagem das motos-->
+            <div class="veiculo-card" id="veiculoCard">
+            <img id="img-veiculo" alt="Veículo selecionado">
+             <div class="veiculo-nome" id="veiculoNome"></div>
+            </div>
+
+            
             <select id="kmSelect">
                 <option value="">Selecione KM</option>
                 <option value="1000">1.000 km</option>
@@ -49,7 +58,7 @@
             <div class="valor-card valor-tmo">
                 <div class="valor-label">Mão de Obra</div>
                 <div class="valor-numero" id="totalTMO">R$ 0,00</div>
-                <div class="valor-sub" id="subTMO">0,0 h × R$ 250,00/h</div>
+                <div class="valor-sub" id="subTMO">0,0 h × R$ 350,00/h</div>
             </div>
             <div class="valor-card valor-total">
                 <div class="valor-label">Total</div>

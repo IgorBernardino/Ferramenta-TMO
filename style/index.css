@@ -1,140 +1,168 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-            background: #0b1b30;
-            color: #f5f5f5;
-            min-height: 100vh;
-        }
+/* BODY */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: #0b1626;
+  color: #f5f5f5;
+  min-height: 100vh;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 24px 16px 40px;
-        }
+/* CONTAINER */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+}
 
-        header {
-            text-align: center;
-            padding: 24px 16px 28px;
-            border-radius: 16px;
-            background: #12243d;
-            border: 1px solid rgba(255,255,255,0.06);
-        }
+/* HEADER */
+header {
+  text-align: center;
+  padding: 26px 18px 30px;
+  border-radius: 18px;
+  background: #111f34;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
 
-        .title {
-            font-size: 1.9rem;
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            margin-bottom: 6px;
-        }
+.title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
 
-        .subtitle {
-            font-size: 0.95rem;
-            opacity: 0.85;
-        }
+.subtitle {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
 
-        .grid {
-            margin-top: 28px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
-        }
+/* GRID */
+.grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
 
-        .card {
-            background: #141f33;
-            border-radius: 14px;
-            padding: 18px 18px 20px;
-            border: 1px solid rgba(255,255,255,0.06);
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 10px;
-        }
+/* CARD */
+.card {
+  background: #121f33;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+}
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0,0,0,0.35);
+}
 
-        .card-logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 6px;
-            background: #0b1b30;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
+/* CARD HEADER */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-        .card-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+/* LOGO */
+.card-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
 
-        .card-title {
-            font-size: 1rem;
-            font-weight: 600;
-        }
+.card-logo img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
 
-        .card-brand {
-            font-size: 0.8rem;
-            opacity: 0.75;
-        }
+/* TITLES */
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
 
-        .card-text {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            line-height: 1.4;
-            margin-top: 4px;
-        }
+.card-brand {
+  font-size: 0.78rem;
+  opacity: 0.7;
+}
 
-        .btn {
-            margin-top: 10px;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 14px;
-            border-radius: 999px;
-            border: none;
-            background: #1e3a5f;
-            color: #f5f5f5;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            transition: background 0.18s ease, transform 0.18s ease;
-        }
+/* TEXT */
+.card-text {
+  font-size: 0.9rem;
+  opacity: 0.85;
+  line-height: 1.45;
+  margin-top: 4px;
+}
 
-        .btn span {
-            font-size: 1rem;
-        }
+/* BUTTON */
+.btn {
+  margin-top: auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
 
-        .btn:hover {
-            background: #284769;
-            transform: translateY(-1px);
-        }
+.btn span {
+  font-size: 1rem;
+}
 
-        footer {
-            margin-top: 30px;
-            text-align: center;
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
+.btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(37,99,235,0.4);
+}
 
-        @media (max-width: 640px) {
-            header {
-                padding: 20px 14px 22px;
-            }
-            .title {
-                font-size: 1.5rem;
-            }
-        }
+/* FOOTER */
+footer {
+  margin-top: 36px;
+  text-align: center;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  header {
+    padding: 22px 14px 24px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .grid {
+    gap: 16px;
+  }
+}

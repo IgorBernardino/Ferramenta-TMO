@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora TMO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS padrão já utilizado -->
+  <link rel="stylesheet" href="/Ferramenta-TMO/style/servicos.css">
+</head>
+
+<body>
+
+<!-- BOTÃO HOME -->
+<a href="/Ferramenta-TMO/index.html" class="btn-home">🏠</a>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>🛠️ Calculadora de Mão de Obra</h1>
+    <p>Selecione o veículo e o serviço</p>
+  </div>
+
+  <!-- CONTROLES -->
+  <div class="controls">
+
+    <div class="select-group">
+
+      <!-- VEÍCULO -->
+      <select id="veiculo">
+        <option value="">Selecione o veículo</option>
+      </select>
+      
+      <select id="tipoAtendimento">
+        <option value="">Tipo de atendimento</option>
+        <option value="particular">Particular</option>
+        <option value="interna">Interna</option>
+        </select>
+
+
+      <!-- SERVIÇO -->
+      <select id="servico" disabled>
+        <option value="">Selecione o serviço</option>
+      </select>
+
+    </div>
+
+    <!-- INFO CILINDRADA -->
+    <div id="infoCilindrada" class="info-cilindrada" style="display:none;">
+      <div><strong>Cilindrada:</strong> <span id="detalheCilindrada"></span></div>
+      <div><strong>Valor Hora:</strong> <span id="valorHora"></span></div>
+    </div>
+
+    <!-- BOTÃO -->
+    <button id="calcularBtn" class="btn-calcular">
+      Calcular TMO
+    </button>
+
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="resultado" class="resultado" style="display:none;">
+
+    <div class="resultado-card">
+      <div class="resultado-label">Mão de Obra</div>
+      <div class="resultado-valor" id="valorTotal">R$ 0,00</div>
+    </div>
+
+    <div id="detalhes" class="resultado-detalhes"></div>
+
+  </div>
+
+</div>
+
+<!-- ======================
+     SCRIPTS (ORDEM IMPORTA)
+======================= -->
+<script src="/Ferramenta-TMO/script/tmo-data.js"></script>
+<script src="/Ferramenta-TMO/script/calculadora-tmo-unificada.js"></script>
+<script src="/Ferramenta-TMO/script/app-tmo.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,190 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BOTÃO HOME */
+.btn-home {
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 1000;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #1e3a5f;
+    color: #fff;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.btn-home:hover {
+    background: #284769;
+    transform: translateY(-2px);
+}
+
+/* BODY */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: #0b1b30;
+    color: #f5f5f5;
+    min-height: 100vh;
+    padding: 24px 16px 40px;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+h1 {
+    text-align: center;
+    background: #12243d;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 22px 18px;
+    margin-bottom: 26px;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #f5f5f5;
+}
+
+/* FORM */
+.form-group {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    opacity: 0.85;
+}
+
+/* SELECTS */
+select,
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #141f33;
+    color: #f5f5f5;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:focus,
+input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.25);
+}
+
+/* GRID VEÍCULO / SERVIÇO */
+.select-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 16px;
+}
+
+/* INFO CILINDRADA */
+#infoCilindrada {
+    margin: 18px 0;
+    padding: 14px;
+    border-radius: 12px;
+    background: #12243d;
+    border: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* LISTA DE SERVIÇOS */
+#servico {
+    height: 220px;
+    overflow-y: auto;
+}
+
+/* ESCONDE TAXA */
+#taxa {
+    display: none !important;
+}
+
+/* BOTÃO CALCULAR */
+#calcularBtn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 14px;
+    border-radius: 999px;
+    border: none;
+    background: #1e3a5f;
+    color: #f5f5f5;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+#calcularBtn:hover {
+    background: #284769;
+    transform: translateY(-1px);
+}
+
+/* RESULTADO */
+#resultado {
+    margin-top: 26px;
+    padding: 20px;
+    border-radius: 16px;
+    background: #12243d;
+    border: 1px solid rgba(255,255,255,0.06);
+    display: none;
+    text-align: center;
+}
+
+#resultado strong {
+    font-size: 1.3rem;
+}
+
+#detalhes {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* AVISO */
+.aviso {
+    margin-bottom: 18px;
+    padding: 14px;
+    border-radius: 12px;
+    background: #12243d;
+    border-left: 4px solid #3b82f6;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .select-container {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+}

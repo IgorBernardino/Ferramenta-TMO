@@ -17,13 +17,14 @@
     <p>Selecione o veículo e a quilometragem para ver as peças e os custos da revisão</p>
   </div>
 
-  <div class="controls">
+   <div class="controls">
     <div class="select-group">
-      <select id="veiculoSelect">
+      <label for="veiculoSelect"></label>
+      <select id="veiculoSelect" onchange="atualizarImagemVeiculo();">
         <option value="">Selecione o Veículo</option>
-        <option value="BURGMAN_I">Burgman i</option>
+        <option value="BURGMAN_I">BURGMAN i</option>
         <option value="GSX800">GSX800</option>
-        <option value="HAYABUSA">Hayabusa GSX1300R</option>
+        <option value="HAYABUSA">HAYABUSA GSX1300R</option>
         <option value="GSXR1000">GSX-R1000 / GSX-R1000 A</option>
         <option value="GSX750">GSX-750</option>
         <option value="GSXS1000">GSX-S1000A</option>
@@ -33,6 +34,14 @@
         <option value="VSTROM1000">V-Strom 1000</option>
         <option value="VSTROM1050XT">V-Strom 1050XT</option>
       </select>
+
+       <!--caixa da imagem das motos-->
+            <div class="veiculo-card" id="veiculoCard">
+            <img id="img-veiculo" alt="Veículo selecionado">
+             <div class="veiculo-nome" id="veiculoNome"></div>
+            </div>
+
+
       <select id="kmSelect">
         <option value="">Selecione KM</option>
         <option value="1000">1.000 km</option>

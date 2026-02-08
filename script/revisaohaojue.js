@@ -89,85 +89,78 @@ const dadosRevisao = {
         tmo: { 1000: 0.0,3000:0.5,6000:0.5,9000:0.5,12000:3.0,15000:0.5,18000:1.0 }
     },
         MASTER150: {
-        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         
-        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         
         6000: [ { codigo: '319783', nome: 'Arruela', qtd:1, valor:10.00 }, 
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd:2, valor:70.00 } ],
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd:1, valor:70.00 } ],
         
-        9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+        9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         
         12000: [
             { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: '13780H37200H000', nome: 'Filtro de Ar', qtd: 1, valor: 70.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
             { codigo: '11482H3E000H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
             { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
             { codigo: '0948200399000', nome: 'Velas', qtd: 1, valor: 81.00 }
         ],
-        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         18000: [ { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         tmo: {1000:0.0,3000:0.5,6000:0.5,9000:0.5,12000:3.0,15000:0.5,18000:1.0}
     },
         NK150: {
         1000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
         ],
         3000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
         ],
         6000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
         ],
         9000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
         ],
         12000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: '13780H2J000H000', nome: 'Filtro de Ar', qtd: 1, valor: 90.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
             { codigo: '11482H3J012H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
             { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
             { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 }
         ],
         15000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
         ],
         18000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
         ],
         tmo: { 1000: 0.0, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 3.0, 15000: 0.5, 18000: 1.0 }
     },
         CHOPPER150: {
-        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
        
-        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
        
         6000: [ 
             { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, 
-             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
        
              9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
        
              12000: [
             { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: '13781H2A300H000', nome: 'Filtro de Ar', qtd: 1, valor: 42.00 },
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
             { codigo: '11482H3E000H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
             { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
             { codigo: '09482H00001H000', nome: 'Velas', qtd: 1, valor: 90.00 }
         ],
-        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         18000: [ { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         tmo: { 1000: 0.0, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 3.0, 15000: 0.5, 18000: 1.0 }
     },
@@ -288,3 +281,34 @@ const dadosRevisao = {
         subTMOEl.textContent = `${tmoHoras.toFixed(1).replace('.', ',')} h × R$ 100,00/h`;
         subTotalEl.textContent = 'Peças + Mão de Obra';
     }
+
+
+    function atualizarImagemVeiculo() {
+  const select = document.getElementById('veiculoSelect');
+  const img = document.getElementById('img-veiculo');
+  const card = document.getElementById('veiculoCard');
+  const nome = document.getElementById('veiculoNome');
+
+  const modelo = select.value;
+
+  if (!modelo) {
+    card.style.display = 'none';
+    img.src = '';
+    nome.textContent = '';
+    return;
+  }
+
+  const mapasImagens = {
+    CHOPPER150: '/Ferramenta-TMO/images/HAOJUE/CHOPPER150.png',
+    LINDY125:   '/Ferramenta-TMO/images/HAOJUE/LINDY125.png',
+    DK160:      '/Ferramenta-TMO/images/HAOJUE/DK160.png',
+    DR160:      '/Ferramenta-TMO/images/HAOJUE/DR160.png',
+    DL160:      '/Ferramenta-TMO/images/HAOJUE/DL160.png',
+    NK150:      '/Ferramenta-TMO/images/HAOJUE/NK 150.png',
+    MASTER150:  '/Ferramenta-TMO/images/HAOJUE/MASTERRIDE.png'
+  };
+
+  img.src = mapasImagens[modelo];
+  nome.textContent = select.options[select.selectedIndex].text;
+  card.style.display = 'block';
+}

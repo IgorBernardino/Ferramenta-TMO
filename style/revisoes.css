@@ -1,112 +1,257 @@
-       .btn-home {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 1000;
-            background: linear-gradient(135deg, #007bff, #0056b3);
-            color: white;
-            border: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 1.5em;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0,123,255,0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            background: linear-gradient(135deg, #030303 0%, #030303 100%);
-            min-height: 100vh; 
-            padding: 20px;
-        }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .header { 
-            text-align: center; 
-            color: white; 
-            margin-bottom: 30px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        .header h1 { font-size: 2.3em; margin-bottom: 8px; }
-        .header p { opacity: 0.9; }
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        .controls { 
-            background: white; 
-            border-radius: 20px; 
-            padding: 25px 30px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            margin-bottom: 25px;
-        }
-        .select-group { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
-        select { 
-            padding: 12px 18px; 
-            font-size: 15px; 
-            border: 2px solid #e1e5e9; 
-            border-radius: 12px; 
-            background: white;
-            min-width: 220px;
-            transition: all 0.3s ease;
-        }
-        select:focus { border-color: #ff6b6b; outline: none; box-shadow: 0 0 0 3px rgba(255,107,107,0.1); }
+/* BODY */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f4f6f8;
+  min-height: 100vh;
+  padding: 20px;
+  color: #111827;
+}
 
-        .resumo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 15px;
-        }
-        .valor-card { 
-            border-radius: 15px; 
-            padding: 18px; 
-            color: white; 
-            text-align: center; 
-        }
-        .valor-label { font-size: 0.9em; opacity: 0.9; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
-        .valor-numero { font-size: 1.8em; font-weight: 700; }
-        .valor-sub { font-size: 0.85em; margin-top: 4px; opacity: 0.9; }
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-        .valor-pecas { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .valor-tmo { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
-        .valor-total { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); color: #333; }
+/* BOTÃO HOME */
+.btn-home {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: #2563eb;
+  color: white;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-        .pecas-lista { 
-            background: white; 
-            border-radius: 20px; 
-            padding: 25px 30px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            max-height: 480px; 
-            overflow-y: auto;
-        }
-        .peca-header, .peca-item { 
-            display: grid; 
-            grid-template-columns: 2fr 2fr 1fr 1fr; 
-            gap: 10px; 
-            padding: 10px 0;
-        }
-        .peca-header { border-bottom: 1px solid #eee; font-weight: 600; color: #555; font-size: 0.9em; }
-        .peca-item { border-bottom: 1px solid #f2f2f2; font-size: 0.95em; }
-        .peca-item:last-child { border-bottom: none; }
-        .peca-nome, .peca-codigo { font-weight: 500; color: #333; }
-        .peca-codigo { font-family: monospace; }
-        .peca-qtd { text-align: center; color: #444; }
-        .peca-valor { text-align: right; font-weight: 600; color: #ff6b6b; }
+.btn-home:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.2);
+}
 
-        .no-result { text-align: center; color: #666; padding: 35px 10px; font-size: 1em; }
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
 
-        @media (max-width: 900px) {
-            .resumo-grid { grid-template-columns: 1fr; }
-            .peca-header, .peca-item { grid-template-columns: 3fr 2fr 1fr 1fr; }
-        }
-        @media (max-width: 768px) {
-            .select-group { flex-direction: column; align-items: center; }
-            select { min-width: 260px; }
-            .header h1 { font-size: 2em; }
-            .peca-header, .peca-item { 
-                grid-template-columns: 3fr 2fr 1fr 1fr;
-                font-size: 0.9em;
-            }
-        }
+.header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.header p {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* CONTROLS / CARDS */
+.controls,
+.pecas-lista {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+
+/* SELECTS */
+.select-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 14px 18px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  min-width: 220px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+}
+
+/* CARD VEÍCULO */
+.veiculo-card {
+  display: none;
+  margin-top: 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+
+  /* layout fixo */
+  height: 160px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.veiculo-card img {
+  background: #ffffff;      /* 🔑 fundo branco */
+  padding: 8px;             /* moldura */
+  border-radius: 10px;
+
+  max-width: 180px;         /* controla largura */
+  max-height: 90px;         /* controla altura */
+  object-fit: contain;
+
+  margin-bottom: 6px;
+}
+
+.veiculo-nome {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+
+/* RESUMO */
+.resumo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.valor-card {
+  border-radius: 16px;
+  padding: 20px;
+  background: #f9fafb;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.valor-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.valor-numero {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.valor-sub {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 6px;
+}
+
+/* IDENTIDADE POR CARD */
+.valor-pecas { border-left: 4px solid #38bdf8; }
+.valor-tmo   { border-left: 4px solid #34d399; }
+.valor-total { border-left: 4px solid #f87171; }
+
+/* LISTA DE PEÇAS */
+.peca-header,
+.peca-item {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.peca-header {
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  color: #374151;
+  font-size: 0.85rem;
+}
+
+.peca-item {
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+}
+
+.peca-item:last-child {
+  border-bottom: none;
+}
+
+.peca-nome,
+.peca-codigo {
+  font-weight: 500;
+  color: #111827;
+}
+
+.peca-codigo {
+  font-family: monospace;
+  color: #6b7280;
+}
+
+.peca-qtd {
+  text-align: center;
+}
+
+.peca-valor {
+  text-align: right;
+  font-weight: 600;
+  color: #ef4444;
+}
+
+/* ESTADO VAZIO */
+.no-result {
+  text-align: center;
+  color: #6b7280;
+  padding: 40px 10px;
+  font-size: 1rem;
+}
+
+/* RESPONSIVO */
+@media (max-width: 900px) {
+  .resumo-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .select-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  select {
+    min-width: 260px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .peca-header,
+  .peca-item {
+    grid-template-columns: 3fr 2fr 1fr 1fr;
+    font-size: 0.85rem;
+  }
+}

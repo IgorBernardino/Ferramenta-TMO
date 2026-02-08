@@ -14,3 +14,6 @@
 | **3 tipos de serviço** | Garantia, Interna, Particular|
 | **Busca inteligente** | Filtro de serviços por código/descrição |
 | **Mobile-first** | Design responsivo para celular/tablet |
+
+
+ 
