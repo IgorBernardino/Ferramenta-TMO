@@ -32,6 +32,8 @@ const cilindradaPorModelo = {
   e350: 350,
 
   // Suzuki
+  gsr150i: 150,
+  
   gsx150: 150,
   sv650a: 650,
   dl650: 650,
