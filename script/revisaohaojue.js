@@ -158,7 +158,7 @@ const dadosRevisao = {
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
             { codigo: '11482H3E000H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
             { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
-            { codigo: '09482H00001H000', nome: 'Velas', qtd: 1, valor: 90.00 }
+            { codigo: '09482Z00001H000', nome: 'Velas', qtd: 1, valor: 90.00 }
         ],
         15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         18000: [ { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
