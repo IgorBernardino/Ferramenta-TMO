@@ -33,7 +33,16 @@ const cilindradaPorModelo = {
 
   // Suzuki
   gsr150i: 150,
-  
+  boulevardm1800: 1800,
+  boulevardm1500: 1500,
+  bandit1250: 1250,
+  boulevardm800: 800,
+  gsx650f: 650,
+  burgman650: 650,
+  dl650: 650,
+  gs120: 120,
+  lta750x: 750,
+  lta450x: 450,
   gsx150: 150,
   sv650a: 650,
   dl650: 650,
