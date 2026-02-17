@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITRINE VIRTUAL</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo-block">
+        <div class="eyebrow">Capacetes e Equipamentos</div>
+        <h1>VITRINE<span>_</span>COMERI MOTOS</h1>
+    </div>
+    <div class="header-right">
+        <div class="tagline">
+            2026<br>
+            São Paulo · Brasil
+        </div>
+        <div class="season-badge">NEW SEASON</div>
+    </div>
+</header>
+
+<nav class="tabs">
+    <button class="tab-btn active" onclick="filterItems('todos')">Todos</button>
+    <button class="tab-btn" onclick="filterItems('capacete')">Capacetes</button>
+    <button class="tab-btn" onclick="filterItems('luvas')">Luvas</button>
+    <button class="tab-btn" onclick="filterItems('jaquetas')">Jaquetas</button>
+    <button class="tab-btn" onclick="filterItems('botas')">Botas</button>
+    <button class="tab-btn" onclick="filterItems('acessorios')">Acessórios</button>
+</nav>
+
+<div class="result-bar">
+    <div class="result-count"><span id="count">14</span> produtos encontrados</div>
+    <div class="result-count">Gear & Ride · Vitrine 2026</div>
+</div>
+
+<main class="container">
+
+    <div class="item" data-category="capacete">
+        <div class="slider-container">
+            <div class="cat-chip">Capacete</div>
+            <div class="slider-wrapper">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/CARBON/GP TECH CARBON.png" alt="GP TECH CARBON">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/CARBON/GP TECH CARBON2.png" alt="GP TECH CARBON">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/CARBON/GP TECH CARBON3.png" alt="GP TECH CARBON">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/CARBON/GP TECH CARBON4.png" alt="GP TECH CARBON">
+            </div>
+            <button class="nav-arrow prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="nav-arrow next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>GP Tech Carbon Mono</h2><p>R$ 2.200</p></div>
+    </div>
+
+    <div class="item" data-category="capacete">
+        <div class="slider-container">
+            <div class="cat-chip">Capacete</div>
+            <div class="slider-wrapper">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/A118/GP TECH A118.png" alt="A118 SV">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/A118/GP TECH A1182.png" alt="A118 SV">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/A118/GP TECH A1183.png" alt="A118 SV">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/A118/GP TECH A1184.png" alt="A118 SV">
+            </div>
+            <button class="nav-arrow prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="nav-arrow next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>A118 SV Mono Articulado</h2><p>R$ 600</p></div>
+    </div>
+
+    <div class="item" data-category="capacete">
+        <div class="slider-container">
+            <div class="cat-chip">Capacete</div>
+            <div class="slider-wrapper">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/OPEN OF669/CAPACETE GP TECH OPEN OF669.png" alt="OPEN OF669">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/OPEN OF669/CAPACETE GP TECH OPEN OF6692.png" alt="OPEN OF669">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/OPEN OF669/CAPACETE GP TECH OPEN OF6693.png" alt="OPEN OF669">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/OPEN OF669/CAPACETE GP TECH OPEN OF6694.png" alt="OPEN OF669">
+            </div>
+            <button class="nav-arrow prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="nav-arrow next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>GP Tech Open OF669</h2><p>R$ 480</p></div>
+    </div>
+
+    <div class="item" data-category="capacete">
+        <div class="slider-container">
+            <div class="cat-chip">Capacete</div>
+            <div class="slider-wrapper">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/ZOOM/CAPACETE GP TECH ZOOM.png" alt="ZOOM">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/ZOOM/CAPACETE GP TECH ZOOM2.png" alt="ZOOM">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/ZOOM/CAPACETE GP TECH ZOOM3.png" alt="ZOOM">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/ZOOM/CAPACETE GP TECH ZOOM4.png" alt="ZOOM">
+            </div>
+            <button class="nav-arrow prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="nav-arrow next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>GP Tech Zoom</h2><p>R$ 480</p></div>
+    </div>
+
+    <div class="item" data-category="capacete">
+        <div class="slider-container">
+            <div class="cat-chip">Capacete</div>
+            <div class="slider-wrapper">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/PILOT MONO/CAPACETE GP TECH PILOT MONO.png" alt="PILOT">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/PILOT MONO/CAPACETE GP TECH PILOT MONO2.png" alt="PILOT">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/PILOT MONO/CAPACETE GP TECH PILOT MONO3.png" alt="PILOT">
+                <img src="/Ferramenta-TMO/vitrine/acessorios/CAPACETES/PILOT MONO/CAPACETE GP TECH PILOT MONO4.png" alt="PILOT">
+            </div>
+            <button class="nav-arrow prev" onclick="moveSlide(this, -1)">❮</button>
+            <button class="nav-arrow next" onclick="moveSlide(this, 1)">❯</button>
+            <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>GP Tech Pilot Mono</h2><p>R$ 420</p></div>
+    </div>
+
+    <div class="item" data-category="jaquetas">
+        <div class="slider-container">
+            <div class="cat-chip">Jaqueta</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/EXPLORER/JAQUETA GP TECH EXPLORER.png" alt="EXPLORER"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>GP Tech Explorer</h2><p>R$ 615</p></div>
+    </div>
+
+    <div class="item" data-category="jaquetas">
+        <div class="slider-container">
+            <div class="cat-chip">Jaqueta</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/NAPOLI/JAQUETA FEMININA GP TECH NAPOLI CASUAL.png" alt="NAPOLI"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Jaqueta Feminina Napoli Casual</h2><p>R$ 395</p></div>
+    </div>
+
+    <div class="item" data-category="jaquetas">
+        <div class="slider-container">
+            <div class="cat-chip">Jaqueta</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/NAPOLI/JAQUETA GP TECH NAPOLI CASUAL.png" alt="NAPOLI"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Jaqueta Napoli Casual</h2><p>R$ 395</p></div>
+    </div>
+
+    <div class="item" data-category="jaquetas">
+        <div class="slider-container">
+            <div class="cat-chip">Jaqueta</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/ESSENCE/JAQUETA FEMININA GP TECH ESSENCE.png" alt="ESSENCE"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Feminina Essence</h2><p>R$ 375</p></div>
+    </div>
+     
+    <div class="item" data-category="jaquetas">
+        <div class="slider-container">
+            <div class="cat-chip">Jaqueta</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/ESSENCE/JAQUETA GP TECH ESSENCE.png" alt="ESSENCE"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Jaqueta Essence</h2><p>R$ 375</p></div>
+    </div>
+
+    <div class="item" data-category="jaquetas">
+        <div class="slider-container">
+            <div class="cat-chip">Jaqueta</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/SOFT/JAQUETA GP TECH SOFT CASUAL.png" alt="SOFT"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>GP Tech Soft Casual</h2><p>R$ 375</p></div>
+    </div>
+
+    <div class="item" data-category="jaquetas">
+        <div class="slider-container">
+            <div class="cat-chip">Jaqueta</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/LUX/JAQUETA FEMININA GP TECH LUX FLUO CASUAL.png" alt="LUX"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>GP Tech Lux Fluo Casual</h2><p>R$ 250</p></div>
+    </div>
+
+    <div class="item" data-category="jaquetas">
+        <div class="slider-container">
+            <div class="cat-chip">Jaqueta</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/LIFE SPORT/JAQUETA PROTECTOR LIFE SPORT CINZA.png" alt="PROTECTOR">
+            <img src="/Ferramenta-TMO/vitrine/acessorios/JAQUETAS/LIFE SPORT/JAQUETA PROTECTOR LIFE SPORT CINZA.png" alt="PROTECTOR"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Protector Life Sport</h2><p>R$ 210</p></div>
+    </div>
+
+    <div class="item" data-category="botas">
+        <div class="slider-container">
+            <div class="cat-chip">Botas</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/BOTAS/BOTA GP TECH COURO ADVENTURE PRETA.png" alt="ADVENTURE"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Couro Adventure Preta</h2><p>R$ 235</p></div>
+    </div>
+
+    <div class="item" data-category="luvas">
+        <div class="slider-container">
+            <div class="cat-chip">Luvas</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/LUVAS/LUVA GP TECH SUPREME IMPERMEAVEL PRETA.png" alt="SUPREME"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Supreme Impermeável</h2><p>R$ 160</p></div>
+    </div>
+
+    <div class="item" data-category="luvas">
+        <div class="slider-container">
+            <div class="cat-chip">Luvas</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/LUVAS/LUVA GP TECH URBAN TECH.png" alt="URBAN"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Urban Tech Preta-Vermelha</h2><p>R$ 155</p></div>
+    </div>
+
+    <div class="item" data-category="luvas">
+        <div class="slider-container">
+            <div class="cat-chip">Luvas</div>
+            <div class="slider-wrapper"><img src="/Ferramenta-TMO/vitrine/acessorios/LUVAS/LUVA GP TECH STREET PRETA.png" alt="STREET"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>Street Preta-Cinza</h2><p>R$ 100</p></div>
+    </div>
+
+     <div class="item" data-category="acessorios">
+        <div class="slider-container">
+            <div class="cat-chip">Acessórios</div>
+            <div class="slider-wrapper"><img src="/acessorios/"></div>
+            <div class="dots"><div class="dot active"></div></div>
+            <div class="item-overlay"></div>
+        </div>
+        <div class="info"><h2>--</h2><p>R$ --</p></div>
+    </div>
+
+</main>
+
+<footer>
+    © 2026 · Gear & Ride · Exposição Premium
+</footer>
+
+<script src="script.js"></script>
+
+<!-- MODAL -->
+<div id="zoom-modal" class="modal">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+        <button class="modal-arrow m-prev" onclick="changeModalImg(-1)">❮</button>
+        <img id="img-ampliada" src="" alt="Zoom">
+        <button class="modal-arrow m-next" onclick="changeModalImg(1)">❯</button>
+    </div>
+</div>
+
+</body>
+</html>

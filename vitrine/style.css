@@ -1,0 +1,379 @@
+        :root {
+            --bg: #0a0a0a;
+            --surface: #111111;
+            --surface2: #1a1a1a;
+            --border: #222;
+            --accent: #c8f500;
+            --text: #f0f0f0;
+            --muted: #555;
+            --muted2: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ── GRAIN OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* ── HEADER ── */
+        header {
+            padding: 60px 6% 50px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .logo-block .eyebrow {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 4px;
+            color: var(--muted);
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .logo-block h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.85;
+            letter-spacing: 2px;
+            color: var(--text);
+        }
+
+        .logo-block h1 span {
+            color: var(--accent);
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-right .tagline {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 3px;
+            color: var(--muted);
+            text-transform: uppercase;
+            line-height: 2;
+        }
+
+        .season-badge {
+            display: inline-block;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 3px;
+            padding: 5px 12px;
+            margin-top: 10px;
+        }
+
+        /* ── NAV ── */
+        nav {
+            padding: 0 6%;
+            display: flex;
+            gap: 0;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        nav::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 20px 24px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: color 0.2s, border-color 0.2s;
+            margin-bottom: -1px;
+        }
+
+        .tab-btn:hover { color: var(--text); }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* ── MAIN GRID ── */
+        main {
+            padding: 60px 6% 80px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2px;
+        }
+
+        /* ── PRODUCT CARD ── */
+        .item {
+            background: var(--surface);
+            position: relative;
+            transition: opacity 0.4s ease;
+            cursor: pointer;
+        }
+
+        .item:hover .item-overlay {
+            opacity: 1;
+        }
+
+        .item:hover .slider-wrapper img {
+            transform: scale(1.04);
+        }
+
+        /* ── SLIDER ── */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: var(--surface2);
+        }
+
+        .slider-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slider-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: transform 0.6s ease;
+            cursor: zoom-in;
+        }
+
+        /* ── OVERLAY ON HOVER ── */
+        .item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            z-index: 1;
+        }
+
+        /* ── ARROWS ── */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(10,10,10,0.8);
+            border: 1px solid var(--border);
+            color: var(--text);
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s, background 0.2s;
+            font-size: 12px;
+            z-index: 2;
+        }
+
+        .nav-arrow:hover { background: var(--accent); color: #000; }
+        .slider-container:hover .nav-arrow { opacity: 1; }
+
+        .prev { left: 12px; }
+        .next { right: 12px; }
+
+        /* ── DOTS ── */
+        .dots {
+            position: absolute;
+            bottom: 14px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            z-index: 2;
+        }
+
+        .dot {
+            width: 4px; height: 4px;
+            background: var(--muted);
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: var(--accent);
+            width: 16px;
+            border-radius: 2px;
+        }
+
+        /* ── INFO ── */
+        .info {
+            padding: 20px 22px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .info h2 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text);
+            line-height: 1.5;
+            max-width: 65%;
+        }
+
+        .info p {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: var(--accent);
+            letter-spacing: 1px;
+        }
+
+        /* ── CATEGORY CHIP ── */
+        .cat-chip {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(10,10,10,0.85);
+            border: 1px solid var(--muted2);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 4px 10px;
+            z-index: 2;
+        }
+
+        /* ── HIDDEN ── */
+        .hidden { display: none; }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 50px 0;
+            border-top: 1px solid var(--border);
+            font-family: 'DM Mono', monospace;
+            font-size: 0.55rem;
+            letter-spacing: 4px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        /* ── MODAL ── */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: rgba(0,0,0,0.97);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 85vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .modal-content img {
+            max-width: 70vw;
+            max-height: 85vh;
+            object-fit: contain;
+            animation: zoomIn 0.25s ease;
+        }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.94); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close-modal {
+            position: fixed;
+            top: 28px;
+            right: 36px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--muted);
+            line-height: 1;
+            transition: color 0.2s;
+            font-weight: 300;
+        }
+
+        .close-modal:hover { color: var(--accent); }
+
+        .modal-arrow {
+            background: none;
+            border: 1px solid var(--muted2);
+            color: var(--muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 18px 14px;
+            transition: 0.2s;
+        }
+
+        .modal-arrow:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #000;
+        }
+
+        /* ── RESULT COUNT ── */
+        .result-bar {
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .result-count {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.58rem;
+            letter-spacing: 2px;
+            color: var(--muted);
+            text-transform: uppercase;
+        }
+
+        .result-count span {
+            color: var(--accent);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 600px) {
+            main { grid-template-columns: 1fr 1fr; gap: 2px; }
+            .info { flex-direction: column; align-items: flex-start; gap: 6px; }
+            .info h2 { max-width: 100%; }
+        }
