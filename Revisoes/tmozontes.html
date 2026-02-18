@@ -31,7 +31,7 @@
             </select>
 
              <!--caixa da imagem das motos-->
-            <div class="veiculo-card" id="veiculoCard">
+            <div class="veiculo-card" id="veiculoCard" style="display:none;">
             <img id="img-veiculo" alt="Veículo selecionado">
              <div class="veiculo-nome" id="veiculoNome"></div>
             </div>
@@ -71,6 +71,28 @@
     <div class="pecas-lista" id="listaPecas">
         <div class="no-result">👆 Selecione veículo e KM para ver as peças da revisão</div>
     </div>
+
+    <!-- SEÇÃO ITENS ADICIONAIS -->
+    <div class="secao-adicionais">
+        <div class="adicionais-header">
+            <h3>➕ Itens Adicionais</h3>
+            <p>Adicione peças ou serviços avulsos ao orçamento</p>
+        </div>
+        <div class="adicionais-controles">
+            <select id="selectAvulso" class="select-avulso">
+                <option value="">Selecione uma peça ou serviço...</option>
+            </select>
+            <div class="qtd-group">
+                <label for="qtdAvulso">Qtd.</label>
+                <input type="number" id="qtdAvulso" value="1" min="1" max="99" class="input-qtd">
+            </div>
+            <button onclick="adicionarItemAdicional()" class="btn-adicionar">
+                ＋ Adicionar
+            </button>
+        </div>
+        <div id="listaItensAdicionais" class="pecas-lista adicionais-lista"></div>
+    </div>
+
 </div>
 <script src="/Ferramenta-TMO/script/revisaozontes.js"></script>
 </body>

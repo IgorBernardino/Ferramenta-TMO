@@ -1,4 +1,4 @@
-    const dadosRevisao = {
+const dadosRevisao = {
         V350: {
             1000: [
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
@@ -261,25 +261,12 @@ function calcular() {
     const km = document.getElementById('kmSelect').value;
 
     const listaPecas = document.getElementById('listaPecas');
-    const totalPecasEl = document.getElementById('totalPecas');
-    const totalTMOEl = document.getElementById('totalTMO');
-    const totalGeralEl = document.getElementById('totalGeral');
-    const subPecasEl = document.getElementById('subPecas');
-    const subTMOEl = document.getElementById('subTMO');
-    const subTotalEl = document.getElementById('subTotal');
 
     /* RESET */
     if (!veiculo || !km) {
         listaPecas.innerHTML =
             '<div class="no-result">👆 Selecione veículo e KM para ver a revisão</div>';
-
-        totalPecasEl.textContent = 'R$ 0,00';
-        totalTMOEl.textContent = 'R$ 0,00';
-        totalGeralEl.textContent = 'R$ 0,00';
-
-        subPecasEl.textContent = 'Sem itens selecionados';
-        subTMOEl.textContent = '0,0 h × R$ 350,00/h';
-        subTotalEl.textContent = 'Peças + Mão de Obra';
+        atualizarTotaisGerais();
         return;
     }
 
@@ -316,29 +303,120 @@ function calcular() {
         listaPecas.innerHTML = header + itens;
     }
 
-    /* TOTAIS */
-    const totalPecas = revisao.reduce(
-        (sum, p) => sum + (p.qtd * p.valor), 0
-    );
-
-    const totalTMO = tmoHoras * TMO_HORA;
-    const totalGeral = totalPecas + totalTMO;
-
-    /* EXIBE RESULTADOS */
-    totalPecasEl.textContent = formatMoney(totalPecas);
-    totalTMOEl.textContent = formatMoney(totalTMO);
-    totalGeralEl.textContent = formatMoney(totalGeral);
-
-    subPecasEl.textContent =
-        revisao.length
-            ? `${revisao.length} item(ns) na revisão`
-            : 'Sem itens selecionados';
-
-    subTMOEl.textContent =
-        `${tmoHoras.toFixed(1).replace('.', ',')} h × R$ 350,00/h`;
-
-    subTotalEl.textContent = 'Peças + Mão de Obra';
+    atualizarTotaisGerais();
 }
+
+
+// ==========================================
+// PEÇAS AVULSAS — edite esta lista conforme necessário
+// ==========================================
+const pecasAvulsas = [
+  { codigo: 'MO-CORRENTE',     nome: 'Serviço: Regulagem Corrente',      valor: 30.00 },
+    { codigo: 'MO-FREIO',        nome: 'Serviço: Troca de Pastilha dianteira',         valor: 50.00 },
+    { codigo: 'MO-FREIO2',        nome: 'Serviço: Troca de Pastilha Traseira',         valor: 50.00 },
+    { codigo: 'MO-INJETOR',        nome: 'Serviço: Limpeza bico Injetor(por unidade)',         valor: 150.00 },
+    { codigo: 'MO-FREIO3',        nome: 'Serviço: Verificar/Sangria(por unidade)',         valor: 160.00 },
+    { codigo: 'MO-TRANSMISSAO',        nome: 'Serviço: Troca Kit Transmissão',         valor: 180.00 },
+    { codigo: '328185',        nome: 'Produto: KIT Revisão',         valor: 70.00 },
+    { codigo: '328186',        nome: 'Produto: Kit Scooter',         valor: 70.00 },
+];
+
+let itensAdicionais = [];
+
+function renderizarItensAdicionais() {
+    const container = document.getElementById('listaItensAdicionais');
+
+    if (!itensAdicionais.length) {
+        container.innerHTML = '<div class="no-result">Nenhum item adicionado</div>';
+    } else {
+        const header = `
+            <div class="peca-header">
+                <div>Peça / Serviço</div>
+                <div>Código</div>
+                <div>Qtd.</div>
+                <div>Total (R$)</div>
+                <div></div>
+            </div>`;
+        const itens = itensAdicionais.map((item, idx) => `
+            <div class="peca-item">
+                <div class="peca-nome">${item.nome}</div>
+                <div class="peca-codigo">${item.codigo}</div>
+                <div class="peca-qtd">${item.qtd}</div>
+                <div class="peca-valor">${formatMoney(item.qtd * item.valor)}</div>
+                <div><button class="btn-remover" onclick="removerItemAdicional(${idx})" title="Remover">✕</button></div>
+            </div>`).join('');
+        container.innerHTML = header + itens;
+    }
+
+    atualizarTotaisGerais();
+}
+
+function adicionarItemAdicional() {
+    const select = document.getElementById('selectAvulso');
+    const qtdInput = document.getElementById('qtdAvulso');
+    const idx = parseInt(select.value);
+    const qtd = parseInt(qtdInput.value) || 1;
+
+    if (isNaN(idx)) return;
+
+    const peca = pecasAvulsas[idx];
+    const existente = itensAdicionais.find(i => i.codigo === peca.codigo);
+    if (existente) {
+        existente.qtd += qtd;
+    } else {
+        itensAdicionais.push({ ...peca, qtd });
+    }
+
+    select.value = '';
+    qtdInput.value = 1;
+    renderizarItensAdicionais();
+}
+
+function removerItemAdicional(idx) {
+    itensAdicionais.splice(idx, 1);
+    renderizarItensAdicionais();
+}
+
+function atualizarTotaisGerais() {
+    const veiculo = document.getElementById('veiculoSelect').value;
+    const km = document.getElementById('kmSelect').value;
+    const dadosVeiculo = (veiculo && dadosRevisao[veiculo]) || {};
+    const revisao = (km && dadosVeiculo[km]) || [];
+    const tmoHoras = (km && dadosVeiculo.tmo && dadosVeiculo.tmo[parseInt(km)]) || 0;
+
+    const totalPecasRevisao   = revisao.reduce((sum, p) => sum + p.qtd * p.valor, 0);
+    const totalPecasAdicionais = itensAdicionais.reduce((sum, p) => sum + p.qtd * p.valor, 0);
+    const totalPecas  = totalPecasRevisao + totalPecasAdicionais;
+    const totalTMO    = tmoHoras * TMO_HORA;
+    const totalGeral  = totalPecas + totalTMO;
+
+    document.getElementById('totalPecas').textContent  = formatMoney(totalPecas);
+    document.getElementById('totalTMO').textContent    = formatMoney(totalTMO);
+    document.getElementById('totalGeral').textContent  = formatMoney(totalGeral);
+
+    const totalItens = revisao.length + itensAdicionais.length;
+    document.getElementById('subPecas').textContent = totalItens
+        ? `${totalItens} item(ns) no orçamento`
+        : 'Sem itens selecionados';
+    document.getElementById('subTMO').textContent =
+        `${tmoHoras.toFixed(1).replace('.', ',')} h × R$ ${TMO_HORA},00/h`;
+    document.getElementById('subTotal').textContent = 'Peças + Mão de Obra';
+}
+
+// Popular select de peças avulsas ao carregar — integra com o DOMContentLoaded existente
+document.addEventListener('DOMContentLoaded', () => {
+    const select = document.getElementById('selectAvulso');
+    pecasAvulsas.forEach((p, i) => {
+        const opt = document.createElement('option');
+        opt.value = i;
+        opt.textContent = `${p.nome} — ${formatMoney(p.valor)}`;
+        select.appendChild(opt);
+    });
+    renderizarItensAdicionais();
+});
+
+window.adicionarItemAdicional = adicionarItemAdicional;
+window.removerItemAdicional   = removerItemAdicional;
 
      function atualizarImagemVeiculo() {
   const select = document.getElementById('veiculoSelect');
