@@ -55,7 +55,6 @@ body {
   flex-wrap: wrap;
 }
 
-.header-left {}
 .header-eyebrow {
   font-family: var(--font-c);
   font-size: 0.8rem;
