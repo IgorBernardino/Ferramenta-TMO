@@ -357,6 +357,9 @@ const pecasAvulsas = [
     { codigo: 'MO-TRANSMISSAO',        nome: 'Serviço: Troca Kit Transmissão',         valor: 280.00 },
     { codigo: '328185',        nome: 'Produto: KIT Revisão',         valor: 70.00 },
     { codigo: '328186',        nome: 'Produto: Kit Scooter',         valor: 70.00 },
+    { codigo: 'LUB01',        nome: 'Produto:LUBRIFICANTE PARA CORRENTE',         valor: 25.00 },
+    { codigo: 'ROST01',        nome: 'DESINGRIPANTE(ROST 0FF',         valor: 20.00 },
+    { codigo: 'DESC01',        nome: 'DESCARBONIZANTE',         valor: 35.00 },
     
 ];
 
