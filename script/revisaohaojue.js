@@ -170,7 +170,7 @@ const dadosRevisao = {
     },
         NK150: {
         1000: [
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00,}
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00,},
             { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
                 { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
 ],
