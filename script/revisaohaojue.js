@@ -7,14 +7,12 @@ const dadosRevisao = {
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
             ],
             6000: [
-                { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
             ],
             9000: [
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
             ],
             12000: [
-                { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
                 { codigo: '13781H2C100H000', nome: 'Filtro de Ar', qtd: 1, valor: 85.00 },
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
                 { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
@@ -26,7 +24,6 @@ const dadosRevisao = {
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
             ],
             18000: [
-                { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
             ],
             tmo: { 1000: 0.0, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 3.0, 15000: 0.5, 18000: 1.0 }
@@ -39,14 +36,12 @@ const dadosRevisao = {
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
             ],
             6000: [
-                { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
             ],
             9000: [
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
             ],
             12000: [
-                { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
                 { codigo: '13780H2J000H000', nome: 'Filtro de Ar', qtd: 1, valor: 90.00 },
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
                 { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
@@ -68,13 +63,12 @@ const dadosRevisao = {
        
         3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         
-        6000: [ { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, 
+        6000: [ 
         { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         
         9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         
         12000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: '13780H2J000H000', nome: 'Filtro de Ar', qtd: 1, valor: 90.00 },
             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
@@ -93,13 +87,12 @@ const dadosRevisao = {
         
         3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         
-        6000: [ { codigo: '319783', nome: 'Arruela', qtd:1, valor:10.00 }, 
+        6000: [ 
                 { codigo: 'MT114', nome: 'Óleo do Motor', qtd:1, valor:70.00 } ],
         
         9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         
         12000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: '13780H37200H000', nome: 'Filtro de Ar', qtd: 1, valor: 70.00 },
             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
@@ -108,7 +101,7 @@ const dadosRevisao = {
             { codigo: '0948200399000', nome: 'Velas', qtd: 1, valor: 81.00 }
         ],
         15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
-        18000: [ { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        18000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         tmo: {1000:0.0,3000:0.5,6000:0.5,9000:0.5,12000:3.0,15000:0.5,18000:1.0}
     },
         NK150: {
@@ -145,14 +138,12 @@ const dadosRevisao = {
        
         3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
        
-        6000: [ 
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, 
+        6000: [  
              { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
        
              9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
        
              12000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: '13781H2A300H000', nome: 'Filtro de Ar', qtd: 1, valor: 42.00 },
             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
@@ -161,7 +152,7 @@ const dadosRevisao = {
             { codigo: '09482Z00001H000', nome: 'Velas', qtd: 1, valor: 90.00 }
         ],
         15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
-        18000: [ { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        18000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
         tmo: { 1000: 0.0, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 3.0, 15000: 0.5, 18000: 1.0 }
     },
         LINDY125: {
@@ -176,7 +167,6 @@ const dadosRevisao = {
             { codigo: '0928054001000', nome: 'Junta Tampa Filtro', qtd: 1, valor: 21.00 }
         ],
         6000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: '13780H7A001H000', nome: 'Filtro de Ar', qtd: 1, valor: 75.00 },
             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16510-26H00-000', nome: 'Filtro de Óleo', qtd: 1, valor: 43.00 },
@@ -188,7 +178,6 @@ const dadosRevisao = {
             { codigo: '0928054001000', nome: 'Junta Tampa Filtro', qtd: 1, valor: 21.00 }
         ],
         12000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: '13780H7A001H000', nome: 'Filtro de Ar', qtd: 1, valor: 75.00 },
             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16510-26H00-000', nome: 'Filtro de Óleo', qtd: 1, valor: 43.00 },
@@ -202,7 +191,6 @@ const dadosRevisao = {
             { codigo: '0928054001000', nome: 'Junta Tampa Filtro', qtd: 1, valor: 21.00 }
         ],
         18000: [
-            { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
             { codigo: '16510-26H00-000', nome: 'Filtro de Óleo', qtd: 1, valor: 43.00 },
             { codigo: '0928054001000', nome: 'Junta Tampa Filtro', qtd: 1, valor: 21.00 },
