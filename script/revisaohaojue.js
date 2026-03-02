@@ -387,10 +387,9 @@ const pecasAvulsas = [
     { codigo: 'MO-FREIO3',        nome: 'Serviço: Verificar/Sangria(por unidade)',         valor: 130.00 },
     { codigo: 'MO-TRANSMISSAO',        nome: 'Serviço: Troca Kit Transmissão',         valor: 120.00 },
     { codigo: '328185',        nome: 'Produto: KIT REVISÃO',         valor: 70.00 },
-    { codigo: 'LUB01',        nome: 'Produto:LUBRIFICANTE PARA CORRENTE',         valor: 25.00 },
-    { codigo: 'ROST01',        nome: 'DESINGRIPANTE(ROST 0FF',         valor: 20.00 },
-    { codigo: 'DESC01',        nome: 'DESCARBONIZANTE',         valor: 35.00 }
-    
+    { codigo: 'DESC01',        nome: 'DESCARBONIZANTE',         valor: 35.00 },
+    { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+    { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
 
 
     
