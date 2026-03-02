@@ -160,7 +160,7 @@ const dadosRevisao = {
     tmoHora: 650,
     1000: [
       
-      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 },
+      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 },
       { codigo: '1651007J00000', nome: 'Filtro de Óleo', qtd: 1, valor: 185.00 }
     ],
     6000: [
@@ -170,16 +170,16 @@ const dadosRevisao = {
       
       { codigo: '0948200646000', nome: 'Velas', qtd: 2, valor: 160.00 },
       { codigo: '1651007J00000', nome: 'Filtro de Óleo', qtd: 1, valor: 185.00 },
-      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 }
+      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 }
     ],
     18000: [
         { codigo: '13780-44H00-000', nome: 'Filtro de Ar', qtd: 1, valor: 370.00 },
-        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 }
+        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 }
     ],
     24000: [
         { codigo: '0948200646000', nome: 'Velas', qtd: 2, valor: 160.00 },
       { codigo: '1651007J00000', nome: 'Filtro de Óleo', qtd: 1, valor: 185.00 },
-      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 }
+      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 }
       
     ],
     tmo: {1000:0.0, 6000:0.0, 12000:0.5, 18000:0.3, 24000:0.5}
@@ -187,26 +187,26 @@ const dadosRevisao = {
   VSTROM650: {
     tmoHora: 650,
     1000: [
-      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 },
+      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 },
       { codigo: '1651007J00000', nome: 'Filtro de Óleo', qtd: 1, valor: 185.00 }
     ],
     6000: [
-      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 }
+      { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 }
     ],
     12000: [
         { codigo: '0948200270000', nome: 'Velas', qtd: 2, valor: 135.00 },
-        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 },
+        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 },
         { codigo: '1651007J00000', nome: 'Filtro de Óleo', qtd: 1, valor: 185.00 }
       
     ],
     18000: [
         { codigo: '13780-27G10', nome: 'Filtro de Ar', qtd: 1, valor: 480.00 },
-        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 },
+        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 },
       
     ],
     24000: [
         { codigo: '0948200270000', nome: 'Velas', qtd: 2, valor: 135.00 },
-        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 4, valor: 70.00 },
+        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 3, valor: 70.00 },
         { codigo: '1651007J00000', nome: 'Filtro de Óleo', qtd: 1, valor: 185.00 }
     ],
     tmo: {1000:0.0, 6000:0.0, 12000:0.5, 18000:0.3, 24000:0.5}
