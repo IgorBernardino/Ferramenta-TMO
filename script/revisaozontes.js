@@ -1,233 +1,693 @@
 const dadosRevisao = {
         V350: {
-            1000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            3000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            6000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            9000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            12000: [
-                { codigo: '1224300125000', nome: 'Filtro de Ar', qtd: 1, valor: 106.00 },
-                { codigo: '1051158001000', nome: 'Velas', qtd: 1, valor: 108.00 },
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '319717', nome: 'Líquido Arrefecimento', qtd: 1, valor: 30.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            15000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            18000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '324950', nome: 'Fluido de Freio', qtd: 1, valor: 22.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+              1000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',          qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',   qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',           qtd: 1, valor: 20.00 }
+    ],
+    3000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    6000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    9000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    12000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    15000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    18000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 2º ciclo (19k–36k) ─────────────────────────────────────────────────────
+    21000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    24000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    27000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    30000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    33000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    36000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 3º ciclo (37k–57k) ─────────────────────────────────────────────────────
+    39000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    42000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    45000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    48000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    51000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    54000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    57000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+             tmo: {
+        1000:  0.0, 3000:  0.3, 6000:  0.8, 9000:  0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0,
+        21000: 0.3, 24000: 1.5, 27000: 0.3, 30000: 0.8, 33000: 0.3, 36000: 1.5, 39000: 0.3,
+        42000: 0.8, 45000: 0.3, 48000: 1.5, 51000: 0.3, 54000: 1.0, 57000: 1.5
+    }
         },
         T350: {
-            1000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            3000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            6000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            9000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            12000: [
-                { codigo: '1224300125000', nome: 'Filtro de Ar', qtd: 1, valor: 106.00 },
-                { codigo: '1051158001000', nome: 'Velas', qtd: 1, valor: 108.00 },
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '319717', nome: 'Líquido Arrefecimento', qtd: 1, valor: 30.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            15000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            18000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '324950', nome: 'Fluido de Freio', qtd: 1, valor: 22.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+               1000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',          qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',   qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',           qtd: 1, valor: 20.00 }
+    ],
+    3000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    6000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    9000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    12000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    15000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    18000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 2º ciclo (19k–36k) ─────────────────────────────────────────────────────
+    21000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    24000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    27000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    30000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    33000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    36000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 3º ciclo (37k–57k) ─────────────────────────────────────────────────────
+    39000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    42000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    45000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    48000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    51000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    54000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    57000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+             tmo: {
+        1000:  0.0, 3000:  0.3, 6000:  0.8, 9000:  0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0,
+        21000: 0.3, 24000: 1.5, 27000: 0.3, 30000: 0.8, 33000: 0.3, 36000: 1.5, 39000: 0.3,
+        42000: 0.8, 45000: 0.3, 48000: 1.5, 51000: 0.3, 54000: 1.0, 57000: 1.5
+    }
         },
         GK350: {
-           1000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            3000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            6000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            9000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            12000: [
-                { codigo: '1224300125000', nome: 'Filtro de Ar', qtd: 1, valor: 106.00 },
-                { codigo: '1051158001000', nome: 'Velas', qtd: 1, valor: 108.00 },
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '319717', nome: 'Líquido Arrefecimento', qtd: 1, valor: 30.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            15000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            18000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '324950', nome: 'Fluido de Freio', qtd: 1, valor: 22.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+              1000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',          qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',   qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',           qtd: 1, valor: 20.00 }
+    ],
+    3000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    6000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    9000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    12000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    15000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    18000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 2º ciclo (19k–36k) ─────────────────────────────────────────────────────
+    21000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    24000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    27000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    30000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    33000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    36000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 3º ciclo (37k–57k) ─────────────────────────────────────────────────────
+    39000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    42000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    45000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    48000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    51000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    54000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    57000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+             tmo: {
+        1000:  0.0, 3000:  0.3, 6000:  0.8, 9000:  0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0,
+        21000: 0.3, 24000: 1.5, 27000: 0.3, 30000: 0.8, 33000: 0.3, 36000: 1.5, 39000: 0.3,
+        42000: 0.8, 45000: 0.3, 48000: 1.5, 51000: 0.3, 54000: 1.0, 57000: 1.5
+    }
         },
         S350: {
-           1000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            3000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            6000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            9000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            12000: [
-                { codigo: '1224300125000', nome: 'Filtro de Ar', qtd: 1, valor: 106.00 },
-                { codigo: '1051158001000', nome: 'Velas', qtd: 1, valor: 108.00 },
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '319717', nome: 'Líquido Arrefecimento', qtd: 1, valor: 30.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            15000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            18000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '324950', nome: 'Fluido de Freio', qtd: 1, valor: 22.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+               1000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',          qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',   qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',           qtd: 1, valor: 20.00 }
+    ],
+    3000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    6000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    9000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    12000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    15000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    18000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 2º ciclo (19k–36k) ─────────────────────────────────────────────────────
+    21000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    24000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    27000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    30000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    33000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    36000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 3º ciclo (37k–57k) ─────────────────────────────────────────────────────
+    39000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    42000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    45000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    48000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    51000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    54000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    57000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+             tmo: {
+        1000:  0.0, 3000:  0.3, 6000:  0.8, 9000:  0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0,
+        21000: 0.3, 24000: 1.5, 27000: 0.3, 30000: 0.8, 33000: 0.3, 36000: 1.5, 39000: 0.3,
+        42000: 0.8, 45000: 0.3, 48000: 1.5, 51000: 0.3, 54000: 1.0, 57000: 1.5
+    }
         },
         R350: {
-           1000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            3000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            6000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            9000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            12000: [
-                { codigo: '1224300125000', nome: 'Filtro de Ar', qtd: 1, valor: 106.00 },
-                { codigo: '1051158001000', nome: 'Velas', qtd: 1, valor: 108.00 },
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '319717', nome: 'Líquido Arrefecimento', qtd: 1, valor: 30.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            15000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-            18000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
-                { codigo: '4134300001000', nome: 'Filtro de Óleo', qtd: 1, valor: 130.00 },
-                { codigo: '324950', nome: 'Fluido de Freio', qtd: 1, valor: 22.00 },
-                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
-                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
-            ],
-             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+                 1000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',          qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',   qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',           qtd: 1, valor: 20.00 }
+    ],
+    3000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    6000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    9000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    12000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    15000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    18000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 2º ciclo (19k–36k) ─────────────────────────────────────────────────────
+    21000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    24000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    27000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    30000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    33000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    36000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    // ── 3º ciclo (37k–57k) ─────────────────────────────────────────────────────
+    39000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    42000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    45000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    48000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    51000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    54000: [
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '324950',         nome: 'Fluido de Freio',        qtd: 1, valor: 22.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+    57000: [
+        { codigo: '1224300125000',  nome: 'Filtro de Ar',           qtd: 1, valor: 106.00 },
+        { codigo: '1051158001000',  nome: 'Velas',                  qtd: 1, valor: 108.00 },
+        { codigo: 'MT114',          nome: 'Óleo do Motor',          qtd: 2, valor: 70.00 },
+        { codigo: '4134300001000',  nome: 'Filtro de Óleo',         qtd: 1, valor: 130.00 },
+        { codigo: '319717',         nome: 'Líquido Arrefecimento',  qtd: 1, valor: 30.00 },
+        { codigo: 'LUBMINI',        nome: 'LUBRIFICANTE CORRENTE',  qtd: 1, valor: 25.00 },
+        { codigo: 'DESMINI',        nome: 'DESINGRIPANTE',          qtd: 1, valor: 20.00 }
+    ],
+             tmo: {
+        1000:  0.0, 3000:  0.3, 6000:  0.8, 9000:  0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0,
+        21000: 0.3, 24000: 1.5, 27000: 0.3, 30000: 0.8, 33000: 0.3, 36000: 1.5, 39000: 0.3,
+        42000: 0.8, 45000: 0.3, 48000: 1.5, 51000: 0.3, 54000: 1.0, 57000: 1.5
+    }
         },
         E350: {
             1000: [
@@ -269,7 +729,9 @@ const dadosRevisao = {
 
 const TMO_HORA = 350; // R$ por hora de mão de obra
 
-const KM_PADRAO = [1000, 3000, 6000, 9000, 12000, 18000, ];
+const KM_PADRAO = [ 1000, 3000, 6000, 9000, 12000, 15000, 18000,
+        21000, 24000, 27000, 30000, 33000, 36000, 39000,
+        42000, 45000, 48000, 51000, 54000, 57000];
 const KM_E350 = [1000, 4000, 8000, 12000, 16000, 20000, 24000];
 
 /* ===============================
