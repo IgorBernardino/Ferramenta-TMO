@@ -1,16 +1,24 @@
 const dadosRevisao = {
         DK160: {
             1000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             3000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             6000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             9000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             12000: [
                 { codigo: '13781H2C100H000', nome: 'Filtro de Ar', qtd: 1, valor: 85.00 },
@@ -18,28 +26,42 @@ const dadosRevisao = {
                 { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
                 { codigo: '11482H3J012H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
                 { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
-                { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 }
+                { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             15000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             18000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             tmo: { 1000: 0.0, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 3.0, 15000: 0.5, 18000: 1.0 }
         },
         DR160: {
             1000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             3000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             6000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             9000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             12000: [
                 { codigo: '13780H2J000H000', nome: 'Filtro de Ar', qtd: 1, valor: 90.00 },
@@ -47,26 +69,42 @@ const dadosRevisao = {
                 { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
                 { codigo: '11482H3J012H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
                 { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
-                { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 }
+                { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             15000: [
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             18000: [
-                { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 },
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
             tmo: { 1000: 0.0, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 3.0, 15000: 0.5, 18000: 1.0 }
         },
         DL160: {
-        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
        
-        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
         
         6000: [ 
-        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+    { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 } ],
         
-        9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+        { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
         
         12000: [
             { codigo: '13780H2J000H000', nome: 'Filtro de Ar', qtd: 1, valor: 90.00 },
@@ -74,23 +112,41 @@ const dadosRevisao = {
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
             { codigo: '11482H3J012H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
             { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
-            { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 }
+            { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
-        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
        
-        18000: [ { codigo: '319783', nome: 'Arruela', qtd: 1, valor: 10.00 }, 
-        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        18000: [  
+        { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+    { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 } ],
         tmo: { 1000: 0.0,3000:0.5,6000:0.5,9000:0.5,12000:3.0,15000:0.5,18000:1.0 }
     },
         MASTER150: {
-        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
         
-        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
         
         6000: [ 
-                { codigo: 'MT114', nome: 'Óleo do Motor', qtd:1, valor:70.00 } ],
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd:1, valor:70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 } ],
         
-        9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
         
         12000: [
             { codigo: '13780H37200H000', nome: 'Filtro de Ar', qtd: 1, valor: 70.00 },
@@ -98,24 +154,41 @@ const dadosRevisao = {
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
             { codigo: '11482H3E000H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
             { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
-            { codigo: '0948200399000', nome: 'Velas', qtd: 1, valor: 81.00 }
+            { codigo: '0948200399000', nome: 'Velas', qtd: 1, valor: 81.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
-        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
-        18000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
+        18000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
         tmo: {1000:0.0,3000:0.5,6000:0.5,9000:0.5,12000:3.0,15000:0.5,18000:1.0}
     },
         NK150: {
         1000: [
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
-        ],
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00,}
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+],
+        
         3000: [
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00,},
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
         6000: [
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
         9000: [
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
         12000: [
             { codigo: '13780H2J000H000', nome: 'Filtro de Ar', qtd: 1, valor: 90.00 },
@@ -123,25 +196,42 @@ const dadosRevisao = {
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
             { codigo: '11482H3J012H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
             { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
-            { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 }
+            { codigo: '09482H00010H000', nome: 'Velas', qtd: 1, valor: 90.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+            { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
         15000: [
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
         18000: [
-            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 }
+            { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
         tmo: { 1000: 0.0, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 3.0, 15000: 0.5, 18000: 1.0 }
     },
         CHOPPER150: {
-        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        1000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
        
-        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        3000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
        
         6000: [  
-             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+             { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 } ],
        
-             9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 } ],
+             9000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
+                { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+              ],
        
              12000: [
             { codigo: '13781H2A300H000', nome: 'Filtro de Ar', qtd: 1, valor: 42.00 },
@@ -149,10 +239,18 @@ const dadosRevisao = {
             { codigo: '16561H3E000H000', nome: 'Junta Capa Óleo', qtd: 1, valor: 12.50 },
             { codigo: '11482H3E000H000', nome: 'Junta Tampa Direita', qtd: 1, valor: 85.00 },
             { codigo: '14181H11200H000', nome: 'Junta Escapamento', qtd: 1, valor: 21.00 },
-            { codigo: '09482Z00001H000', nome: 'Velas', qtd: 1, valor: 90.00 }
+            { codigo: '09482Z00001H000', nome: 'Velas', qtd: 1, valor: 90.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
         ],
-        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
-        18000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 } ],
+        15000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
+        18000: [ { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 1, valor: 70.00 },
+            { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
+                { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
+         ],
         tmo: { 1000: 0.0, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 3.0, 15000: 0.5, 18000: 1.0 }
     },
         LINDY125: {
