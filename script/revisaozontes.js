@@ -43,7 +43,7 @@ const dadosRevisao = {
                 { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
                 { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
-            tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.5, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+            tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
         },
         T350: {
             1000: [
@@ -89,7 +89,7 @@ const dadosRevisao = {
                 { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
                 { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
-             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.5, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
         },
         GK350: {
            1000: [
@@ -135,7 +135,7 @@ const dadosRevisao = {
                 { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
                 { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
-             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.5, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
         },
         S350: {
            1000: [
@@ -181,7 +181,7 @@ const dadosRevisao = {
                 { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
                 { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
-             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.5, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
         },
         R350: {
            1000: [
@@ -227,7 +227,7 @@ const dadosRevisao = {
                 { codigo: 'LUBMINI', nome: 'LUBRIFICANTE CORRENTE', qtd: 1, valor: 25.00 },
                 { codigo: 'DESMINI', nome: 'DESINGRIPANTE', qtd: 1, valor: 20.00 }
             ],
-             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.5, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
+             tmo: { 1000: 0.0, 3000: 0.3, 6000: 0.8, 9000: 0.3, 12000: 1.5, 15000: 0.3, 18000: 1.0 }
         },
         E350: {
             1000: [
