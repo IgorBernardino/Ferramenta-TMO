@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@400;500;600&display=swap');
 
 :root {
-  --bg:       #1c1c1e;
-  --bg2:      #252527;
-  --card:     #2c2c2e;
-  --border:   #3a3a3c;
-  --orange:   #ff6b2b;
-  --orange2:  #ff8c55;
-  --blue:     #0a84ff;
-  --green:    #30d158;
-  --red:      #ff453a;
-  --text:     #f5f5f7;
-  --text2:    #aeaeb2;
-  --text3:    #636366;
+  --bg:       #e8ecf2;
+  --bg2:      #f4f6fa;
+  --card:     #ffffff;
+  --border:   #d0d9ea;
+  --border2:  #bac6dc;
+  --red:      #cc0000;
+  --red2:     #e83030;
+  --blue:     #1a2f6e;
+  --blue2:    #1e3a8a;
+  --blue3:    #2d5abf;
+  --silver:   #6b80a8;
+  --green:    #0a8a4a;
+  --text:     #1a2540;
+  --text2:    #4a5c7a;
+  --text3:    #8a9ab8;
   --font:     'Barlow', sans-serif;
   --font-c:   'Barlow Condensed', sans-serif;
   --r:        12px;
@@ -46,7 +49,7 @@ body {
   top: 20px;
   left: 20px;
   z-index: 1000;
-  background: var(--orange);
+  background: linear-gradient(135deg, #cc0000, #e81414);
   color: #fff;
   width: 50px;
   height: 50px;
@@ -56,12 +59,12 @@ body {
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(255,107,43,0.5);
+  box-shadow: 0 4px 20px rgba(200,0,0,0.35);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .btn-home:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(255,107,43,0.65);
+  box-shadow: 0 6px 28px rgba(200,0,0,0.5);
 }
 
 /* ── HEADER ── */
@@ -76,7 +79,7 @@ body {
   font-weight: 800;
   letter-spacing: -0.01em;
   line-height: 1;
-  color: var(--text);
+  color: var(--blue);
   text-align: left;
   background: none;
   border: none;
@@ -98,6 +101,7 @@ body {
   padding: 24px;
   border: 1px solid var(--border);
   margin-bottom: 16px;
+  box-shadow: 0 2px 10px rgba(20,40,100,0.07);
 }
 
 /* ── SELECT GROUP ── */
@@ -135,7 +139,7 @@ input[type="number"] {
   color: var(--text);
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23ff6b2b'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23cc0000'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   cursor: pointer;
@@ -145,12 +149,13 @@ input[type="number"] {
 select:focus,
 input:focus {
   outline: none;
-  border-color: var(--orange);
-  box-shadow: 0 0 0 3px rgba(255,107,43,0.2);
+  border-color: var(--blue3);
+  box-shadow: 0 0 0 3px rgba(45,90,191,0.15);
 }
 
 select option {
-  background: var(--bg2);
+  background: #fff;
+  color: var(--text);
 }
 
 select:disabled {
@@ -163,24 +168,25 @@ select:disabled {
   height: 200px;
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--border) transparent;
+  scrollbar-color: var(--border2) transparent;
   background-image: none;
   padding: 6px;
 }
 
 #servico::-webkit-scrollbar { width: 5px; }
 #servico::-webkit-scrollbar-track { background: transparent; }
-#servico::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+#servico::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
 
 #servico option {
   padding: 6px 8px;
   border-radius: 6px;
   font-size: 0.82rem;
+  color: var(--text);
 }
 
 #servico option:checked {
-  background: rgba(255,107,43,0.2);
-  color: var(--orange2);
+  background: rgba(204,0,0,0.1);
+  color: var(--red);
 }
 
 /* ── SELECT CONTAINER (grid veículo + serviço) ── */
@@ -197,7 +203,7 @@ select:disabled {
   border-radius: var(--r);
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--blue);
+  border-left: 3px solid var(--blue3);
   display: flex;
   gap: 28px;
   justify-content: center;
@@ -217,7 +223,7 @@ select:disabled {
 }
 
 #infoCilindrada span {
-  color: var(--blue);
+  color: var(--blue3);
   font-weight: 600;
 }
 
@@ -233,7 +239,7 @@ select:disabled {
   padding: 14px;
   border-radius: 10px;
   border: none;
-  background: var(--orange);
+  background: linear-gradient(135deg, #cc0000, #e81414);
   color: #fff;
   font-family: var(--font-c);
   font-size: 1rem;
@@ -241,14 +247,14 @@ select:disabled {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 4px 18px rgba(255,107,43,0.4);
+  box-shadow: 0 4px 18px rgba(200,0,0,0.3);
   transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
 }
 
 .btn-calcular:hover {
-  background: #e85a1f;
+  background: linear-gradient(135deg, #e81414, #ff2222);
   transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(255,107,43,0.55);
+  box-shadow: 0 6px 26px rgba(200,0,0,0.45);
 }
 
 .btn-calcular:active {
@@ -262,6 +268,7 @@ select:disabled {
   border: 1px solid var(--border);
   overflow: hidden;
   margin-top: 16px;
+  box-shadow: 0 4px 16px rgba(20,40,100,0.1);
   animation: fadeSlide 0.25s ease;
 }
 
@@ -273,7 +280,7 @@ select:disabled {
 .resultado-card {
   padding: 28px 24px;
   text-align: center;
-  background: linear-gradient(135deg, rgba(255,107,43,0.1), rgba(255,107,43,0.03));
+  background: linear-gradient(135deg, rgba(26,47,110,0.05), rgba(26,47,110,0.02));
   border-bottom: 1px solid var(--border);
   position: relative;
 }
@@ -283,7 +290,7 @@ select:disabled {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 3px;
-  background: var(--orange);
+  background: linear-gradient(90deg, var(--blue2), var(--red), var(--blue2));
 }
 
 .resultado-label {
@@ -300,7 +307,7 @@ select:disabled {
   font-family: var(--font-c);
   font-size: 3.2rem;
   font-weight: 800;
-  color: var(--orange);
+  color: var(--red);
   line-height: 1;
   letter-spacing: -0.01em;
 }
@@ -326,8 +333,8 @@ select:disabled {
 
 .resultado-detalhes em {
   font-style: normal;
-  background: rgba(255,107,43,0.15);
-  color: var(--orange2);
+  background: rgba(204,0,0,0.08);
+  color: var(--red);
   padding: 1px 8px;
   border-radius: 4px;
   font-size: 0.8rem;
@@ -342,7 +349,7 @@ select:disabled {
   border-radius: var(--r);
   background: var(--bg2);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--blue);
+  border-left: 3px solid var(--blue3);
   font-size: 0.85rem;
   color: var(--text2);
 }
