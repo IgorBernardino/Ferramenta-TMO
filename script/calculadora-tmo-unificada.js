@@ -1,16 +1,11 @@
 /* ======================================
    CALCULADORA TMO UNIFICADA
    Haojue • Suzuki • Zontes
-   Regra: R$ 1,00 por cilindrada
 ====================================== */
 
 /* ==============================
    CILINDRADA POR MODELO
 ============================== */
-/* ⚠️ IMPORTANTE:
-   - As chaves DEVEM bater exatamente
-     com o value do <select id="veiculo">
-*/
 const cilindradaPorModelo = {
   // Haojue
   nex110: 110,
@@ -33,6 +28,7 @@ const cilindradaPorModelo = {
 
   // Suzuki
   gsr150i: 150,
+  inazuma250: 250,
   boulevardm1800: 1800,
   boulevardm1500: 1500,
   bandit1250: 1250,
@@ -42,6 +38,7 @@ const cilindradaPorModelo = {
   dl650: 650,
   gs120: 120,
   lta750x: 750,
+  drz400e: 400,
   lta450x: 450,
   gsx150: 150,
   sv650a: 650,
@@ -70,7 +67,7 @@ function obterValorHoraPorCilindrada(modelo) {
 }
 
 /* ==============================
-   LISTAR SERVIÇOS
+   LISTA DE SERVIÇOS
 ============================== */
 function atualizarServicos() {
   const veiculo = document.getElementById('veiculo').value.toLowerCase();
@@ -94,7 +91,7 @@ function atualizarServicos() {
 }
 
 /* ==============================
-   ATUALIZAR INFO DE CILINDRADA
+   ATUALIZAR CILINDRADA
 ============================== */
 function atualizarCilindrada() {
   const veiculo = document.getElementById('veiculo').value.toLowerCase();
@@ -119,7 +116,7 @@ function atualizarCilindrada() {
 }
 
 /* ==============================
-   CÁLCULO FINAL
+   CÁLCULO
 ============================== */
 function calcular() {
   const veiculo = document.getElementById('veiculo').value;
@@ -140,7 +137,7 @@ function calcular() {
 
   let total = dados.tempo * valorHora;
 
-  // 🔥 REGRA NOVA: INTERNA = 50%
+  // INTERNA = 50%
   if (tipo === 'interna') {
     total = total / 2;
   }

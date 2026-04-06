@@ -737,7 +737,7 @@ function atualizarTotaisGerais() {
     document.getElementById('subTotal').textContent = 'Peças + Mão de Obra';
 }
 
-// Popular select de peças avulsas ao carregar
+
 window.addEventListener('DOMContentLoaded', () => {
     const select = document.getElementById('selectAvulso');
     pecasAvulsas.forEach((p, i) => {

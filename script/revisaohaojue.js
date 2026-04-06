@@ -1094,7 +1094,7 @@ CHOPPER150: {
 }
 
 // ==========================================
-// PEÇAS AVULSAS — edite esta lista conforme necessário
+// PEÇAS AVULSAS
 // ==========================================
 const pecasAvulsas = [
     { codigo: 'MO-FREIO',        nome: 'Serviço: Troca de Pastilha dianteira',         valor: 30.00 },
