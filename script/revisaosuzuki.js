@@ -300,17 +300,17 @@ var checklist = {
 // ─── 3. DADOS DO MODELO (imagem + specs) ──────────────────────
 
 var modeloInfo = {
-    BURGMAN_I:   { nome:'Burgman i',          motor:'125cc · Scooter', trans:'CVT',      oleo:'Motul 10W40 · 1L',  intervalo:'6.000 km', img:'/images/SUZUKI/BURGMAN I.png'    },
-    GSX800:      { nome:'GSX 800',            motor:'800cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/images/SUZUKI/GSX800.png'        },
-    HAYABUSA:    { nome:'Hayabusa GSX1300R',  motor:'1300cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/images/SUZUKI/HAYABUSA.png'      },
-    GSXR1000:    { nome:'GSX-R1000 / A',      motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/images/SUZUKI/GSXR1000.png'     },
-    GSX750:      { nome:'GSX 750',            motor:'750cc · 4 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'/images/SUZUKI/GSX750.png'        },
-    GSXS1000:    { nome:'GSX-S1000A',         motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/images/SUZUKI/GSX-S1000GX.png'  },
-    SV650A:      { nome:'SV 650A',            motor:'645cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'/images/SUZUKI/SV650A.png'        },
-    VSTROM650:   { nome:'V-Strom 650 A',      motor:'645cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'/images/SUZUKI/VSTROM650.png'    },
-    VSTROM800:   { nome:'V-Strom 800 DE',     motor:'776cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/images/SUZUKI/VSTROM800DE.png'  },
-    VSTROM1000:  { nome:'V-Strom 1050',       motor:'1037cc · 2 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/images/SUZUKI/VSTROM1050.png'   },
-    VSTROM1050XT:{ nome:'V-Strom 1050 XT',   motor:'1037cc · 2 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/images/SUZUKI/VSTROM1050XT.png' },
+    BURGMAN_I:   { nome:'Burgman i',          motor:'125cc · Scooter', trans:'CVT',      oleo:'Motul 10W40 · 1L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/BURGMAN I.png'    },
+    GSX800:      { nome:'GSX 800',            motor:'800cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/GSX800.png'        },
+    HAYABUSA:    { nome:'Hayabusa GSX1300R',  motor:'1300cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/HAYABUSA.png'      },
+    GSXR1000:    { nome:'GSX-R1000 / A',      motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/GSXR1000.png'     },
+    GSX750:      { nome:'GSX 750',            motor:'750cc · 4 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/GSX750.png'        },
+    GSXS1000:    { nome:'GSX-S1000A',         motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/GSX-S1000GX.png'  },
+    SV650A:      { nome:'SV 650A',            motor:'645cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/SV650A.png'        },
+    VSTROM650:   { nome:'V-Strom 650 A',      motor:'645cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/VSTROM650.png'    },
+    VSTROM800:   { nome:'V-Strom 800 DE',     motor:'776cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/VSTROM800DE.png'  },
+    VSTROM1000:  { nome:'V-Strom 1050',       motor:'1037cc · 2 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/VSTROM1050.png'   },
+    VSTROM1050XT:{ nome:'V-Strom 1050 XT',   motor:'1037cc · 2 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'/Ferramenta-TMO/images/SUZUKI/VSTROM1050XT.png' },
 };
 
 

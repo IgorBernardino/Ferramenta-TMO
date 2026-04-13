@@ -197,13 +197,13 @@ var checklist = {
 // ─── 3. DADOS DO MODELO (imagem + specs) ─────────────────────
 
 var modeloInfo = {
-    DK160:     { nome: 'DK 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/images/HAOJUE/DK160.png'      },
-    DR160:     { nome: 'DR 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/images/HAOJUE/DR160.png'      },
-    DL160:     { nome: 'DL 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/images/HAOJUE/DL160.png'      },
-    NK150:     { nome: 'NK 150',           motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/images/HAOJUE/NK 150.png'    },
-    MASTER150: { nome: 'Master Ride 150',  motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/images/HAOJUE/MASTERRIDE.png' },
-    CHOPPER150:{ nome: 'Chopper Road 150', motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/images/HAOJUE/CHOPPER150.png' },
-    LINDY125:  { nome: 'Lindy 125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/images/HAOJUE/LINDY125.png'   },
+    DK160:     { nome: 'DK 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/DK160.png'      },
+    DR160:     { nome: 'DR 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/DR160.png'      },
+    DL160:     { nome: 'DL 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/DL160.png'      },
+    NK150:     { nome: 'NK 150',           motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/NK 150.png'    },
+    MASTER150: { nome: 'Master Ride 150',  motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/MASTERRIDE.png' },
+    CHOPPER150:{ nome: 'Chopper Road 150', motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/CHOPPER150.png' },
+    LINDY125:  { nome: 'Lindy 125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/LINDY125.png'   },
 };
 
 

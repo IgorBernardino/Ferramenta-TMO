@@ -110,12 +110,12 @@ const checklist = {
 // ─── 3. INFO DO MODELO (card hero) ────────────────────────────
 
 const modeloInfo = {
-  V350:  {nome:'V 350',          motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/images/ZONTES/V350.png'},
-  T350:  {nome:'T 350 / T 350X', motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/images/ZONTES/T350-T350X.png'},
-  GK350: {nome:'GK 350',         motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/images/ZONTES/GK350.png'},
-  S350:  {nome:'S 350',          motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/images/ZONTES/S350.png'},
-  R350:  {nome:'R 350',          motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/images/ZONTES/R350.png'},
-  E350:  {nome:'350 E',          motor:'350cc · CVT',  trans:'CVT',      oleo:'Motul 10W40 · 2L', intervalo:'4.000 km', img:'/images/ZONTES/350E.png'},
+  V350:  {nome:'V 350',          motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/Ferramenta-TMO/images/ZONTES/V350.png'},
+  T350:  {nome:'T 350 / T 350X', motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/Ferramenta-TMO/images/ZONTES/T350-T350X.png'},
+  GK350: {nome:'GK 350',         motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/Ferramenta-TMO/images/ZONTES/GK350.png'},
+  S350:  {nome:'S 350',          motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/Ferramenta-TMO/images/ZONTES/S350.png'},
+  R350:  {nome:'R 350',          motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/Ferramenta-TMO/images/ZONTES/R350.png'},
+  E350:  {nome:'350 E',          motor:'350cc · CVT',  trans:'CVT',      oleo:'Motul 10W40 · 2L', intervalo:'4.000 km', img:'/Ferramenta-TMO/images/ZONTES/350E.png'},
 };
 
 
