@@ -4,109 +4,116 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Calculadora de Revisão Zontes</title>
-    <link rel="stylesheet" href="/Ferramenta-TMO/style/revisoes.css">
+    <link rel="stylesheet" href="/style/revisoes.css">
 </head>
 <body>
-     <!-- 🏠 BOTÃO HOME FIXO -->
-    <a href="/Ferramenta-TMO/index.html" class="btn-home" title="Página Inicial">
-        🏠
-    </a>
-<div class="container">
-    <div class="header">
-        <h1>🏍️ Calculadora de Revisão Zontes</h1>
-        <p>Selecione o veículo e a quilometragem para ver as peças e os custos da revisão</p>
-    </div>
+    <a href="/index.html" class="btn-home" title="Início">🏠</a>
+    <div class="container">
 
-     <div class="controls">
-    <div class="select-group">
-      <label for="veiculoSelect"></label>
-      <select id="veiculoSelect" onchange="atualizarImagemVeiculo();">
-                <option value="">Selecione o Veículo</option>
-                <option value="V350">V 350</option>
-                <option value="T350">T 350 / T 350 X</option>
-                <option value="GK350">GK 350</option>
-                <option value="S350">S 350</option>
-                <option value="R350">R 350</option>
-                <option value="E350">350 E</option>
-            </select>
-
-             <!--caixa da imagem das motos-->
-            <div class="veiculo-card" id="veiculoCard" style="display:none;">
-            <img id="img-veiculo" alt="Veículo selecionado">
-             <div class="veiculo-nome" id="veiculoNome"></div>
-            </div>
-
-            
-            <select id="kmSelect">
-                <option value="">Selecione KM</option>
-                <option value="1000">1.000 km</option>
-                <option value="3000">3.000 km</option>
-                <option value="6000">6.000 km</option>
-                <option value="9000">9.000 km</option>
-                <option value="12000">12.000 km</option>
-                <option value="15000">15.000 km</option>
-                <option value="18000">18.000 km</option>
-                <option value="21000">21.000 km</option>
-                <option value="24000">24.000 km</option>
-                <option value="27000">27.000 km</option>
-                <option value="30000">30.000 km</option>
-                <option value="36000">33.000 km</option>
-                <option value="36000">36.000 km</option>
-                <option value="39000">39.000 km</option>
-                <option value="42000">42.000 km</option>
-                <option value="45000">45.000 km</option>
-                <option value="48000">48.000 km</option>
-                <option value="51000">51.000 km</option>
-                <option value="54000">54.000 km</option>
-                <option value="57000">57.000 km</option>
-            </select>
+        <div class="header">
+            <h1>🏍️ Calculadora de Revisão <em>Zontes</em></h1>
+            <p>Selecione o veículo e a quilometragem para ver peças, custos e o checklist</p>
         </div>
 
-        <div class="resumo-grid">
-            <div class="valor-card valor-pecas">
-                <div class="valor-label">Peças</div>
-                <div class="valor-numero" id="totalPecas">R$ 0,00</div>
-                <div class="valor-sub" id="subPecas">Sem itens selecionados</div>
-            </div>
-            <div class="valor-card valor-tmo">
-                <div class="valor-label">Mão de Obra</div>
-                <div class="valor-numero" id="totalTMO">R$ 0,00</div>
-                <div class="valor-sub" id="subTMO">0,0 h × R$ 350,00/h</div>
-            </div>
-            <div class="valor-card valor-total">
-                <div class="valor-label">Total</div>
-                <div class="valor-numero" id="totalGeral">R$ 0,00</div>
-                <div class="valor-sub" id="subTotal">Peças + Mão de Obra</div>
+        <!-- CARD HERO -->
+        <div class="veiculo-hero" id="veiculoHero">
+            <div class="hero-img"><img id="heroImg" alt=""></div>
+            <div class="hero-info">
+                <div class="hero-marca">ZONTES</div>
+                <div class="hero-nome" id="heroNome">—</div>
+                <div class="hero-specs" id="heroSpecs"></div>
             </div>
         </div>
-    </div>
 
-    <div class="pecas-lista" id="listaPecas">
-        <div class="no-result">👆 Selecione veículo e KM para ver as peças da revisão</div>
-    </div>
-
-    <!-- SEÇÃO ITENS ADICIONAIS -->
-    <div class="secao-adicionais">
-        <div class="adicionais-header">
-            <h3>➕ Itens Adicionais</h3>
-            <p>Adicione peças ou serviços avulsos ao orçamento</p>
-        </div>
-        <div class="adicionais-controles">
-            <select id="selectAvulso" class="select-avulso">
-                <option value="">Selecione uma peça ou serviço...</option>
-            </select>
-            <div class="qtd-group">
-                <label for="qtdAvulso">Qtd.</label>
-                <input type="number" id="qtdAvulso" value="1" min="1" max="99" class="input-qtd">
+        <!-- CONTROLES -->
+        <div class="controls">
+            <div class="select-group">
+                <select id="veiculoSelect">
+                    <option value="">Selecione o Veículo</option>
+                    <option value="V350">V 350</option>
+                    <option value="T350">T 350 / T 350 X</option>
+                    <option value="GK350">GK 350</option>
+                    <option value="S350">S 350</option>
+                    <option value="R350">R 350</option>
+                    <option value="E350">350 E</option>
+                </select>
+                <select id="kmSelect">
+                    <option value="">Selecione KM</option>
+                </select>
             </div>
-            <button onclick="adicionarItemAdicional()" class="btn-adicionar">
-                ＋ Adicionar
-            </button>
+            <div class="resumo-grid">
+                <div class="valor-card valor-pecas">
+                    <div class="valor-label">Peças</div>
+                    <div class="valor-numero" id="totalPecas">R$ 0,00</div>
+                    <div class="valor-sub" id="subPecas">Sem itens selecionados</div>
+                </div>
+                <div class="valor-card valor-tmo">
+                    <div class="valor-label">Mão de Obra</div>
+                    <div class="valor-numero" id="totalTMO">R$ 0,00</div>
+                    <div class="valor-sub" id="subTMO">0,0 h × R$ 350,00/h</div>
+                </div>
+                <div class="valor-card valor-total">
+                    <div class="valor-label">Total</div>
+                    <div class="valor-numero" id="totalGeral">R$ 0,00</div>
+                    <div class="valor-sub" id="subTotal">Peças + Mão de Obra</div>
+                </div>
+            </div>
         </div>
-        <div id="listaItensAdicionais" class="pecas-lista adicionais-lista"></div>
-    </div>
 
-</div>
-<script src="/Ferramenta-TMO/script/revisaozontes.js"></script>
+        <!-- LISTA DE PEÇAS -->
+        <div class="pecas-lista" id="listaPecas">
+            <div class="no-result">👆 Selecione veículo e KM para ver as peças</div>
+        </div>
+
+        <!-- CHECKLIST -->
+        <div class="secao-checklist" id="secaoChecklist" style="display:none;">
+            <div class="ck-header" onclick="toggleChecklist()">
+                <div class="ck-header-left">
+                    <div class="ck-icon">📋</div>
+                    <div>
+                        <h3>O que é feito nesta revisão</h3>
+                        <p id="checklistSubtitle">—</p>
+                    </div>
+                </div>
+                <div class="ck-toggle aberto" id="checklistToggle">
+                    DETALHES
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none">
+                        <path d="M1 1L6 7L11 1" stroke="#6b80a8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="ck-legend">
+                <span class="ck-leg"><span class="ck-leg-dot" style="background:#cc3333"></span>T — Trocar</span>
+                <span class="ck-leg"><span class="ck-leg-dot" style="background:#339933"></span>I — Inspecionar</span>
+                <span class="ck-leg"><span class="ck-leg-dot" style="background:#3366bb"></span>A — Apertar/Torque</span>
+            </div>
+            <div class="ck-body aberto" id="checklistBody">
+                <div class="ck-empty">Selecione veículo e KM para ver o checklist</div>
+            </div>
+        </div>
+
+        <!-- ITENS ADICIONAIS -->
+        <div class="secao-adicionais">
+            <div class="adicionais-header">
+                <div class="adicionais-header-left">
+                    <h3>➕ Itens Adicionais</h3>
+                    <p>Adicione peças ou serviços avulsos ao orçamento</p>
+                </div>
+            </div>
+            <div class="adicionais-controles">
+                <select id="selectAvulso" class="select-avulso">
+                    <option value="">Selecione uma peça ou serviço...</option>
+                </select>
+                <div class="qtd-group">
+                    <label for="qtdAvulso">Qtd.</label>
+                    <input type="number" id="qtdAvulso" value="1" min="1" max="99" class="input-qtd">
+                </div>
+                <button onclick="adicionarItemAdicional()" class="btn-adicionar">＋ Adicionar</button>
+            </div>
+            <div id="listaItensAdicionais" class="pecas-lista adicionais-lista"></div>
+        </div>
+
+    </div>
+    <script src="/script/revisaozontes.js"></script>
 </body>
 </html>
