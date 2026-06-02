@@ -856,8 +856,6 @@ function renderUnidadeBadge(stepIdx) {
 }
 
 window.addEventListener('load', () => {
-  initGoogleAuth();
-
   // Evento model-select
   document.getElementById('model-select').addEventListener('change', function() {
     S.modelo = this.value || null;
