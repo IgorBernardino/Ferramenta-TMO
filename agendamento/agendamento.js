@@ -405,297 +405,70 @@ const S = {
   cliente:    { nome:'', tel:'', placa:'', odo:'', obs:'' },
   calEventId: null,
   sheetUrl:   null,
-  gapiToken:  null,
 };
 
-// ── GOOGLE APIs ──────────────────────────────────────
-const GAPI_CLIENT_ID = '766059147593-6joj5q6l747l8mibcj4hkqm02mhd2dc7.apps.googleusercontent.com';
+// ── APPS SCRIPT BACKEND ──────────────────────────────
+// URL gerada ao publicar o Apps Script como Web App.
+// Substitua pelo valor real após publicar em script.google.com
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3Y2zKEEjOS-AmirPDH380zM8qySHZcimfhNzZ-ocxGwUthAddpi4M9CoNQzZCdNAP/exec';
 
-// Escopos: Calendar + Sheets + Drive (para criar planilha automaticamente)
-const GAPI_SCOPES = [
-  'https://www.googleapis.com/auth/calendar.events',
-  'https://www.googleapis.com/auth/spreadsheets',
-  'https://www.googleapis.com/auth/drive.file',
-].join(' ');
-
-// ID da planilha — preenchido na 1ª execução e salvo para reutilização
-let SHEET_ID = (() => { try { return localStorage.getItem('comeri_sheet_id') || null; } catch(e){ return null; } })();
-
-let tokenClient = null;
-
-function initGoogleAuth() {
-  if (typeof google === 'undefined') return;
-  tokenClient = google.accounts.oauth2.initTokenClient({
-    client_id: GAPI_CLIENT_ID,
-    scope:     GAPI_SCOPES,
-    callback:  (resp) => { if (!resp.error) S.gapiToken = resp.access_token; }
+async function chamarBackend(payload) {
+  const res = await fetch(APPS_SCRIPT_URL, {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify(payload),
   });
-}
-
-async function garantirToken() {
-  if (S.gapiToken) return S.gapiToken;
-  return new Promise((resolve, reject) => {
-    if (!tokenClient) { reject(new Error('tokenClient não inicializado')); return; }
-    tokenClient.callback = (resp) => {
-      if (resp.error) reject(resp);
-      else { S.gapiToken = resp.access_token; resolve(resp.access_token); }
-    };
-    tokenClient.requestAccessToken({ prompt: 'consent' });
-  });
+  if (!res.ok) throw new Error('Erro na chamada ao backend: ' + res.status);
+  return res.json();
 }
 
 // ── CONSULTAR HORÁRIOS OCUPADOS ───────────────────────
 async function buscarOcupados(dateStr) {
-  const token = await garantirToken();
-  const tMin  = `${dateStr}T00:00:00-03:00`;
-  const tMax  = `${dateStr}T23:59:59-03:00`;
-  const calId = encodeURIComponent(CONFIG.CALENDAR_ID);
-  const url   = `https://www.googleapis.com/calendar/v3/calendars/${calId}/events` +
-                `?timeMin=${tMin}&timeMax=${tMax}&singleEvents=true&orderBy=startTime`;
-
-  const res  = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-  const data = await res.json();
-  if (!data.items || data.items.length === 0) return [];
-
-  const bloqueados = new Set();
-  data.items.forEach(ev => {
-    if (!ev.start?.dateTime) return;
-    const inicio    = new Date(ev.start.dateTime);
-    const inicioMin = inicio.getHours() * 60 + inicio.getMinutes();
-    let duracaoMin  = CONFIG.BUFFER_MIN;
-    if (ev.end?.dateTime) duracaoMin = (new Date(ev.end.dateTime) - inicio) / 60000;
-    const janela = Math.max(duracaoMin, CONFIG.BUFFER_MIN);
-    for (let offset = 0; offset < janela; offset += CONFIG.SLOT_MIN) {
-      const totalMin = inicioMin + offset;
-      const hh = String(Math.floor(totalMin / 60)).padStart(2,'0');
-      const mm = String(totalMin % 60).padStart(2,'0');
-      bloqueados.add(`${hh}:${mm}`);
-    }
-  });
-  return Array.from(bloqueados);
-}
-
-// ── CRIAR EVENTO NO GOOGLE CALENDAR ──────────────────
-async function criarEventoCalendar() {
-  const token  = await garantirToken();
-  const totais = calcularTotais(S.brand, S.modelo, S.km);
-  const tmoMin = Math.round(totais.tmo * 60);
-  const [hh,mm]= S.hora.split(':').map(Number);
-  const totalMin = hh * 60 + mm + tmoMin;
-  const endHH  = String(Math.floor(totalMin / 60)).padStart(2,'0');
-  const endMM  = String(totalMin % 60).padStart(2,'0');
-  const brand  = capitalize(S.brand);
-  const labelModelo = getModeloLabel(S.brand, S.modelo);
-
-  const pecasStr = totais.pecas.map(p => `${p.nome} (${p.qtd}x) — R$ ${fmtBRL(p.qtd * p.valor)}`).join('\n');
-
-  const event = {
-    summary: `[${CONFIG.UNIDADES[S.unidade].label}] Revisão ${brand} ${labelModelo} — ${S.cliente.nome}`,
-    description: [
-      `Unidade: ${CONFIG.UNIDADES[S.unidade].label} — ${CONFIG.UNIDADES[S.unidade].end}`,
-      `Cliente: ${S.cliente.nome}`,
-      `Telefone: ${S.cliente.tel}`,
-      `Placa: ${S.cliente.placa}`,
-      `Modelo: ${brand} ${labelModelo}`,
-      `Revisão: ${fmtKm(S.km)}`,
-      `Odômetro: ${S.cliente.odo ? Number(S.cliente.odo).toLocaleString('pt-BR') + ' km' : 'não informado'}`,
-      ``,
-      `PEÇAS:`,
-      pecasStr,
-      ``,
-      `Total Peças: R$ ${fmtBRL(totais.totalPecas)}`,
-      `Mão de Obra: ${totais.tmo.toFixed(1).replace('.',',')} h × R$ ${totais.hora}/h = R$ ${fmtBRL(totais.totalMO)}`,
-      `TOTAL: R$ ${fmtBRL(totais.total)}`,
-      S.cliente.obs ? `\nObs: ${S.cliente.obs}` : ''
-    ].filter(l => l !== undefined).join('\n'),
-    start: { dateTime: `${S.data}T${S.hora}:00`, timeZone: 'America/Sao_Paulo' },
-    end:   { dateTime: `${S.data}T${endHH}:${endMM}:00`, timeZone: 'America/Sao_Paulo' },
-    colorId: '11',
-    reminders: {
-      useDefault: false,
-      overrides: [
-        { method: 'email', minutes: 1440 },
-        { method: 'popup', minutes: 60  },
-      ]
-    }
-  };
-
-  const calId = encodeURIComponent(CONFIG.CALENDAR_ID);
-  const res   = await fetch(`https://www.googleapis.com/calendar/v3/calendars/${calId}/events`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(event)
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error?.message || 'Erro ao criar evento');
-  return data.id;
-}
-
-// ── GOOGLE SHEETS ────────────────────────────────────
-
-// Nome da planilha criada automaticamente no Drive
-const SHEET_NAME = 'Agendamentos COMERI MOTOS';
-
-// Cabeçalho das colunas
-const SHEET_HEADERS = [
-  'ID', 'Data Agendamento', 'Unidade', 'Data Revisão', 'Horário',
-  'Nome Cliente', 'Telefone', 'Placa', 'Odômetro (km)', 'Observações',
-  'Marca', 'Modelo', 'Revisão (km)', 'TMO (h)', 'Valor Hora MO',
-  'Total Peças (R$)', 'Total MO (R$)', 'Total (R$)',
-  'Peças', 'ID Evento Calendar', 'Status'
-];
-
-// Abas da planilha: uma por unidade + uma consolidada
-const SHEET_TABS = ['Todos', 'Guarujá', 'Santos', 'São Vicente', 'Praia Grande', 'Peruíbe'];
-
-// Mapa id→nome da aba
-const UNIDADE_TAB = {
-  guaruja:     'Guarujá',
-  santos:      'Santos',
-  sao_vicente: 'São Vicente',
-  praia_grande:'Praia Grande',
-  peruibe:     'Peruíbe',
-};
-
-async function criarPlanilha(token) {
-  // Cores por unidade (para cabeçalhos das abas)
-  const coresAbas = {
-    'Todos':       { red:0.886, green:0.294, blue:0.290 }, // vermelho
-    'Guarujá':     { red:0.886, green:0.294, blue:0.290 },
-    'Santos':      { red:0.145, green:0.388, blue:0.922 }, // azul
-    'São Vicente': { red:0.486, green:0.227, blue:0.929 }, // roxo
-    'Praia Grande':{ red:0.020, green:0.588, blue:0.412 }, // verde
-    'Peruíbe':     { red:0.851, green:0.467, blue:0.027 }, // laranja
-  };
-
-  // 1. Cria a planilha com todas as abas de uma vez
-  const sheetsBody = SHEET_TABS.map((title, i) => ({
-    properties: { title, sheetId: i, tabColor: coresAbas[title] || {} }
-  }));
-
-  const res = await fetch('https://sheets.googleapis.com/v4/spreadsheets', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ properties: { title: SHEET_NAME }, sheets: sheetsBody })
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error?.message || 'Erro ao criar planilha');
-  const id = data.spreadsheetId;
-
-  // 2. Grava cabeçalho em todas as abas + formata em lote
-  const colCount = SHEET_HEADERS.length;
-  const valueRequests = SHEET_TABS.map(tab => ({
-    range: `${tab}!A1`,
-    values: [SHEET_HEADERS]
-  }));
-
-  await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${id}/values:batchUpdate`,
-    {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ valueInputOption: 'USER_ENTERED', data: valueRequests })
-    }
-  );
-
-  // 3. Formata cabeçalho (negrito + cor) em todas as abas
-  const formatRequests = SHEET_TABS.map((tab, i) => ({
-    repeatCell: {
-      range: { sheetId: i, startRowIndex: 0, endRowIndex: 1, startColumnIndex: 0, endColumnIndex: colCount },
-      cell: {
-        userEnteredFormat: {
-          backgroundColor: coresAbas[tab],
-          textFormat: { bold: true, foregroundColor: { red:1, green:1, blue:1 } }
-        }
-      },
-      fields: 'userEnteredFormat(backgroundColor,textFormat)'
-    }
-  }));
-
-  await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${id}:batchUpdate`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ requests: formatRequests })
-  });
-
-  try { localStorage.setItem('comeri_sheet_id', id); } catch(e) {}
-  SHEET_ID = id;
-  return id;
-}
-
-async function garantirPlanilha(token) {
-  if (SHEET_ID) {
-    // Verifica se ainda existe
-    const res = await fetch(
-      `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}?fields=spreadsheetId`,
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
-    if (res.ok) return SHEET_ID;
-    // Se não existe mais, zera e recria
-    SHEET_ID = null;
-    try { localStorage.removeItem('comeri_sheet_id'); } catch(e) {}
+  try {
+    const data = await chamarBackend({
+      action:  'horarios_ocupados',
+      data:    dateStr,
+      unidade: S.unidade,
+    });
+    return data.ocupados || [];
+  } catch(e) {
+    console.warn('buscarOcupados error:', e.message);
+    return [];
   }
-  return await criarPlanilha(token);
 }
 
-async function gravarNaPlanilha(token, calEventId) {
-  const id     = await garantirPlanilha(token);
-  const totais = calcularTotais(S.brand, S.modelo, S.km);
-  const brand  = capitalize(S.brand);
-  const label  = getModeloLabel(S.brand, S.modelo);
-  const agora  = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-  const idLinha = `AG-${Date.now()}`;
-  const pecasStr = totais.pecas.map(p => `${p.nome} (${p.qtd}x)`).join(', ');
-  const nomeUnidade = CONFIG.UNIDADES[S.unidade].label;
-  const tabUnidade  = UNIDADE_TAB[S.unidade];
+// ── CRIAR EVENTO + GRAVAR PLANILHA (via Apps Script) ──
+// Tudo enviado em uma única chamada ao backend
+async function confirmarNoBackend() {
+  const totais     = calcularTotais(S.brand, S.modelo, S.km);
+  const brand      = capitalize(S.brand);
+  const labelModelo= getModeloLabel(S.brand, S.modelo);
+  const unidadeInfo= CONFIG.UNIDADES[S.unidade];
+  const pecasStr   = totais.pecas.map(p => `${p.nome} (${p.qtd}x) — R$ ${fmtBRL(p.qtd * p.valor)}`).join('
+');
 
-  const linha = [
-    idLinha,                                          // ID
-    agora,                                            // Data do agendamento
-    nomeUnidade,                                      // Unidade
-    fmtDate(S.data),                                  // Data da revisão
-    S.hora,                                           // Horário
-    S.cliente.nome,                                   // Nome cliente
-    S.cliente.tel,                                    // Telefone
-    S.cliente.placa,                                  // Placa
-    S.cliente.odo || '',                              // Odômetro
-    S.cliente.obs || '',                              // Observações
-    brand,                                            // Marca
-    label,                                            // Modelo
-    fmtKm(S.km),                                      // Revisão km
-    totais.tmo.toFixed(1).replace('.',','),           // TMO horas
-    totais.hora,                                      // Valor hora MO
-    totais.totalPecas.toFixed(2).replace('.',','),    // Total peças
-    totais.totalMO.toFixed(2).replace('.',','),       // Total MO
-    totais.total.toFixed(2).replace('.',','),         // Total geral
-    pecasStr,                                         // Peças
-    calEventId || '',                                 // ID evento Calendar
-    'Agendado',                                       // Status
-  ];
+  const payload = {
+    action:      'confirmar_agendamento',
+    unidade:     S.unidade,
+    nomeUnidade: unidadeInfo.label,
+    endUnidade:  unidadeInfo.end,
+    data:        S.data,
+    dataFmt:     fmtDate(S.data),
+    hora:        S.hora,
+    marca:       brand,
+    modelo:      labelModelo,
+    kmLabel:     fmtKm(S.km),
+    tmo:         totais.tmo.toFixed(1).replace('.',','),
+    valorHora:   totais.hora,
+    totalPecas:  fmtBRL(totais.totalPecas),
+    totalMO:     fmtBRL(totais.totalMO),
+    total:       fmtBRL(totais.total),
+    pecasStr:    pecasStr,
+    cliente:     S.cliente,
+  };
 
-  // Grava nas duas abas em paralelo: aba da unidade + aba Todos
-  const appendUrl = (tab) =>
-    `https://sheets.googleapis.com/v4/spreadsheets/${id}/values/${encodeURIComponent(tab)}!A:U:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS`;
-
-  const [r1, r2] = await Promise.all([
-    fetch(appendUrl('Todos'), {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ values: [linha] })
-    }),
-    fetch(appendUrl(tabUnidade), {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ values: [linha] })
-    })
-  ]);
-
-  if (!r1.ok) { const e = await r1.json(); throw new Error(e.error?.message || 'Erro aba Todos'); }
-  if (!r2.ok) { const e = await r2.json(); throw new Error(e.error?.message || `Erro aba ${tabUnidade}`); }
-
-  // Retorna URL abrindo direto na aba da unidade
-  const sheetIndex = SHEET_TABS.indexOf(tabUnidade);
-  return `https://docs.google.com/spreadsheets/d/${id}/edit#gid=${sheetIndex}`;
+  const result = await chamarBackend(payload);
+  return result;
 }
 
 // ── WHATSAPP (mensagem para a COMERI) ────────────────
@@ -915,29 +688,20 @@ function buildSummary(container) {
 async function confirmar() {
   const nav     = document.getElementById('confirm-nav');
   const overlay = document.getElementById('confirming-overlay');
+  const step    = document.getElementById('confirming-step');
   nav.style.display = 'none';
   overlay.hidden    = false;
 
-  const step = document.getElementById('confirming-step');
+  S.calEventId = null;
+  S.sheetUrl   = null;
 
-  // 1. Google Calendar
   try {
-    if (step) step.textContent = 'Criando evento no Google Calendar...';
-    S.calEventId = await criarEventoCalendar();
+    if (step) step.textContent = 'Registrando agendamento...';
+    const result  = await confirmarNoBackend();
+    S.calEventId  = result.calEventId  || null;
+    S.sheetUrl    = result.sheetUrl    || null;
   } catch(e) {
-    console.warn('Calendar:', e.message);
-    S.calEventId = null;
-  }
-
-  // 2. Google Sheets
-  S.sheetUrl = null;
-  try {
-    if (step) step.textContent = 'Gravando na planilha...';
-    const token = await garantirToken();
-    S.sheetUrl = await gravarNaPlanilha(token, S.calEventId);
-  } catch(e) {
-    console.warn('Sheets:', e.message);
-    S.sheetUrl = null;
+    console.warn('Backend error:', e.message);
   }
 
   overlay.hidden    = true;
