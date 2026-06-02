@@ -198,3 +198,42 @@ footer {
   .title { font-size: 1.5rem; }
   .grid { gap: 14px; }
 }
+
+/* ── CARD AGENDAMENTO ── */
+.card-agendamento {
+  border-color: #d1e8d1;
+  background: linear-gradient(160deg, #ffffff 70%, #f0faf0 100%);
+}
+
+.card-agendamento::before {
+  background: linear-gradient(90deg, #1a7f3c, #25a550);
+}
+
+.card-agendamento:hover {
+  border-color: #25a550;
+  box-shadow: 0 12px 30px rgba(30, 120, 60, 0.12);
+}
+
+.card-agendamento:hover::before {
+  background: linear-gradient(90deg, #1a7f3c, #25a550);
+}
+
+.card-logo-agenda {
+  background: #e6f9ef;
+  border-color: #b6e8c8;
+}
+
+.agenda-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.btn-agenda {
+  background: linear-gradient(135deg, #1a7f3c, #25a550);
+  box-shadow: 0 4px 14px rgba(26, 127, 60, 0.3);
+}
+
+.btn-agenda:hover {
+  background: linear-gradient(135deg, #25a550, #2ecc6a);
+  box-shadow: 0 6px 20px rgba(26, 127, 60, 0.45);
+}

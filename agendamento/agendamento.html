@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Revisão — COMERI MOTOS</title>
+  <link rel="stylesheet" href="agendamento.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="../index.html" class="header-back" title="Voltar ao Portal TMO">&#8592; Portal TMO</a>
+    <div class="header-brand">
+      <span class="header-title">Agendamento de Revisão</span>
+      <span class="header-sub">Suzuki · Haojue · Zontes</span>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- STEPPER (6 etapas) -->
+    <nav class="stepper" aria-label="Etapas do agendamento">
+      <div class="step active" id="st0"><div class="step-circle">1</div><div class="step-label">Unidade</div></div>
+      <div class="step" id="st1"><div class="step-circle">2</div><div class="step-label">Veículo</div></div>
+      <div class="step" id="st2"><div class="step-circle">3</div><div class="step-label">Revisão</div></div>
+      <div class="step" id="st3"><div class="step-circle">4</div><div class="step-label">Data/Hora</div></div>
+      <div class="step" id="st4"><div class="step-circle">5</div><div class="step-label">Dados</div></div>
+      <div class="step" id="st5"><div class="step-circle">6</div><div class="step-label">Resumo</div></div>
+    </nav>
+
+    <!-- STEP 1: UNIDADE -->
+    <section class="panel active" id="panel0" aria-label="Selecione a unidade">
+      <h2 class="panel-title">Qual unidade você prefere?</h2>
+      <div class="unidade-grid" id="unidade-grid">
+        <button class="unidade-card" onclick="selectUnidade('guaruja', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">Guarujá</div>
+          <div class="unidade-end">Av. Ademar de Barros, 1501 - B</div>
+        </button>
+        <button class="unidade-card" onclick="selectUnidade('santos', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">Santos</div>
+          <div class="unidade-end">R. Braz Cubas, 388</div>
+        </button>
+        <button class="unidade-card" onclick="selectUnidade('sao_vicente', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">São Vicente</div>
+          <div class="unidade-end">Av. Antônio Emmerich, 278</div>
+        </button>
+        <button class="unidade-card" onclick="selectUnidade('praia_grande', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">Praia Grande</div>
+          <div class="unidade-end">Av. Pres. Kennedy, 2980 - B</div>
+        </button>
+        <button class="unidade-card" onclick="selectUnidade('peruibe', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">Peruíbe</div>
+          <div class="unidade-end">Av. João Abel, 273 - B</div>
+        </button>
+      </div>
+      <p class="alert" id="alert0" role="alert" hidden>Selecione a unidade para continuar.</p>
+      <div class="nav-row">
+        <span></span>
+        <button class="btn-next" onclick="goNext(0)">Próximo &#8594;</button>
+      </div>
+    </section>
+
+    <!-- STEP 2: MARCA / MODELO -->
+    <section class="panel" id="panel1" aria-label="Selecione o veículo">
+      <h2 class="panel-title">Selecione a marca</h2>
+      <div class="unidade-badge" id="unidade-badge-1"></div>
+      <div class="brand-grid">
+        <button class="brand-card" onclick="selectBrand('suzuki', this)" aria-pressed="false">
+          <img src="../images/LOGO SUZUKI.png" alt="Suzuki" class="brand-logo">
+          <span class="brand-name">Suzuki</span>
+        </button>
+        <button class="brand-card" onclick="selectBrand('haojue', this)" aria-pressed="false">
+          <img src="../images/LOGO HAOJUE.jpg" alt="Haojue" class="brand-logo">
+          <span class="brand-name">Haojue</span>
+        </button>
+        <button class="brand-card" onclick="selectBrand('zontes', this)" aria-pressed="false">
+          <img src="../images/LOGO ZONTES.png" alt="Zontes" class="brand-logo">
+          <span class="brand-name">Zontes</span>
+        </button>
+      </div>
+      <div class="field" id="model-field" hidden>
+        <label for="model-select">Modelo</label>
+        <select id="model-select">
+          <option value="">— Selecione o modelo —</option>
+        </select>
+      </div>
+      <p class="alert" id="alert1" role="alert" hidden>Selecione a marca e o modelo para continuar.</p>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack(1)">&#8592; Voltar</button>
+        <button class="btn-next" onclick="goNext(1)">Próximo &#8594;</button>
+      </div>
+    </section>
+
+    <!-- STEP 3: QUILOMETRAGEM -->
+    <section class="panel" id="panel2" aria-label="Selecione a quilometragem">
+      <h2 class="panel-title">Quilometragem da revisão</h2>
+      <div class="unidade-badge" id="unidade-badge-2"></div>
+      <div class="km-grid" id="km-grid"></div>
+      <div class="aviso-preco" role="note">
+        <span class="aviso-icon">&#9432;</span>
+        Os preços informados neste site são sugeridos, podendo variar de acordo com a região. Consulte a concessionária de sua preferência e confira as condições. Sujeito a disponibilidade de estoque no momento da consulta.
+      </div>
+      <p class="alert" id="alert2" role="alert" hidden>Selecione a quilometragem de revisão.</p>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack(2)">&#8592; Voltar</button>
+        <button class="btn-next" onclick="goNext(2)">Próximo &#8594;</button>
+      </div>
+    </section>
+
+    <!-- STEP 4: DATA / HORA -->
+    <section class="panel" id="panel3" aria-label="Escolha data e horário">
+      <h2 class="panel-title">Data e horário</h2>
+      <div class="unidade-badge" id="unidade-badge-3"></div>
+      <div class="integration-note">
+        <span class="badge badge-cal">&#128197; Google Calendar</span>
+        <span class="note-text">Horários ocupados desta unidade são bloqueados automaticamente</span>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label for="appt-date">Data</label>
+          <input type="date" id="appt-date" onchange="onDateChange(this.value)">
+        </div>
+        <div class="field">
+          <label for="duration-display">Duração estimada</label>
+          <input type="text" id="duration-display" readonly>
+        </div>
+      </div>
+      <div class="field">
+        <label>Horário disponível</label>
+        <div class="cal-status" id="cal-status"></div>
+        <div class="time-grid" id="time-grid"></div>
+      </div>
+      <p class="alert" id="alert3" role="alert" hidden>Selecione uma data e um horário disponível.</p>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack(3)">&#8592; Voltar</button>
+        <button class="btn-next" onclick="goNext(3)">Próximo &#8594;</button>
+      </div>
+    </section>
+
+    <!-- STEP 5: DADOS DO CLIENTE -->
+    <section class="panel" id="panel4" aria-label="Dados do cliente">
+      <h2 class="panel-title">Dados do cliente</h2>
+      <div class="unidade-badge" id="unidade-badge-4"></div>
+      <div class="field">
+        <label for="cli-nome">Nome completo</label>
+        <input type="text" id="cli-nome" placeholder="Ex: João da Silva" autocomplete="name">
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label for="cli-tel">Telefone / WhatsApp</label>
+          <input type="tel" id="cli-tel" placeholder="(13) 99999-9999" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="cli-placa">Placa da moto</label>
+          <input type="text" id="cli-placa" placeholder="ABC-1D23" style="text-transform:uppercase" maxlength="8">
+        </div>
+      </div>
+      <div class="field">
+        <label for="cli-odo">Quilometragem atual do odômetro</label>
+        <input type="number" id="cli-odo" placeholder="Ex: 12500" min="0">
+      </div>
+      <div class="field">
+        <label for="cli-obs">Observações (opcional)</label>
+        <input type="text" id="cli-obs" placeholder="Barulho no motor, troca adiantada...">
+      </div>
+      <p class="alert" id="alert4" role="alert" hidden>Preencha nome, telefone e placa.</p>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack(4)">&#8592; Voltar</button>
+        <button class="btn-next" onclick="goNext(4)">Revisar &#8594;</button>
+      </div>
+    </section>
+
+    <!-- STEP 6: RESUMO / CONFIRMAÇÃO -->
+    <section class="panel" id="panel5" aria-label="Resumo do agendamento">
+      <h2 class="panel-title">Confirmar agendamento</h2>
+      <div class="badge-row">
+        <span class="badge badge-cal">&#128197; Google Calendar</span>
+        <span class="badge badge-sheets">&#128202; Google Sheets</span>
+        <span class="badge badge-wa">&#128242; WhatsApp</span>
+      </div>
+      <div class="summary-card" id="summary-content"></div>
+      <div class="aviso-preco" role="note">
+        <span class="aviso-icon">&#9432;</span>
+        Os preços informados neste site são sugeridos, podendo variar de acordo com a região. Consulte a concessionária de sua preferência e confira as condições. Sujeito a disponibilidade de estoque no momento da consulta.
+      </div>
+      <div class="confirming-overlay" id="confirming-overlay" hidden>
+        <div class="spinner" aria-label="Carregando"></div>
+        <p id="confirming-step">Criando evento no Google Calendar...</p>
+      </div>
+      <div class="nav-row" id="confirm-nav">
+        <button class="btn-back" onclick="goBack(5)">&#8592; Voltar</button>
+        <button class="btn-confirm" onclick="confirmar()">&#10003; Confirmar agendamento</button>
+      </div>
+    </section>
+
+    <!-- STEP 7: SUCESSO -->
+    <section class="panel" id="panel6" aria-label="Agendamento confirmado">
+      <div class="success-screen">
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h2 class="success-title">Agendamento confirmado!</h2>
+        <p class="success-sub" id="success-sub"></p>
+        <div class="summary-card" id="success-summary"></div>
+        <div class="cal-event-info" id="cal-event-info"></div>
+        <div class="action-btns">
+          <button class="btn-wa" id="btn-wa-final">&#128242; Notificar COMERI via WhatsApp</button>
+          <button class="btn-back" onclick="resetApp()">+ Novo agendamento</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    &copy; 2025 Portal TMO Oficina – Suzuki, Haojue e Zontes
+  </footer>
+
+  <!-- CONFIGURAÇÕES — edite aqui -->
+  <script>
+    const CONFIG = {
+      // Número WhatsApp central da COMERI (DDI + DDD + número, só dígitos)
+      WA_NUM: '5513982065467',
+
+      // Calendário Google — único para todas as unidades
+      // 'primary' = calendário padrão da conta logada
+      CALENDAR_ID: 'primary',
+
+      // Mão de obra padrão Haojue/Zontes (R$/h)
+      // Suzuki usa valor por cilindrada (definido nos dados de cada modelo)
+      MO_HORA: 110,
+
+      // Buffer de bloqueio após cada revisão (minutos)
+      BUFFER_MIN: 90,
+
+      // Tamanho do slot (minutos) — deve bater com HORARIOS abaixo
+      SLOT_MIN: 30,
+
+      // Horários de atendimento
+      HORARIOS: [
+        '08:00','08:30','09:00','09:30',
+        '10:00','10:30','11:00','11:30',
+        '13:00','13:30','14:00','14:30',
+        '15:00','15:30','16:00','16:30'
+      ],
+
+      // Unidades — id, label, endereço, cor do badge
+      UNIDADES: {
+        guaruja:    { label: 'Guarujá',    end: 'Av. Ademar de Barros, 1501 - B', cor: '#E24B4A' },
+        santos:     { label: 'Santos',     end: 'R. Braz Cubas, 388',        cor: '#2563EB' },
+        sao_vicente:{ label: 'São Vicente',end: 'Av. Antônio Emmerich, 278',    cor: '#7C3AED' },
+        praia_grande:{ label:'Praia Grande',end:'Av. Pres. Kennedy, 2980 - B',           cor: '#059669' },
+        peruibe:    { label: 'Peruíbe',    end: 'Av. João Abel, 273 - B',         cor: '#D97706' },
+      }
+    };
+  </script>
+
+  <script src="agendamento.js"></script>
+</body>
+</html>
