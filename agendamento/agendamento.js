@@ -358,44 +358,34 @@ async function confirmarNoBackend() {
 }
 
 // ── WHATSAPP (mensagem para a COMERI) ────────────────
-// A mensagem é enviada para o número da concessionária
-// com o resumo completo do agendamento feito pelo cliente.
 function gerarMsgWA() {
-  const brand  = capitalize(S.brand);
-  const label  = getModeloLabel(S.brand, S.modelo);
-  const totais = calcularTotais(S.brand, S.modelo, S.km);
-  const pecasStr = totais.pecas.map(p => `  • ${p.nome} (${p.qtd}x) — R$ ${fmtBRL(p.qtd * p.valor)}`).join('\n');
-  const horaLabel = S.brand === 'suzuki'
-    ? `R$ ${totais.hora}/h (${DADOS.suzuki.tmoHora[S.modelo]}cc)`
-    : `R$ ${totais.hora}/h`;
+  const brand      = capitalize(S.brand);
+  const label      = getModeloLabel(S.brand, S.modelo);
+  const totais     = calcularTotais(S.brand, S.modelo, S.km);
+  const unidadeInfo= CONFIG.UNIDADES[S.unidade];
+  const tmoExib    = getTmo(S.brand, S.modelo, S.km);
+  const durLabel   = tmoExib >= 3 ? '3 horas' : tmoExib >= 1.5 ? '1h30' : '1 hora';
 
   const linhas = [
     `🔔 *NOVO AGENDAMENTO — COMERI MOTOS*`,
-    `📍 *Unidade: ${CONFIG.UNIDADES[S.unidade].label}* — ${CONFIG.UNIDADES[S.unidade].end}`,
     ``,
-    `📋 *DADOS DO CLIENTE*`,
-    `👤 Nome: *${S.cliente.nome}*`,
-    `📱 Telefone: ${S.cliente.tel}`,
+    `📍 *Unidade: ${unidadeInfo.label}*`,
+    `${unidadeInfo.end}`,
+    ``,
+    `👤 *${S.cliente.nome}*`,
+    `📱 ${S.cliente.tel}`,
     `🔖 Placa: *${S.cliente.placa}*`,
     S.cliente.odo ? `🔢 Odômetro: ${Number(S.cliente.odo).toLocaleString('pt-BR')} km` : null,
-    S.cliente.obs ? `📝 Obs: ${S.cliente.obs}` : null,
     ``,
-    `🏍️ *VEÍCULO*`,
-    `Marca: ${brand} | Modelo: ${label}`,
+    `🏍️ *${brand} ${label}*`,
+    `🔧 Revisão: *${fmtKm(S.km)}*`,
     ``,
-    `🔧 *REVISÃO — ${fmtKm(S.km)}*`,
     `📅 Data: *${fmtDate(S.data)}* às *${S.hora}*`,
-    `⏱ TMO: ${totais.tmo.toFixed(1).replace('.',',')} h (${horaLabel})`,
+    `⏱ Duração estimada: ${durLabel}`,
     ``,
-    `📦 *PEÇAS:*`,
-    pecasStr,
-    ``,
-    `💰 Peças: R$ ${fmtBRL(totais.totalPecas)}`,
-    `🔩 Mão de obra: R$ ${fmtBRL(totais.totalMO)}`,
-    `💵 *TOTAL: R$ ${fmtBRL(totais.total)}*`,
-    ``,
-    S.sheetUrl ? `📊 Planilha: ${S.sheetUrl}` : null,
-    S.calEventId ? `📅 Calendar: evento ID ${S.calEventId}` : null,
+    `💵 *Total estimado: R$ ${fmtBRL(totais.total)}*`,
+    S.cliente.obs ? `
+📝 Obs: ${S.cliente.obs}` : null,
   ].filter(l => l !== null);
 
   return encodeURIComponent(linhas.join('\n'));
@@ -476,11 +466,13 @@ async function onDateChange(val) {
   try {
     const ocupados = await buscarOcupados(val);
     buildTimeGrid(ocupados);
-    const horariosGrid = new Set(CONFIG.HORARIOS);
-    const nRevisoes = ocupados.filter(h => horariosGrid.has(h)).length;
-    status.innerHTML = ocupados.length > 0
-      ? `⚠️ ${nRevisoes} revisão(ões) agendada(s) — ${ocupados.length} slot(s) bloqueado(s) incluindo intervalo de 1h30`
-      : `✅ Agenda livre — todos os horários disponíveis`;
+    // Mostra aviso só se agenda estiver completamente lotada
+    const horariosLivres = CONFIG.HORARIOS.filter(h => !ocupados.includes(h));
+    if (horariosLivres.length === 0) {
+      status.innerHTML = `<span style="color:var(--red);font-weight:600">⚠️ Agenda lotada para esta data. Por favor, escolha outra data.</span>`;
+    } else {
+      status.innerHTML = '';
+    }
   } catch(e) {
     console.warn('Calendar error:', e.message);
     buildTimeGrid([]);
