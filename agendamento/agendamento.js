@@ -409,7 +409,7 @@ const S = {
 };
 
 // ── GOOGLE APIs ──────────────────────────────────────
-const GAPI_CLIENT_ID = 'SEU_CLIENT_ID_AQUI.apps.googleusercontent.com';
+const GAPI_CLIENT_ID = '766059147593-6joj5q6l747l8mibcj4hkqm02mhd2dc7.apps.googleusercontent.com';
 
 // Escopos: Calendar + Sheets + Drive (para criar planilha automaticamente)
 const GAPI_SCOPES = [
