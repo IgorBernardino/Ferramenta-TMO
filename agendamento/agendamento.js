@@ -413,10 +413,15 @@ const S = {
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3Y2zKEEjOS-AmirPDH380zM8qySHZcimfhNzZ-ocxGwUthAddpi4M9CoNQzZCdNAP/exec';
 
 async function chamarBackend(payload) {
+  // Apps Script Web Apps não suportam CORS preflight com POST+JSON.
+  // Solução: enviar como POST com URLSearchParams (form data),
+  // que não dispara preflight e o Apps Script aceita normalmente.
+  const params = new URLSearchParams();
+  params.append('payload', JSON.stringify(payload));
+
   const res = await fetch(APPS_SCRIPT_URL, {
     method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify(payload),
+    body:    params,
   });
   if (!res.ok) throw new Error('Erro na chamada ao backend: ' + res.status);
   return res.json();
