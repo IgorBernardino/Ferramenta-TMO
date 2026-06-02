@@ -444,8 +444,7 @@ async function confirmarNoBackend() {
   const brand      = capitalize(S.brand);
   const labelModelo= getModeloLabel(S.brand, S.modelo);
   const unidadeInfo= CONFIG.UNIDADES[S.unidade];
-  const pecasStr   = totais.pecas.map(p => `${p.nome} (${p.qtd}x) — R$ ${fmtBRL(p.qtd * p.valor)}`).join('
-');
+  const pecasStr   = totais.pecas.map(p => `${p.nome} (${p.qtd}x) - R$ ${fmtBRL(p.qtd * p.valor)}`).join('\n');
 
   const payload = {
     action:      'confirmar_agendamento',
