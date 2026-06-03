@@ -237,3 +237,32 @@ footer {
   background: linear-gradient(135deg, #25a550, #2ecc6a);
   box-shadow: 0 6px 20px rgba(26, 127, 60, 0.45);
 }
+
+/* ── CARD DASHBOARD ── */
+.card-dashboard {
+  border-color: #c7d2e8;
+  background: linear-gradient(160deg, #ffffff 70%, #f0f4ff 100%);
+}
+.card-dashboard::before {
+  background: linear-gradient(90deg, #1a2f6e, #2563EB);
+}
+.card-dashboard:hover {
+  border-color: #2563EB;
+  box-shadow: 0 12px 30px rgba(37,99,235,.12);
+}
+.card-dashboard:hover::before {
+  background: linear-gradient(90deg, #1a2f6e, #2563EB);
+}
+.card-logo-dashboard {
+  background: #EFF6FF;
+  border-color: #BFDBFE;
+}
+.dashboard-icon { font-size: 1.5rem; line-height: 1; }
+.btn-dashboard {
+  background: linear-gradient(135deg, #1a2f6e, #2563EB);
+  box-shadow: 0 4px 14px rgba(37,99,235,.3);
+}
+.btn-dashboard:hover {
+  background: linear-gradient(135deg, #2563EB, #3B82F6);
+  box-shadow: 0 6px 20px rgba(37,99,235,.45);
+}

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Revisões — COMERI MOTOS</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="/Ferramenta-TMO/index.html" class="header-back">&#8592; Portal TMO</a>
+    <div class="header-brand">
+      <span class="header-title">Dashboard de Revisões</span>
+      <span class="header-sub">Controle mensal por unidade</span>
+    </div>
+    <a href="/Ferramenta-TMO/agendamento/agendamento.html" class="header-btn-new" target="_blank">+ Novo agendamento</a>
+  </header>
+
+  <main class="container">
+
+    <!-- FILTROS -->
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <button class="nav-mes" id="btn-prev">&#8592;</button>
+        <span class="mes-label" id="mes-label"></span>
+        <button class="nav-mes" id="btn-next">&#8594;</button>
+        <button class="btn-hoje" id="btn-hoje">Hoje</button>
+      </div>
+      <div class="toolbar-right">
+        <div class="unidade-tabs" id="unidade-tabs">
+          <button class="tab-btn active" data-unidade="todas">Todas</button>
+          <button class="tab-btn" data-unidade="guaruja">Guarujá</button>
+          <button class="tab-btn" data-unidade="santos">Santos</button>
+          <button class="tab-btn" data-unidade="sao_vicente">São Vicente</button>
+          <button class="tab-btn" data-unidade="praia_grande">Praia Grande</button>
+          <button class="tab-btn" data-unidade="peruibe">Peruíbe</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARDS RESUMO -->
+    <div class="resumo-grid" id="resumo-grid">
+      <div class="resumo-card">
+        <div class="resumo-num" id="r-total">—</div>
+        <div class="resumo-label">Agendamentos no mês</div>
+      </div>
+      <div class="resumo-card resumo-agendado">
+        <div class="resumo-num" id="r-agendado">—</div>
+        <div class="resumo-label">Agendados</div>
+      </div>
+      <div class="resumo-card resumo-confirmado">
+        <div class="resumo-num" id="r-confirmado">—</div>
+        <div class="resumo-label">Confirmados</div>
+      </div>
+      <div class="resumo-card resumo-concluido">
+        <div class="resumo-num" id="r-concluido">—</div>
+        <div class="resumo-label">Concluídos</div>
+      </div>
+      <div class="resumo-card resumo-cancelado">
+        <div class="resumo-num" id="r-cancelado">—</div>
+        <div class="resumo-label">Cancelados</div>
+      </div>
+    </div>
+
+    <!-- LOADING -->
+    <div class="loading" id="loading">
+      <div class="spinner"></div>
+      <span>Carregando agendamentos...</span>
+    </div>
+
+    <!-- ERRO -->
+    <div class="erro" id="erro" hidden></div>
+
+    <!-- CALENDÁRIO -->
+    <div class="calendario" id="calendario" hidden>
+      <div class="cal-header">
+        <div class="cal-dia-nome">Dom</div>
+        <div class="cal-dia-nome">Seg</div>
+        <div class="cal-dia-nome">Ter</div>
+        <div class="cal-dia-nome">Qua</div>
+        <div class="cal-dia-nome">Qui</div>
+        <div class="cal-dia-nome">Sex</div>
+        <div class="cal-dia-nome">Sáb</div>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+    </div>
+
+    <!-- LISTA DO DIA (aparece ao clicar num dia) -->
+    <div class="dia-detalhe" id="dia-detalhe" hidden>
+      <div class="dia-detalhe-header">
+        <span id="dia-detalhe-titulo"></span>
+        <button class="btn-fechar" id="btn-fechar-detalhe">&#10005;</button>
+      </div>
+      <div class="dia-detalhe-lista" id="dia-detalhe-lista"></div>
+    </div>
+
+  </main>
+
+  <!-- MODAL STATUS -->
+  <div class="modal-overlay" id="modal-overlay" hidden>
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-titulo" id="modal-titulo">Alterar status</span>
+        <button class="btn-fechar" id="modal-fechar">&#10005;</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn-back" id="modal-cancelar">Cancelar</button>
+        <button class="btn-confirm" id="modal-salvar">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    &copy; 2025 Portal TMO Oficina – Suzuki, Haojue e Zontes
+  </footer>
+
+  <script>
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzS-CpP_kAUDfMUt-bXY_w2TOD007yq2jDMSC5GHXrkZKMX92TbPpqDZOBQlTEeCE6u/exec';
+
+    const UNIDADES = {
+      guaruja:     { label:'Guarujá',     cor:'#E24B4A' },
+      santos:      { label:'Santos',      cor:'#2563EB' },
+      sao_vicente: { label:'São Vicente', cor:'#7C3AED' },
+      praia_grande:{ label:'Praia Grande',cor:'#059669' },
+      peruibe:     { label:'Peruíbe',     cor:'#D97706' },
+    };
+
+    const STATUS_CONFIG = {
+      'Agendado':   { cor:'#2563EB', bg:'#EFF6FF', label:'Agendado'   },
+      'Confirmado': { cor:'#7C3AED', bg:'#F5F3FF', label:'Confirmado' },
+      'Concluído':  { cor:'#059669', bg:'#ECFDF5', label:'Concluído'  },
+      'Cancelado':  { cor:'#DC2626', bg:'#FEF2F2', label:'Cancelado'  },
+    };
+
+    // Estado
+    let agendamentos = [];
+    let mesFiltro    = new Date().getMonth();
+    let anoFiltro    = new Date().getFullYear();
+    let unidadeFiltro= 'todas';
+    let modalAgId    = null;
+
+    // ── BACKEND ───────────────────────────────────────────────
+    async function chamarBackend(payload) {
+      const params = new URLSearchParams();
+      params.append('payload', JSON.stringify(payload));
+      const res = await fetch(APPS_SCRIPT_URL, { method:'POST', body:params });
+      if (!res.ok) throw new Error('Erro ' + res.status);
+      return res.json();
+    }
+
+    async function carregarAgendamentos() {
+      document.getElementById('loading').style.display = 'flex';
+      document.getElementById('calendario').hidden = true;
+      document.getElementById('erro').hidden = true;
+      document.getElementById('dia-detalhe').hidden = true;
+      try {
+        const data = await chamarBackend({
+          action: 'listar_agendamentos',
+          mes:    mesFiltro + 1,
+          ano:    anoFiltro,
+        });
+        agendamentos = data.agendamentos || [];
+        renderizar();
+      } catch(e) {
+        document.getElementById('erro').hidden = false;
+        document.getElementById('erro').textContent = '⚠️ Não foi possível carregar os agendamentos. Verifique a conexão.';
+      } finally {
+        document.getElementById('loading').style.display = 'none';
+      }
+    }
+
+    async function atualizarStatus(agId, novoStatus) {
+      try {
+        await chamarBackend({ action:'atualizar_status', id:agId, status:novoStatus });
+        // Atualiza localmente
+        const ag = agendamentos.find(a => a.id === agId);
+        if (ag) ag.status = novoStatus;
+        renderizar();
+      } catch(e) {
+        alert('Erro ao atualizar status. Tente novamente.');
+      }
+    }
+
+    // ── RENDER ────────────────────────────────────────────────
+    function getFiltrados() {
+      return agendamentos.filter(a => {
+        if (unidadeFiltro !== 'todas' && a.unidadeKey !== unidadeFiltro) return false;
+        return true;
+      });
+    }
+
+    function renderizar() {
+      const lista = getFiltrados();
+      renderResumo(lista);
+      renderCalendario(lista);
+    }
+
+    function renderResumo(lista) {
+      document.getElementById('r-total').textContent     = lista.length;
+      document.getElementById('r-agendado').textContent  = lista.filter(a=>a.status==='Agendado').length;
+      document.getElementById('r-confirmado').textContent= lista.filter(a=>a.status==='Confirmado').length;
+      document.getElementById('r-concluido').textContent = lista.filter(a=>a.status==='Concluído').length;
+      document.getElementById('r-cancelado').textContent = lista.filter(a=>a.status==='Cancelado').length;
+    }
+
+    function renderCalendario(lista) {
+      const cal = document.getElementById('cal-grid');
+      cal.innerHTML = '';
+
+      const primeiro = new Date(anoFiltro, mesFiltro, 1);
+      const ultimoDia= new Date(anoFiltro, mesFiltro+1, 0).getDate();
+      const diaSemIni= primeiro.getDay(); // 0=Dom
+
+      // Células vazias antes do dia 1
+      for (let i = 0; i < diaSemIni; i++) {
+        cal.appendChild(criarCelulaVazia());
+      }
+
+      const hoje = new Date();
+
+      for (let d = 1; d <= ultimoDia; d++) {
+        const dateStr = `${String(d).padStart(2,'0')}/${String(mesFiltro+1).padStart(2,'0')}/${anoFiltro}`;
+        const dodia   = lista.filter(a => a.dataRevisao === dateStr && a.status !== 'Cancelado');
+        const celula  = criarCelulaDia(d, dateStr, dodia, hoje);
+        cal.appendChild(celula);
+      }
+
+      document.getElementById('calendario').hidden = false;
+    }
+
+    function criarCelulaVazia() {
+      const div = document.createElement('div');
+      div.className = 'cal-celula vazia';
+      return div;
+    }
+
+    function criarCelulaDia(d, dateStr, agsDia, hoje) {
+      const div = document.createElement('div');
+      const ehHoje = (d === hoje.getDate() && mesFiltro === hoje.getMonth() && anoFiltro === hoje.getFullYear());
+      div.className = 'cal-celula' + (ehHoje ? ' hoje' : '') + (agsDia.length > 0 ? ' tem-ag' : '');
+
+      const num = document.createElement('div');
+      num.className = 'cal-num' + (ehHoje ? ' cal-num-hoje' : '');
+      num.textContent = d;
+      div.appendChild(num);
+
+      if (agsDia.length > 0) {
+        // Mostra até 3 agendamentos, resto como +N
+        const visiveis = agsDia.slice(0,3);
+        visiveis.forEach(ag => {
+          const tag = document.createElement('div');
+          tag.className = 'ag-tag';
+          const scfg = STATUS_CONFIG[ag.status] || STATUS_CONFIG['Agendado'];
+          const ucor  = (UNIDADES[ag.unidadeKey] || {cor:'#888'}).cor;
+          tag.style.borderLeft = `3px solid ${ucor}`;
+          tag.style.background = scfg.bg;
+          tag.style.color      = scfg.cor;
+          tag.textContent      = `${ag.horario} ${ag.nomeCliente.split(' ')[0]}`;
+          div.appendChild(tag);
+        });
+        if (agsDia.length > 3) {
+          const mais = document.createElement('div');
+          mais.className = 'ag-mais';
+          mais.textContent = `+${agsDia.length - 3} mais`;
+          div.appendChild(mais);
+        }
+        div.style.cursor = 'pointer';
+        div.onclick = () => abrirDetalhe(dateStr, agsDia);
+      }
+
+      return div;
+    }
+
+    // ── DETALHE DO DIA ────────────────────────────────────────
+    function abrirDetalhe(dateStr, agsDia) {
+      const [d,m,y] = dateStr.split('/');
+      const diasSem = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+      const dSem    = new Date(y, m-1, d).getDay();
+      document.getElementById('dia-detalhe-titulo').textContent =
+        `${diasSem[dSem]}, ${d}/${m}/${y} — ${agsDia.length} revisão(ões)`;
+
+      const lista = document.getElementById('dia-detalhe-lista');
+      lista.innerHTML = '';
+
+      // Ordena por horário
+      const ordenado = [...agsDia].sort((a,b) => a.horario.localeCompare(b.horario));
+
+      ordenado.forEach(ag => {
+        const card = document.createElement('div');
+        card.className = 'ag-card';
+        const scfg = STATUS_CONFIG[ag.status] || STATUS_CONFIG['Agendado'];
+        const ucfg = UNIDADES[ag.unidadeKey] || { label: ag.unidade, cor:'#888' };
+        card.innerHTML = `
+          <div class="ag-card-header">
+            <span class="ag-horario">${ag.horario}</span>
+            <span class="ag-unidade-badge" style="background:${ucfg.cor}20;color:${ucfg.cor}">${ucfg.label}</span>
+            <span class="ag-status-badge" style="background:${scfg.bg};color:${scfg.cor}">${scfg.label}</span>
+          </div>
+          <div class="ag-card-body">
+            <div class="ag-info"><strong>${ag.nomeCliente}</strong> · ${ag.telefone}</div>
+            <div class="ag-info">🏍 ${ag.marca} ${ag.modelo} · Placa: <strong>${ag.placa}</strong></div>
+            <div class="ag-info">🔧 Revisão ${ag.revisaoKm} · ⏱ ${ag.duracao || '1 hora'}</div>
+            ${ag.obs ? `<div class="ag-obs">📝 ${ag.obs}</div>` : ''}
+          </div>
+          <div class="ag-card-footer">
+            <span class="ag-total">💵 Total estimado: <strong>${ag.total}</strong></span>
+            <button class="btn-status" data-id="${ag.id}">Alterar status</button>
+          </div>
+        `;
+        card.querySelector('.btn-status').onclick = () => abrirModal(ag);
+        lista.appendChild(card);
+      });
+
+      document.getElementById('dia-detalhe').hidden = false;
+      document.getElementById('dia-detalhe').scrollIntoView({ behavior:'smooth', block:'nearest' });
+    }
+
+    // ── MODAL STATUS ──────────────────────────────────────────
+    function abrirModal(ag) {
+      modalAgId = ag.id;
+      document.getElementById('modal-titulo').textContent = `Status — ${ag.nomeCliente}`;
+      const body = document.getElementById('modal-body');
+      body.innerHTML = `
+        <p style="font-size:13px;color:#666;margin-bottom:1rem">${ag.marca} ${ag.modelo} · ${ag.revisaoKm} · ${ag.horario}</p>
+        <div class="status-opcoes">
+          ${Object.entries(STATUS_CONFIG).map(([k,v]) => `
+            <label class="status-opcao ${ag.status===k?'selecionado':''}">
+              <input type="radio" name="novo-status" value="${k}" ${ag.status===k?'checked':''}>
+              <span class="status-dot" style="background:${v.cor}"></span>
+              <span>${v.label}</span>
+            </label>
+          `).join('')}
+        </div>
+      `;
+      document.getElementById('modal-overlay').hidden = false;
+    }
+
+    function fecharModal() {
+      document.getElementById('modal-overlay').hidden = true;
+      modalAgId = null;
+    }
+
+    async function salvarModal() {
+      const sel = document.querySelector('input[name="novo-status"]:checked');
+      if (!sel || !modalAgId) return;
+      const btn = document.getElementById('modal-salvar');
+      btn.textContent = 'Salvando...';
+      btn.disabled = true;
+      await atualizarStatus(modalAgId, sel.value);
+      fecharModal();
+      btn.textContent = 'Salvar';
+      btn.disabled = false;
+      // Reabre o detalhe do dia atualizado
+      const ag = agendamentos.find(a => a.id === modalAgId || true); // já atualizado
+    }
+
+    // ── NAVEGAÇÃO MÊS ─────────────────────────────────────────
+    function atualizarLabelMes() {
+      const meses = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+      document.getElementById('mes-label').textContent = `${meses[mesFiltro]} ${anoFiltro}`;
+    }
+
+    // ── EVENTOS ───────────────────────────────────────────────
+    document.getElementById('btn-prev').onclick = () => {
+      if (mesFiltro === 0) { mesFiltro=11; anoFiltro--; } else mesFiltro--;
+      atualizarLabelMes();
+      carregarAgendamentos();
+    };
+    document.getElementById('btn-next').onclick = () => {
+      if (mesFiltro === 11) { mesFiltro=0; anoFiltro++; } else mesFiltro++;
+      atualizarLabelMes();
+      carregarAgendamentos();
+    };
+    document.getElementById('btn-hoje').onclick = () => {
+      mesFiltro = new Date().getMonth();
+      anoFiltro = new Date().getFullYear();
+      atualizarLabelMes();
+      carregarAgendamentos();
+    };
+
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.onclick = () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        unidadeFiltro = btn.dataset.unidade;
+        renderizar();
+      };
+    });
+
+    document.getElementById('btn-fechar-detalhe').onclick = () => {
+      document.getElementById('dia-detalhe').hidden = true;
+    };
+    document.getElementById('modal-fechar').onclick   = fecharModal;
+    document.getElementById('modal-cancelar').onclick = fecharModal;
+    document.getElementById('modal-salvar').onclick   = salvarModal;
+    document.getElementById('modal-overlay').onclick  = (e) => {
+      if (e.target === document.getElementById('modal-overlay')) fecharModal();
+    };
+
+    // ── INIT ──────────────────────────────────────────────────
+    atualizarLabelMes();
+    carregarAgendamentos();
+  </script>
+</body>
+</html>
