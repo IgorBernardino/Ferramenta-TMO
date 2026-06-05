@@ -207,9 +207,13 @@ function isFeriado(dateStr) {
 
 function isDiaUtil(dateStr) {
   // dateStr: YYYY-MM-DD
-  const [y, m, d] = dateStr.split('-');
-  const data = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
-  const diaSemana = data.getDay(); // 0=Dom, 6=Sáb
+  // Usa new Date(y, m-1, d) para evitar problema de timezone com string ISO
+  const parts = dateStr.split('-');
+  const y = parseInt(parts[0]);
+  const m = parseInt(parts[1]) - 1; // 0-indexed
+  const d = parseInt(parts[2]);
+  const data = new Date(y, m, d);   // local time, sem UTC
+  const diaSemana = data.getDay();  // 0=Dom, 6=Sáb
   if (diaSemana === 0 || diaSemana === 6) return false;
   if (isFeriado(dateStr)) return false;
   return true;
@@ -217,8 +221,8 @@ function isDiaUtil(dateStr) {
 
 function proximoDiaUtil(dateStr) {
   // Retorna o próximo dia útil a partir de dateStr (YYYY-MM-DD)
-  const [y, m, d] = dateStr.split('-').map(Number);
-  let data = new Date(y, m - 1, d);
+  const parts = dateStr.split('-').map(Number);
+  let data = new Date(parts[0], parts[1] - 1, parts[2]); // local time
   while (true) {
     const str = data.getFullYear() + '-' +
       String(data.getMonth()+1).padStart(2,'0') + '-' +
@@ -543,7 +547,8 @@ async function onDateChange(val) {
 
   // Valida dia útil
   if (!isDiaUtil(val)) {
-    const data = new Date(val + 'T12:00:00');
+    const parts = val.split('-');
+    const data  = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
     const diaSem = data.getDay();
     let motivo = isFeriado(val) ? 'Feriado' : diaSem === 0 ? 'Domingo' : 'Sábado';
     status.innerHTML = `<span style="color:var(--red);font-weight:600">⚠️ ${motivo} — por favor escolha um dia útil.</span>`;
