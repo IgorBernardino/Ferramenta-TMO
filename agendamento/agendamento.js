@@ -144,6 +144,90 @@ function getKmsDisponiveis(brand, modelo) {
   return [];
 }
 
+
+// ── FERIADOS ──────────────────────────────────────────
+// Feriados nacionais fixos (DD/MM)
+const FERIADOS_FIXOS = [
+  '01/01', // Confraternização Universal
+  '21/04', // Tiradentes
+  '01/05', // Dia do Trabalho
+  '07/09', // Independência do Brasil
+  '12/10', // Nossa Senhora Aparecida
+  '02/11', // Finados
+  '15/11', // Proclamação da República
+  '20/11', // Consciência Negra
+  '25/12', // Natal
+];
+
+// Feriados móveis — calcular por ano
+function getFeriadosMoveis(ano) {
+  // Cálculo da Páscoa (algoritmo de Butcher)
+  const a = ano % 19;
+  const b = Math.floor(ano / 100);
+  const c = ano % 100;
+  const d = Math.floor(b / 4);
+  const e = b % 4;
+  const f = Math.floor((b + 8) / 25);
+  const g = Math.floor((b - f + 1) / 3);
+  const h = (19 * a + b - d - g + 15) % 30;
+  const i = Math.floor(c / 4);
+  const k = c % 4;
+  const l = (32 + 2 * e + 2 * i - h - k) % 7;
+  const m = Math.floor((a + 11 * h + 22 * l) / 451);
+  const mesPascoa = Math.floor((h + l - 7 * m + 114) / 31);
+  const diaPascoa = ((h + l - 7 * m + 114) % 31) + 1;
+  const pascoa = new Date(ano, mesPascoa - 1, diaPascoa);
+
+  const addDias = (base, dias) => new Date(base.getTime() + dias * 86400000);
+  const fmtFeriado = (d) => String(d.getDate()).padStart(2,'0') + '/' + String(d.getMonth()+1).padStart(2,'0') + '/' + d.getFullYear();
+
+  return [
+    fmtFeriado(addDias(pascoa, -48)), // Carnaval (segunda)
+    fmtFeriado(addDias(pascoa, -47)), // Carnaval (terça)
+    fmtFeriado(addDias(pascoa, -2)),  // Sexta-feira Santa
+    fmtFeriado(pascoa),               // Páscoa
+    fmtFeriado(addDias(pascoa, 60)),  // Corpus Christi
+  ];
+}
+
+function isFeriado(dateStr) {
+  // dateStr: YYYY-MM-DD
+  const [y, m, d] = dateStr.split('-');
+  const ddmm  = d.padStart(2,'0') + '/' + m.padStart(2,'0');
+  const ddmmyyyy = ddmm + '/' + y;
+  const ano   = parseInt(y);
+
+  if (FERIADOS_FIXOS.includes(ddmm)) return true;
+
+  const moveis = getFeriadosMoveis(ano);
+  if (moveis.includes(ddmmyyyy)) return true;
+
+  return false;
+}
+
+function isDiaUtil(dateStr) {
+  // dateStr: YYYY-MM-DD
+  const [y, m, d] = dateStr.split('-');
+  const data = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
+  const diaSemana = data.getDay(); // 0=Dom, 6=Sáb
+  if (diaSemana === 0 || diaSemana === 6) return false;
+  if (isFeriado(dateStr)) return false;
+  return true;
+}
+
+function proximoDiaUtil(dateStr) {
+  // Retorna o próximo dia útil a partir de dateStr (YYYY-MM-DD)
+  const [y, m, d] = dateStr.split('-').map(Number);
+  let data = new Date(y, m - 1, d);
+  while (true) {
+    const str = data.getFullYear() + '-' +
+      String(data.getMonth()+1).padStart(2,'0') + '-' +
+      String(data.getDate()).padStart(2,'0');
+    if (isDiaUtil(str)) return str;
+    data.setDate(data.getDate() + 1);
+  }
+}
+
 // getTmo — duração EXIBIDA ao cliente (mínimo 1h, nunca zero)
 // Usada nos cards de KM e campo "Duração estimada"
 function getTmo(brand, modelo, km) {
@@ -452,10 +536,26 @@ function buildKmGrid() {
 
 // ── UI: CALENDÁRIO ────────────────────────────────────
 async function onDateChange(val) {
-  S.data = val;
+  S.data = null;
   S.hora = null;
   const status = document.getElementById('cal-status');
   if (!val) { buildTimeGrid([]); return; }
+
+  // Valida dia útil
+  if (!isDiaUtil(val)) {
+    const data = new Date(val + 'T12:00:00');
+    const diaSem = data.getDay();
+    let motivo = isFeriado(val) ? 'Feriado' : diaSem === 0 ? 'Domingo' : 'Sábado';
+    status.innerHTML = `<span style="color:var(--red);font-weight:600">⚠️ ${motivo} — por favor escolha um dia útil.</span>`;
+    buildTimeGrid([]);
+    // Pula para próximo dia útil
+    const proximo = proximoDiaUtil(val);
+    document.getElementById('appt-date').value = proximo;
+    S.data = proximo;
+    return onDateChange(proximo);
+  }
+
+  S.data = val;
 
   status.innerHTML = '<div class="spinner"></div> Consultando agenda...';
   document.querySelectorAll('.time-btn').forEach(b => {
@@ -650,7 +750,8 @@ function goNext(from) {
     renderUnidadeBadge(3);
     const inp = document.getElementById('appt-date');
     const tom = new Date(); tom.setDate(tom.getDate() + 1);
-    inp.min   = tom.toISOString().split('T')[0];
+    const tomStr = tom.toISOString().split('T')[0];
+    inp.min   = proximoDiaUtil(tomStr);
     inp.value = ''; S.data = null; S.hora = null;
     document.getElementById('cal-status').innerHTML = '';
     buildTimeGrid([]);
