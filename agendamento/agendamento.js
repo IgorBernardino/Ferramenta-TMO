@@ -49,7 +49,7 @@ const DADOS = {
   zontes: {
     modelos: ['V350','T350','GK350','S350','R350','E350'],
     labels:  ['V 350','T 350 / T 350 X','GK 350','S 350','R 350','350 E'],
-    TMO_HORA: 110,
+    TMO_HORA: 350,
 
     // V/T/GK/S/R 350 compartilham o mesmo ciclo
     pecas350: {
