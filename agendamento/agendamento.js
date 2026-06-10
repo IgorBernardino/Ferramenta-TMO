@@ -76,7 +76,7 @@ const DADOS = {
       20000:[{nome:'Correia CVT',qtd:1,valor:1150},{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do CVT',qtd:1,valor:84}],
       24000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Filtro do CVT',qtd:1,valor:84},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Óleo Caixa Transm. Final',qtd:1,valor:70}],
     },
-    tmoE350: {1000:0.0,4000:0.5,8000:0.8,12000:0.3,16000:1.0,20000:0.3,24000:2.0},
+    tmoE350: {1000:0.0,4000:0.5,8000:0.8,12000:1.2,16000:1.0,20000:0.3,24000:2.0},
 
     // 350E ANTIGA — ciclo de 3.000 km (tabela revisão antiga)
     pecasE350Antiga: {
@@ -102,9 +102,9 @@ const DADOS = {
 
   // ── SUZUKI ────────────────────────────────────────────
   suzuki: {
-    modelos: ['BURGMAN_I','GSX800','HAYABUSA','GSXR1000','GSX750','GSXS1000','SV650A','VSTROM650','VSTROM800','VSTROM1000','VSTROM1050XT'],
-    labels:  ['Burgman i','GSX 800','Hayabusa GSX1300R','GSX-R1000','GSX 750','GSX-S1000A','SV 650A','V-Strom 650 A','V-Strom 800 DE','V-Strom 1050','V-Strom 1050 XT'],
-    tmoHora: {BURGMAN_I:100,GSX800:800,HAYABUSA:1300,GSXR1000:1000,GSX750:750,GSXS1000:1000,SV650A:650,VSTROM650:650,VSTROM800:800,VSTROM1000:1000,VSTROM1050XT:1050},
+    modelos: ['BURGMAN_I','GSX800','HAYABUSA','GSXR1000','GSX750','GSXS1000','SV650A','VSTROM650','VSTROM800','VSTROM1000','VSTROM1050XT','GSX_S800_368G'],
+    labels:  ['Burgman i','GSX 800','Hayabusa GSX1300R','GSX-R1000','GSX 750','GSX-S1000A','SV 650A','V-Strom 650 A','V-Strom 800 DE','V-Strom 1050','V-Strom 1050 XT','GSX-S 800 (368G)'],
+    tmoHora: {BURGMAN_I:100,GSX800:800,HAYABUSA:1300,GSXR1000:1000,GSX750:750,GSXS1000:1000,SV650A:650,VSTROM650:650,VSTROM800:800,VSTROM1000:1000,VSTROM1050XT:1050,GSX_S800_368G:800},
     tmo: {
       BURGMAN_I:   {1000:0,6000:0,12000:0.8,18000:2.5,24000:1,30000:1,36000:2.5,42000:1,48000:1,54000:2.5,60000:1},
       GSX800:      {1000:0,6000:0,12000:0.4,18000:0.2,24000:0.4,30000:0.2,36000:0.4,42000:0.2,48000:0.4,54000:0.2,60000:0.4},
@@ -117,6 +117,7 @@ const DADOS = {
       VSTROM800:   {1000:0,6000:0,12000:0.4,18000:0.2,24000:0.4,30000:0.2,36000:0.4,42000:0.2,48000:0.4,54000:0.2,60000:0.4},
       VSTROM1000:  {1000:0,6000:0,12000:0.3,18000:0.1,24000:0.3,30000:0.1,36000:0.3,42000:0.1,48000:0.3,54000:0.1,60000:0.3},
       VSTROM1050XT:{1000:0,6000:0,12000:0.3,18000:0.1,24000:0.3,30000:0.1,36000:0.3,42000:0.1,48000:0.3,54000:0.1,60000:0.3},
+      GSX_S800_368G:{1000:0,4000:0.2,8000:0.4,12000:0.2,16000:0.6,20000:0.2,24000:0.4,28000:0.2,32000:0.8},
     },
     pecas: {
       BURGMAN_I:   {1000:[{nome:'Óleo do Motor',qtd:1,valor:70}],6000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],12000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],18000:[{nome:'Filtro de Ar',qtd:1,valor:115},{nome:'Vela de Ignição',qtd:1,valor:150},{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],24000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],30000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],36000:[{nome:'Filtro de Ar',qtd:1,valor:115},{nome:'Vela de Ignição',qtd:1,valor:150},{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],42000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],48000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],54000:[{nome:'Filtro de Ar',qtd:1,valor:115},{nome:'Vela de Ignição',qtd:1,valor:150},{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],60000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}]},
@@ -130,6 +131,17 @@ const DADOS = {
       VSTROM800:   {1000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],6000:[{nome:'Óleo do Motor',qtd:4,valor:70}],12000:[{nome:'Vela de Ignição',qtd:2,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],18000:[{nome:'Filtro de Ar',qtd:1,valor:320},{nome:'Óleo do Motor',qtd:4,valor:70}],24000:[{nome:'Vela de Ignição',qtd:2,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],30000:[{nome:'Óleo do Motor',qtd:4,valor:70}],36000:[{nome:'Vela de Ignição',qtd:2,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],42000:[{nome:'Filtro de Ar',qtd:1,valor:320},{nome:'Óleo do Motor',qtd:4,valor:70}],48000:[{nome:'Vela de Ignição',qtd:2,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],54000:[{nome:'Óleo do Motor',qtd:4,valor:70}],60000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}]},
       VSTROM1000:  {1000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],6000:[{nome:'Óleo do Motor',qtd:4,valor:70}],12000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],18000:[{nome:'Filtro de Ar',qtd:1,valor:430},{nome:'Óleo do Motor',qtd:4,valor:70}],24000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],30000:[{nome:'Óleo do Motor',qtd:4,valor:70}],36000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],42000:[{nome:'Filtro de Ar',qtd:1,valor:430},{nome:'Óleo do Motor',qtd:4,valor:70}],48000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],54000:[{nome:'Óleo do Motor',qtd:4,valor:70}],60000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}]},
       VSTROM1050XT:{1000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],6000:[{nome:'Óleo do Motor',qtd:4,valor:70}],12000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],18000:[{nome:'Filtro de Ar',qtd:1,valor:430},{nome:'Óleo do Motor',qtd:4,valor:70}],24000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],30000:[{nome:'Óleo do Motor',qtd:4,valor:70}],36000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],42000:[{nome:'Filtro de Ar',qtd:1,valor:430},{nome:'Óleo do Motor',qtd:4,valor:70}],48000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],54000:[{nome:'Óleo do Motor',qtd:4,valor:70}],60000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}]},
+      GSX_S800_368G:{
+        1000: [{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
+        4000: [{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:4,valor:70}],
+        8000: [{nome:'Vela de Ignição',qtd:2,valor:165},{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
+        12000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:4,valor:70}],
+        16000:[{nome:'Correia de Transmissão',qtd:1,valor:1150},{nome:'Vela de Ignição',qtd:2,valor:165},{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
+        20000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:4,valor:70}],
+        24000:[{nome:'Vela de Ignição',qtd:2,valor:165},{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
+        28000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:4,valor:70}],
+        32000:[{nome:'Correia de Transmissão',qtd:1,valor:1150},{nome:'Líquido de Refrigeração',qtd:1,valor:30},{nome:'Vela de Ignição',qtd:2,valor:165},{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
+      }
     }
   }
 };
@@ -149,7 +161,7 @@ function getKmsDisponiveis(brand, modelo) {
     return Object.keys(DADOS.zontes.pecas350).filter(k=>!isNaN(k)).map(Number).sort((a,b)=>a-b);
   }
   if (brand === 'suzuki') {
-    return Object.keys(DADOS.suzuki.pecas[modelo]).filter(k=>!isNaN(k)).map(Number).sort((a,b)=>a-b);
+    return Object.keys(DADOS.suzuki.pecas[modelo] || {}).filter(k=>!isNaN(k)).map(Number).sort((a,b)=>a-b);
   }
   return [];
 }
