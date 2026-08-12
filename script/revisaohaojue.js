@@ -60,6 +60,7 @@ var dadosRevisao = {
     NK150:     _gerarCiclo('13780H2J000H000', '09482H00010H000', _tmo),
     MASTER150: _gerarCiclo('13780H37200H000', '0948200399000',   _tmo),
     CHOPPER150:_gerarCiclo('13781H2A300H000', '09482Z00001H000', _tmo),
+    NK160:  _gerarCiclo('13780H2J000H000', '09482H00010H000', _tmo),
     LINDY125: {
         1000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         3000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
@@ -190,7 +191,8 @@ function _gerarChecklistHJ() {
 var _ckHJ = _gerarChecklistHJ();
 var checklist = {
     DK160: _ckHJ, DR160: _ckHJ, DL160: _ckHJ,
-    NK150: _ckHJ, MASTER150: _ckHJ, CHOPPER150: _ckHJ, LINDY125: _ckHJ
+    NK150: _ckHJ, MASTER150: _ckHJ, CHOPPER150: _ckHJ, LINDY125: _ckHJ,
+    NK160: _ckHJ,  ADX125: _ckHJ
 };
 
 
@@ -204,6 +206,9 @@ var modeloInfo = {
     MASTER150: { nome: 'Master Ride 150',  motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/MASTERRIDE.png' },
     CHOPPER150:{ nome: 'Chopper Road 150', motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/CHOPPER150.png' },
     LINDY125:  { nome: 'Lindy 125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/LINDY125.png'   },
+    NK160:     { nome: 'NK 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/NK160.png'      },
+    ADX125:  { nome: 'ADX125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/ADX125.png'   },
+    
 };
 
 
