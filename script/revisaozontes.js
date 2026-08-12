@@ -7,7 +7,7 @@
 // ─── 1. PEÇAS POR MODELO / KM ─────────────────────────────────
 
 const dadosRevisao = {
-  V350: {
+  V350= {
     1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
     3000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
     6000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
@@ -30,7 +30,7 @@ const dadosRevisao = {
     57000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
     tmo:{1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:1.0,21000:0.3,24000:1.5,27000:0.3,30000:0.6,33000:0.3,36000:1.5,39000:0.3,42000:0.6,45000:0.3,48000:1.5,51000:0.3,54000:1.0,57000:1.5},
   },
-  E350: {
+  E350= {
     1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
     4000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1226400199000',nome:'Filtro Esponja Motor (ZT350-E)',qtd:1,valor:84}],
     8000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
@@ -42,7 +42,7 @@ const dadosRevisao = {
   },
 };
 
-  ZT368G: {
+  ZT368G= {
     1000:  [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
     4000:  [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120}],
     8000:  [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
@@ -51,6 +51,7 @@ const dadosRevisao = {
     20000: [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120},{codigo:'CORREIA-CVT-368',nome:'Correia de Transmissão CVT',qtd:1,valor:1150}],
     24000: [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
     tmo:{1000:0.5,4000:0.8,8000:1.2,12000:0.8,16000:1.2,20000:2.0,24000:1.5},
+    
   },
 dadosRevisao.T350  = dadosRevisao.V350;
 dadosRevisao.GK350 = dadosRevisao.V350;
