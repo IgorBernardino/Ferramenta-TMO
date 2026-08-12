@@ -3,11 +3,10 @@
    Script unificado: peças · checklist · card hero · UI completa
    ================================================================ */
 
-
 // ─── 1. PEÇAS POR MODELO / KM ─────────────────────────────────
 
 const dadosRevisao = {
-  V350= {
+  V350: {
     1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
     3000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
     6000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
@@ -30,7 +29,7 @@ const dadosRevisao = {
     57000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
     tmo:{1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:1.0,21000:0.3,24000:1.5,27000:0.3,30000:0.6,33000:0.3,36000:1.5,39000:0.3,42000:0.6,45000:0.3,48000:1.5,51000:0.3,54000:1.0,57000:1.5},
   },
-  E350= {
+  E350: {
     1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
     4000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1226400199000',nome:'Filtro Esponja Motor (ZT350-E)',qtd:1,valor:84}],
     8000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
@@ -40,9 +39,7 @@ const dadosRevisao = {
     24000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
     tmo:{1000:0.0,4000:0.5,8000:0.8,12000:0.3,16000:1.0,20000:0.3,24000:2.0},
   },
-};
-
-  ZT368G= {
+  ZT368G: {
     1000:  [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
     4000:  [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120}],
     8000:  [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
@@ -51,8 +48,9 @@ const dadosRevisao = {
     20000: [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120},{codigo:'CORREIA-CVT-368',nome:'Correia de Transmissão CVT',qtd:1,valor:1150}],
     24000: [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
     tmo:{1000:0.5,4000:0.8,8000:1.2,12000:0.8,16000:1.2,20000:2.0,24000:1.5},
-    
-  },
+  }
+};
+
 dadosRevisao.T350  = dadosRevisao.V350;
 dadosRevisao.GK350 = dadosRevisao.V350;
 dadosRevisao.S350  = dadosRevisao.V350;
@@ -61,42 +59,25 @@ dadosRevisao.R350  = dadosRevisao.V350;
 
 // ─── 2. CHECKLIST ─────────────────────────────────────────────
 
-/* Checklist do 350CC — mapeado diretamente por KM para evitar erros de classificação */
 const _I_base = ['Líquido de Arrefecimento','Manete da embreagem','Punho do acelerador','Cabo do acelerador','Marcha lenta','Corrente de transmissão (lubrif. a cada 1.000 km)','Freio','Manete do freio','Pneus','Raio das rodas','Parafusos/porcas Suspensão','Parafusos do chassi','Parafusos de montagem do motor','Eixos de roda'];
 const _I_medio = ['Filtro de ar','Líquido de Arrefecimento','Manete da embreagem','Punho do acelerador','Cabo do acelerador','Marcha lenta','Tubulação do radiador','Tubulação combustível','Corrente de transmissão','Freio','Manete do freio','Pneus','Raio das rodas','Parafusos/porcas Suspensão','Coluna de direção','Parafusos do chassi','Parafusos de montagem do motor','Eixos de roda'];
 const _I_completo = ['Parafuso de tubo de escape','Folga de válvula (inspeção a frio)','Manete da embreagem','Punho do acelerador','Cabo do acelerador','Marcha lenta','Sistema de emissão de poluentes','Corrente de transmissão','Freio','Manete do freio','Pneus','Raio das rodas','Parafusos/porcas Suspensão','Coluna de direção','Suspensão dianteira','Suspensão traseira','Parafusos do chassi','Parafusos de montagem do motor','Eixos de roda'];
 
 const _ck350ccGerado = (() => {
   const KMS = [1000,3000,6000,9000,12000,15000,18000,21000,24000,27000,30000,33000,36000,39000,42000,45000,48000,51000,54000,57000];
-  /* padrão do ciclo de 18k:
-     1k  → especial (inspeção base, sem correia/escap)
-     3k  → só óleo
-     6k  → médio (filtro óleo + inspeção média)       [12 meses]
-     9k  → só óleo
-     12k → completo (filtro ar + vela + arrefec.)     [18 meses]
-     15k → só óleo
-     18k → médio + fluido de freio                    [24 meses]
-     21k → só óleo
-     24k → médio                                      [30 meses]
-     ... repete o ciclo (12k, 18k, 24k) a partir daqui */
   const prazos = {1000:'6 meses',6000:'12 meses',12000:'18 meses',18000:'24 meses',24000:'30 meses',30000:'36 meses',36000:'42 meses',42000:'48 meses',48000:'54 meses',54000:'60 meses'};
   const res = {};
   KMS.forEach(km => {
-    const c = (km / 1000) % 36; /* ciclo de 36k para capturar padrão completo */
     let ck;
     if (km === 1000) {
       ck = { T:['Óleo de motor (Motul 10W40) — 2L','Filtro do óleo — 1 un.'], I:_I_base };
     } else if ([12,30,48].some(v => km/1000 === v || (km/1000 - v) % 36 === 0)) {
-      /* 12k, 30k, 48k → completo */
       ck = { T:['Óleo de motor (Motul 10W40) — 2L','Filtro do óleo — 1 un.','Filtro de ar — 1 un.','Vela de ignição — 1 un.','Líquido de Arrefecimento — conforme necessário'], I:_I_completo };
     } else if ([18,36,54].some(v => km/1000 === v)) {
-      /* 18k, 36k, 54k → médio com fluido de freio */
       ck = { T:['Óleo de motor (Motul 10W40) — 2L','Filtro do óleo — 1 un.','Fluído de freio — conforme necessário'], I:_I_medio };
     } else if ([6,24,42].some(v => km/1000 === v)) {
-      /* 6k, 24k, 42k → médio */
       ck = { T:['Óleo de motor (Motul 10W40) — 2L','Filtro do óleo — 1 un.'], I:_I_medio };
     } else {
-      /* 3k, 9k, 15k, 21k, 27k, 33k, 39k, 45k, 51k, 57k → só óleo */
       ck = { T:['Óleo de motor (Motul 10W40) — 2L'], I:_I_base };
     }
     if (prazos[km]) ck.prazo = prazos[km];
@@ -123,9 +104,8 @@ const checklist = {
     12000: {T:['Óleo de Motor — 1,55L · SAE 10W-40/5W-40, API SN','Filtro de Ar (elemento) — 1 un.'], I:['Tampa antiqueimaduras do tubo de escape','Velocidade de ralenti','Tubos do radiador','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Abraçadeiras, parafusos e porcas do veículo']},
     16000: {prazo:'~30 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Travões (pastilhas, disco, líquido)','Mangueira do líquido dos travões (substituir a cada 4 anos)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2','Correia de transmissão CVT (substituir se necessário)'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
     20000: {T:['Óleo de Motor — 1,55L · SAE 10W-40/5W-40, API SN','Filtro de Ar (elemento) — 1 un.','Correia de Transmissão CVT — 1 un. (trocar a cada 2 anos ou quando necessário)'], I:['Tampa antiqueimaduras do tubo de escape','Velocidade de ralenti','Tubos do radiador','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Abraçadeiras, parafusos e porcas do veículo','Folga das válvulas (Adm: 0,08–0,12mm / Esc: 0,18–0,22mm) — ajustar a cada 20.000 km']},
-    24000: {prazo:'~45 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL','Fluido de Freio — conf. necessário (substituir a cada 4 anos)'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Mangueira do líquido dos travões (substituir a cada 4 anos)','Travões (pastilhas, disco)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração (substituir a cada 30.000 km)','Tubo de óleo do filtro de ar','Rolamentos de direção','Mecanismo trava da direção — limpar e lubrificar (a cada 10.000 km)','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2','Correia de transmissão CVT'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
-  },
-
+    24000: {prazo:'~45 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL','Fluido de Freio — conf. necessário (substituir a cada 4 anos)'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Mangueira do líquido dos travões (substituir a cada 4 anos)','Travões (pastilhas, disco)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração (substituir a cada 30.000 km)','Tubo de óleo do filtro de ar','Rolamentos de direção','Mecanismo trava da direção — limpar e lubrificar (a cada 10.000 km)','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2','Correia de transmissão CVT'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas dos mecanismos de direção']},
+  }
 };
 
 
@@ -184,13 +164,13 @@ function atualizarCardVeiculo(modelo){
     '<span class="spec-pill spec-intervalo">Rev. a cada '+info.intervalo+'</span>';
   hero.classList.add('visivel');
 }
-function atualizarImagemVeiculo(){atualizarCardVeiculo(document.getElementById('veiculoSelect').value);}
 
 
 // ─── 6. KM ────────────────────────────────────────────────────
 
 function atualizarKmPorVeiculo(veiculo){
   const sel=document.getElementById('kmSelect');
+  if(!sel) return;
   sel.innerHTML='<option value="">Selecione o KM</option>';
   const _lista = veiculo==='E350'?KM_E350:veiculo==='ZT368G'?KM_368G:KM_PADRAO;
   _lista.forEach(km=>{
@@ -207,12 +187,19 @@ function calcular(){
   const veiculo=document.getElementById('veiculoSelect').value;
   const km=document.getElementById('kmSelect').value;
   const lista=document.getElementById('listaPecas');
-  if(!veiculo||!km){lista.innerHTML='<div class="no-result">👆 Selecione veículo e KM para ver as peças</div>';atualizarTotaisGerais();return;}
+  if(!veiculo||!km){
+    if(lista) lista.innerHTML='<div class="no-result">👆 Selecione veículo e KM para ver as peças</div>';
+    atualizarTotaisGerais();
+    return;
+  }
   const revisao=(dadosRevisao[veiculo]&&dadosRevisao[veiculo][parseInt(km)])||[];
-  if(!revisao.length){lista.innerHTML='<div class="no-result">Nenhuma peça cadastrada para esta revisão</div>';}
-  else{
+  if(!revisao.length){
+    lista.innerHTML='<div class="no-result">Nenhuma peça cadastrada para esta revisão</div>';
+  } else {
     let h='<div class="peca-header"><div>Peça</div><div>Código</div><div>Qtd.</div><div>Total (R$)</div></div>';
-    revisao.forEach(p=>{h+='<div class="peca-item"><div class="peca-nome">'+p.nome+'</div><div class="peca-codigo">'+p.codigo+'</div><div class="peca-qtd">'+p.qtd+'</div><div class="peca-valor">'+fmt(p.qtd*p.valor)+'</div></div>';});
+    revisao.forEach(p=>{
+      h+='<div class="peca-item"><div class="peca-nome">'+p.nome+'</div><div class="peca-codigo">'+p.codigo+'</div><div class="peca-qtd">'+p.qtd+'</div><div class="peca-valor">'+fmt(p.qtd*p.valor)+'</div></div>';
+    });
     lista.innerHTML=h;
   }
   atualizarTotaisGerais();
@@ -222,8 +209,10 @@ function calcular(){
 // ─── 8. CHECKLIST ─────────────────────────────────────────────
 
 function toggleChecklist(){
-  document.getElementById('checklistBody').classList.toggle('aberto');
-  document.getElementById('checklistToggle').classList.toggle('aberto');
+  const body = document.getElementById('checklistBody');
+  const toggle = document.getElementById('checklistToggle');
+  if(body) body.classList.toggle('aberto');
+  if(toggle) toggle.classList.toggle('aberto');
 }
 
 function renderizarChecklist(veiculo,km){
@@ -260,7 +249,8 @@ function renderizarChecklist(veiculo,km){
   h+='<div class="checklist-nota">'+nota+'<br>Em condições severas (litoral, poeira, chuva intensa) reduza os intervalos.</div>';
   body.innerHTML=tem?h:'<div class="checklist-empty">Nenhum item cadastrado para esta revisão</div>';
   body.classList.add('aberto');
-  document.getElementById('checklistToggle').classList.add('aberto');
+  const toggle = document.getElementById('checklistToggle');
+  if(toggle) toggle.classList.add('aberto');
 }
 
 
@@ -268,6 +258,7 @@ function renderizarChecklist(veiculo,km){
 
 function renderizarItensAdicionais(){
   const c=document.getElementById('listaItensAdicionais');
+  if(!c) return;
   if(!itensAdicionais.length){c.innerHTML='<div class="no-result">Nenhum item adicionado</div>';}
   else{
     let h='<div class="peca-header"><div>Peça / Serviço</div><div>Código</div><div>Qtd.</div><div>Total (R$)</div><div></div></div>';
@@ -296,12 +287,17 @@ window.removerItemAdicional=removerItemAdicional;
 // ─── 10. TOTAIS ───────────────────────────────────────────────
 
 function atualizarTotaisGerais(){
-  const veiculo=document.getElementById('veiculoSelect').value;
-  const km=document.getElementById('kmSelect').value;
+  const veiculoElem = document.getElementById('veiculoSelect');
+  const kmElem = document.getElementById('kmSelect');
+  if(!veiculoElem || !kmElem) return;
+
+  const veiculo=veiculoElem.value;
+  const km=kmElem.value;
   const revisao=(veiculo&&km&&dadosRevisao[veiculo]&&dadosRevisao[veiculo][parseInt(km)])||[];
   const tmoH=(veiculo&&km&&dadosRevisao[veiculo]&&dadosRevisao[veiculo].tmo&&dadosRevisao[veiculo].tmo[parseInt(km)])||0;
   const totalP=revisao.reduce((s,p)=>s+p.qtd*p.valor,0)+itensAdicionais.reduce((s,p)=>s+p.qtd*p.valor,0);
   const totalT=tmoH*TMO_HORA;
+
   document.getElementById('totalPecas').textContent=fmt(totalP);
   document.getElementById('totalTMO').textContent=fmt(totalT);
   document.getElementById('totalGeral').textContent=fmt(totalP+totalT);
@@ -312,28 +308,29 @@ function atualizarTotaisGerais(){
 }
 
 
-// ─── 11. EVENTOS ──────────────────────────────────────────────
+// ─── 11. EVENTOS & INICIALIZAÇÃO ──────────────────────────────
 
 function onVeiculoChange(){
   const veiculo=document.getElementById('veiculoSelect').value;
   atualizarCardVeiculo(veiculo);
   atualizarKmPorVeiculo(veiculo);
-  document.getElementById('kmSelect').value='';
   calcular();
-  renderizarChecklist(veiculo,'');
+  renderizarChecklist(veiculo, document.getElementById('kmSelect').value);
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
-  const sel=document.getElementById('selectAvulso');
-  pecasAvulsas.forEach((p,i)=>{
-    const o=document.createElement('option');
-    o.value=i; o.textContent=p.nome+' — '+fmt(p.valor);
-    sel.appendChild(o);
-  });
-  renderizarItensAdicionais();
-  document.getElementById('veiculoSelect').addEventListener('change',onVeiculoChange);
-  document.getElementById('kmSelect').addEventListener('change',function(){
-    calcular();
-    renderizarChecklist(document.getElementById('veiculoSelect').value,this.value);
-  });
+function onKmChange(){
+  const veiculo=document.getElementById('veiculoSelect').value;
+  const km=document.getElementById('kmSelect').value;
+  calcular();
+  renderizarChecklist(veiculo, km);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const veiculoSelect = document.getElementById('veiculoSelect');
+  const kmSelect = document.getElementById('kmSelect');
+  const checklistToggle = document.getElementById('checklistToggle');
+
+  if(veiculoSelect) veiculoSelect.addEventListener('change', onVeiculoChange);
+  if(kmSelect) kmSelect.addEventListener('change', onKmChange);
+  if(checklistToggle) checklistToggle.addEventListener('click', toggleChecklist);
 });
