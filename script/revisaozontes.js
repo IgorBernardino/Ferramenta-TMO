@@ -8,39 +8,50 @@
 
 const dadosRevisao = {
   V350: {
-    1000:  [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    3000:  [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    6000:  [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    9000:  [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    12000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    15000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    18000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    21000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    24000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    27000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    30000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    33000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    36000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    39000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    42000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    45000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    48000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    51000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    54000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    57000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    3000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    6000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    9000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    12000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    15000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    18000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    21000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    24000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    27000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    30000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    33000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    36000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    39000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    42000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    45000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    48000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    51000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    54000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    57000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
     tmo:{1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:1.0,21000:0.3,24000:1.5,27000:0.3,30000:0.6,33000:0.3,36000:1.5,39000:0.3,42000:0.6,45000:0.3,48000:1.5,51000:0.3,54000:1.0,57000:1.5},
   },
   E350: {
-    1000:  [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
-    4000:  [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1226400199000',nome:'Filtro Esponja Motor (ZT350-E)',qtd:1,valor:84}],
-    8000:  [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
-    12000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70}],
-    16000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
-    20000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70}],
-    24000: [{codigo:'MT114',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
+    1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
+    4000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1226400199000',nome:'Filtro Esponja Motor (ZT350-E)',qtd:1,valor:84}],
+    8000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
+    12000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70}],
+    16000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+    20000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70}],
+    24000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:70},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
     tmo:{1000:0.0,4000:0.5,8000:0.8,12000:0.3,16000:1.0,20000:0.3,24000:2.0},
   },
 };
+
+  ZT368G: {
+    1000:  [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
+    4000:  [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120}],
+    8000:  [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
+    12000: [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120}],
+    16000: [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
+    20000: [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120},{codigo:'CORREIA-CVT-368',nome:'Correia de Transmissão CVT',qtd:1,valor:1150}],
+    24000: [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
+    tmo:{1000:0.5,4000:0.8,8000:1.2,12000:0.8,16000:1.2,20000:2.0,24000:1.5},
+  },
 dadosRevisao.T350  = dadosRevisao.V350;
 dadosRevisao.GK350 = dadosRevisao.V350;
 dadosRevisao.S350  = dadosRevisao.V350;
@@ -104,6 +115,16 @@ const checklist = {
     20000: {T:['Filtro do CVT — 1 un.','Óleo de motor — 2L','Correia CVT — 1 un. (trocar a cada 20.000 km)'], I:['Filtro de ar','Folga do cabo acelerador','Marcha lenta','Tubulação do radiador','Tubulação combustível','Freio','Mangueira de freio','Fluido de freio','Pneus','Líquido de Arrefecimento'], A:['Paraf./porcas caixa de direção','Paraf./porcas chassi e motor']},
     24000: {prazo:'24 meses', T:['Filtro de ar — 1 un.','Filtro do CVT — 1 un.','Óleo de motor — 2L','Filtro do óleo — 1 un.','Óleo caixa transm. final — conf. manual','Líquido de Arrefecimento — conf. necessário','Fluido de freio — troca a cada 2 anos'], I:['Coxins articulador do motor (Balança)','Vela de ignição','Corpo de Injeção','Folga do cabo acelerador','Marcha lenta','Tubulação do radiador','Tubulação combustível','Freio','Mangueira de freio','Pneus','Amortecedor dianteiro','Amortecedor traseiro','Suspensão','Correia CVT','Polias CVT — lubrificar','Sist. controle poluentes evaporativos','Rolamentos do sistema de direção','Mecanismo trava do guidão','Folga das válvulas (a frio)'], A:['Paraf./porcas escapamento','Paraf./porcas caixa de direção','Paraf./porcas chassi e motor']},
   },
+  ZT368G: {
+    1000:  {prazo:'3 meses',  T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL'], I:['Tampa antiqueimaduras do tubo de escape','Folgas do tubo de óleo','Velocidade de ralenti (marcha lenta)','Tubos de combustível','Desgaste das pastilhas de travão','Raios da roda','Tubo de óleo do filtro de ar','Líquido de refrigeração','Pneus (pressão e desgaste)','Freios (operação e líquido)','Óleo do motor (nível)'], A:['Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
+    4000:  {T:['Óleo de Motor — 1,55L · SAE 10W-40/5W-40, API SN','Filtro de Ar (elemento) — 1 un.'], I:['Tampa antiqueimaduras do tubo de escape','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2 a cada 10.000 km'], A:['Abraçadeiras, parafusos e porcas do veículo']},
+    8000:  {prazo:'~15 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Roda ativa/motriz CVT','Correia de transmissão CVT (substituir se necessário)'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
+    12000: {T:['Óleo de Motor — 1,55L · SAE 10W-40/5W-40, API SN','Filtro de Ar (elemento) — 1 un.'], I:['Tampa antiqueimaduras do tubo de escape','Velocidade de ralenti','Tubos do radiador','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Abraçadeiras, parafusos e porcas do veículo']},
+    16000: {prazo:'~30 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Travões (pastilhas, disco, líquido)','Mangueira do líquido dos travões (substituir a cada 4 anos)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2','Correia de transmissão CVT (substituir se necessário)'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
+    20000: {T:['Óleo de Motor — 1,55L · SAE 10W-40/5W-40, API SN','Filtro de Ar (elemento) — 1 un.','Correia de Transmissão CVT — 1 un. (trocar a cada 2 anos ou quando necessário)'], I:['Tampa antiqueimaduras do tubo de escape','Velocidade de ralenti','Tubos do radiador','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Abraçadeiras, parafusos e porcas do veículo','Folga das válvulas (Adm: 0,08–0,12mm / Esc: 0,18–0,22mm) — ajustar a cada 20.000 km']},
+    24000: {prazo:'~45 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL','Fluido de Freio — conf. necessário (substituir a cada 4 anos)'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Mangueira do líquido dos travões (substituir a cada 4 anos)','Travões (pastilhas, disco)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração (substituir a cada 30.000 km)','Tubo de óleo do filtro de ar','Rolamentos de direção','Mecanismo trava da direção — limpar e lubrificar (a cada 10.000 km)','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2','Correia de transmissão CVT'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
+  },
+
 };
 
 
@@ -116,6 +137,7 @@ const modeloInfo = {
   S350:  {nome:'S 350',          motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/Ferramenta-TMO/images/ZONTES/S350.png'},
   R350:  {nome:'R 350',          motor:'350cc · Mono', trans:'Corrente', oleo:'Motul 10W40 · 2L', intervalo:'3.000 km', img:'/Ferramenta-TMO/images/ZONTES/R350.png'},
   E350:  {nome:'350 E',          motor:'350cc · CVT',  trans:'CVT',      oleo:'Motul 10W40 · 2L', intervalo:'4.000 km', img:'/Ferramenta-TMO/images/ZONTES/350E.png'},
+  ZT368G:{nome:'368G',           motor:'368cc · CVT',  trans:'CVT',      oleo:'SAE 10W-40 · 1,55–1,75L', intervalo:'4.000 km', img:'/Ferramenta-TMO/images/ZONTES/368G.png'},
 };
 
 
@@ -124,6 +146,7 @@ const modeloInfo = {
 const TMO_HORA   = 350;
 const KM_PADRAO  = [1000,3000,6000,9000,12000,15000,18000,21000,24000,27000,30000,33000,36000,39000,42000,45000,48000,51000,54000,57000];
 const KM_E350    = [1000,4000,8000,12000,16000,20000,24000];
+const KM_368G    = [1000,4000,8000,12000,16000,20000,24000];
 
 const pecasAvulsas = [
   {codigo:'MO-CORRENTE', nome:'Serviço: Regulagem Corrente',              valor:30},
@@ -168,7 +191,8 @@ function atualizarImagemVeiculo(){atualizarCardVeiculo(document.getElementById('
 function atualizarKmPorVeiculo(veiculo){
   const sel=document.getElementById('kmSelect');
   sel.innerHTML='<option value="">Selecione o KM</option>';
-  (veiculo==='E350'?KM_E350:KM_PADRAO).forEach(km=>{
+  const _lista = veiculo==='E350'?KM_E350:veiculo==='ZT368G'?KM_368G:KM_PADRAO;
+  _lista.forEach(km=>{
     const o=document.createElement('option');
     o.value=km; o.textContent=km.toLocaleString('pt-BR')+' km';
     sel.appendChild(o);
@@ -229,6 +253,8 @@ function renderizarChecklist(veiculo,km){
   h+='</div>';
   const nota=veiculo==='E350'
     ?'<strong>350E Nova:</strong> Motul 10W40 · 2L. Próxima revisão a cada 4.000 km ou 6 meses.<br>Correia CVT: trocar a cada 20.000 km. Polias CVT: graxa Shell Gadus S3 V220 C2 a cada 12.000 km.'
+    :veiculo==='ZT368G'
+    ?'<strong>Zontes 368G:</strong> Óleo SAE 10W-40/5W-40 API SN · 1,55L (sem filtro) ou 1,75L (com filtro).<br>1ª revisão: 1.000 km ou 3 meses. Depois: a cada 4.000 km ou 15 meses.<br>Correia CVT: a cada 2 anos. Roda ativa/motriz: Shell Gadus S3 V220 C2 a cada 10.000 km. Líquido arrefecimento: a cada 30.000 km.'
     :'<strong>Zontes 350CC:</strong> Motul 10W40 · 2L por revisão. Corrente: lubrificar a cada 1.000 km.';
   h+='<div class="checklist-nota">'+nota+'<br>Em condições severas (litoral, poeira, chuva intensa) reduza os intervalos.</div>';
   body.innerHTML=tem?h:'<div class="checklist-empty">Nenhum item cadastrado para esta revisão</div>';
