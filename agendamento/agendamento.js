@@ -410,7 +410,7 @@ const S = {
 // ── APPS SCRIPT BACKEND ──────────────────────────────
 // URL gerada ao publicar o Apps Script como Web App.
 // Substitua pelo valor real após publicar em script.google.com
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKGN_wcJColdRMOJ6BzD-abfSxgj3RmXoazXSujjRTPc66H_XUIx2FVe_VKsaZ0RxFzQ/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhN5FzPcrTTtBjy39zuDLgfGAEXHnwwsqNeSPue8YbIfF7fEfkOEcsngRW_Ikviz82sg/exec';
 
 async function chamarBackend(payload) {
   // Apps Script Web Apps não suportam CORS preflight com POST+JSON.
@@ -477,12 +477,12 @@ async function confirmarNoBackend() {
 
 // ── WHATSAPP (mensagem para a COMERI) ────────────────
 function gerarMsgWA() {
-  const brand      = capitalize(S.brand);
-  const label      = getModeloLabel(S.brand, S.modelo);
-  const totais     = calcularTotais(S.brand, S.modelo, S.km);
-  const unidadeInfo= CONFIG.UNIDADES[S.unidade];
-  const tmoExib    = getTmo(S.brand, S.modelo, S.km);
-  const durLabel   = tmoExib >= 3 ? '3 horas' : tmoExib >= 1.5 ? '1h30' : '1 hora';
+  const brand       = capitalize(S.brand);
+  const label       = getModeloLabel(S.brand, S.modelo);
+  const totais      = calcularTotais(S.brand, S.modelo, S.km);
+  const unidadeInfo = CONFIG.UNIDADES[S.unidade];
+  const tmoExib     = getTmo(S.brand, S.modelo, S.km);
+  const durLabel    = tmoExib >= 3 ? '3 horas' : tmoExib >= 1.5 ? '1h30' : '1 hora';
 
   const linhas = [
     `🔔 *NOVO AGENDAMENTO — COMERI MOTOS*`,
@@ -502,13 +502,18 @@ function gerarMsgWA() {
     `⏱ Duração estimada: ${durLabel}`,
     ``,
     `💵 *Total estimado: R$ ${fmtBRL(totais.total)}*`,
-    S.cliente.obs ? `
-📝 Obs: ${S.cliente.obs}` : null,
+    S.cliente.obs ? `\n📝 Obs: ${S.cliente.obs}` : null,
   ].filter(l => l !== null);
 
-  return encodeURIComponent(linhas.join('\n'));
-}
+  // 1. Identifica o WhatsApp da loja selecionada (ou usa o central de fallback)
+  const numZap = (unidadeInfo && unidadeInfo.tel) ? unidadeInfo.tel : CONFIG.WA_NUM;
 
+  // 2. Codifica o texto para o formato URL
+  const textoEncoded = encodeURIComponent(linhas.join('\n'));
+
+  // 3. Retorna a URL final apontando especificamente para a loja escolhida
+  return `https://wa.me/${numZap}?text=${textoEncoded}`;
+}
 
 // ── UI: SELEÇÃO DE MARCA ──────────────────────────────
 function selectBrand(brand, el) {
@@ -753,10 +758,9 @@ function mostrarSucesso() {
   calInfo.style.display = 'none';
 
   // Botão WhatsApp → envia para a COMERI
-  const msg = gerarMsgWA();
   document.getElementById('btn-wa-final').onclick = () => {
-    window.open(`https://wa.me/${CONFIG.WA_NUM}?text=${msg}`, '_blank');
-  };
+  window.open(gerarMsgWA(), '_blank');
+};
 }
 
 // ── FLUXO: NAVEGAÇÃO ──────────────────────────────────

@@ -219,43 +219,68 @@
   </footer>
 
   <!-- CONFIGURAÇÕES — edite aqui -->
-  <script>
-    const CONFIG = {
-      // Número WhatsApp central da COMERI (DDI + DDD + número, só dígitos)
-      WA_NUM: '5513982065467',
+<script>
+  const CONFIG = {
+    // Número WhatsApp central da COMERI (caso precise de fallback)
+    WA_NUM: '5513982065467',
 
-      // Calendário Google — único para todas as unidades
-      // 'primary' = calendário padrão da conta logada
-      CALENDAR_ID: 'primary',
+    // Calendário Google — único para todas as unidades
+    // 'primary' = calendário padrão da conta logada
+    CALENDAR_ID: 'primary',
 
-      // Mão de obra padrão Haojue/Zontes (R$/h)
-      // Suzuki usa valor por cilindrada (definido nos dados de cada modelo)
-      MO_HORA: 110,
+    // Mão de obra padrão Haojue/Zontes (R$/h)
+    // Suzuki usa valor por cilindrada (definido nos dados de cada modelo)
+    MO_HORA: 110,
 
-      // Buffer de bloqueio após cada revisão (minutos)
-      BUFFER_MIN: 90,
+    // Buffer de bloqueio após cada revisão (minutos)
+    BUFFER_MIN: 90,
 
-      // Tamanho do slot (minutos) — deve bater com HORARIOS abaixo
-      SLOT_MIN: 30,
+    // Tamanho do slot (minutos) — deve bater com HORARIOS abaixo
+    SLOT_MIN: 30,
 
-      // Horários de atendimento
-      HORARIOS: [
-        '08:00','08:30','09:00','09:30',
-        '10:00','10:30','11:00',
-        '14:00','14:30',
-        '15:00','15:30','16:00','16:30'
-      ],
+    // Horários de atendimento
+    HORARIOS: [
+      '08:00','08:30','09:00','09:30',
+      '10:00','10:30','11:00',
+      '14:00','14:30',
+      '15:00','15:30','16:00','16:30'
+    ],
 
-      // Unidades — id, label, endereço, cor do badge
-      UNIDADES: {
-        guaruja:    { label: 'Guarujá',    end: 'Av. Ademar de Barros, 1501 - B', cor: '#E24B4A' },
-        santos:     { label: 'Santos',     end: 'R. Braz Cubas, 388',        cor: '#2563EB' },
-        sao_vicente:{ label: 'São Vicente',end: 'Av. Antônio Emmerich, 278',    cor: '#7C3AED' },
-        praia_grande:{ label:'Praia Grande',end:'Av. Pres. Kennedy, 2980 - B',           cor: '#059669' },
-        peruibe:    { label: 'Peruíbe',    end: 'Av. João Abel, 273 - B',         cor: '#D97706' },
-      }
-    };
-  </script>
+    // Unidades — id, label, endereço, cor do badge e WhatsApp da loja
+    UNIDADES: {
+      guaruja: { 
+        label: 'Guarujá', 
+        end: 'Av. Ademar de Barros, 1501 - B', 
+        cor: '#E24B4A',
+        tel: '5513991444073'
+      },
+      santos: { 
+        label: 'Santos', 
+        end: 'R. Braz Cubas, 388', 
+        cor: '#2563EB',
+        tel: '5513991148166'
+      },
+      sao_vicente: { 
+        label: 'São Vicente', 
+        end: 'Av. Antônio Emmerich, 278', 
+        cor: '#7C3AED',
+        tel: '5513991929661'
+      },
+      praia_grande: { 
+        label: 'Praia Grande', 
+        end: 'Av. Pres. Kennedy, 2980 - B', 
+        cor: '#059669',
+        tel: '5513988023567'
+      },
+      peruibe: { 
+        label: 'Peruíbe', 
+        end: 'Av. João Abel, 273 - B', 
+        cor: '#D97706',
+        tel: '5513996118940'
+      },
+    }
+  };
+</script>
 
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="/Ferramenta-TMO/agendamento/agendamento.js"></script>
