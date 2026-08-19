@@ -3,100 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agendamento de Serviços</title>
-  <style>
-    :root {
-      --primary: #0056b3;
-      --bg: #f4f6f9;
-      --card-bg: #ffffff;
-      --text: #333;
-      --border: #ddd;
-    }
-    body { font-family: Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
-    .container { max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    .step { display: none; }
-    .step.active { display: block; }
-    button { background: var(--primary); color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; margin-top: 10px; width: 100%; font-size: 16px; }
-    button:disabled { background: #ccc; cursor: not-allowed; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-top: 10px; }
-    .card-option { border: 1px solid var(--border); padding: 15px; border-radius: 6px; text-align: center; cursor: pointer; background: #fff; }
-    .card-option.selected { border-color: var(--primary); background: #e9f2ff; font-weight: bold; }
-    .time-slot { padding: 10px; border: 1px solid var(--border); text-align: center; border-radius: 4px; cursor: pointer; }
-    .time-slot.disabled { background: #fee; color: #999; cursor: not-allowed; border-color: #fcc; }
-    .time-slot.selected { background: var(--primary); color: #fff; }
-    .form-group { margin-bottom: 15px; text-align: left; }
-    .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-    .form-group input, .form-group select { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid var(--border); border-radius: 4px; }
-    .badge { display: inline-block; padding: 4px 8px; background: #eee; border-radius: 4px; font-size: 12px; margin-bottom: 10px; }
-  </style>
+  <title>Agendamento de Revisão — COMERI MOTOS</title>
+  <link rel="stylesheet" href="/Ferramenta-TMO/agendamento/agendamento.css">
 </head>
 <body>
 
-<div class="container">
-  <div id="badge-unidade" class="badge"></div>
-
-  <!-- STEP 0: Seleção de Marca -->
-  <div id="step-0" class="step active">
-    <h2>Selecione a Marca</h2>
-    <div class="grid">
-      <div class="card-option" onclick="selecionarMarca('Suzuki')">Suzuki</div>
-      <div class="card-option" onclick="selecionarMarca('Haojue')">Haojue</div>
-      <div class="card-option" onclick="selecionarMarca('Kymco')">Kymco</div>
+  <header class="site-header">
+    <div class="header-brand">
+      <span class="header-title">Agendamento de Revisão</span>
+      <span class="header-sub">Suzuki · Haojue · Zontes</span>
     </div>
-  </div>
+  </header>
 
-  <!-- STEP 1: Seleção de Unidade -->
-  <div id="step-1" class="step">
-    <h2>Selecione a Unidade</h2>
-    <div class="grid" id="unidades-container"></div>
-    <button onclick="mudarPasso(0)">Voltar</button>
-  </div>
+  <main class="container">
 
-  <!-- STEP 2: Data e Horário -->
-  <div id="step-2" class="step">
-    <h2>Escolha Data e Horário</h2>
-    <div class="form-group">
-      <label for="data-agendamento">Data:</label>
-      <input type="date" id="data-agendamento" onchange="onDateChange(this.value)">
-    </div>
-    <div id="time-grid" class="grid"></div>
-    <button onclick="mudarPasso(1)">Voltar</button>
-    <button id="btn-step2-next" onclick="mudarPasso(3)" disabled>Avançar</button>
-  </div>
+    <!-- STEPPER (6 etapas) -->
+    <nav class="stepper" aria-label="Etapas do agendamento">
+      <div class="step active" id="st0"><div class="step-circle">1</div><div class="step-label">Unidade</div></div>
+      <div class="step" id="st1"><div class="step-circle">2</div><div class="step-label">Veículo</div></div>
+      <div class="step" id="st2"><div class="step-circle">3</div><div class="step-label">Revisão</div></div>
+      <div class="step" id="st3"><div class="step-circle">4</div><div class="step-label">Data/Hora</div></div>
+      <div class="step" id="st4"><div class="step-circle">5</div><div class="step-label">Dados</div></div>
+      <div class="step" id="st5"><div class="step-circle">6</div><div class="step-label">Resumo</div></div>
+    </nav>
 
-  <!-- STEP 3: Dados do Cliente e Veículo -->
-  <div id="step-3" class="step">
-    <h2>Dados para Agendamento</h2>
-    <form id="form-agendamento" onsubmit="finalizarAgendamento(event)">
-      <div class="form-group">
-        <label for="nome">Nome Completo:</label>
-        <input type="text" id="nome" required>
+    <!-- STEP 1: UNIDADE -->
+    <section class="panel active" id="panel0" aria-label="Selecione a unidade">
+      <h2 class="panel-title">Qual unidade você prefere?</h2>
+      <div class="unidade-grid" id="unidade-grid">
+        <button class="unidade-card" onclick="selectUnidade('guaruja', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">Guarujá</div>
+          <div class="unidade-end">Av. Ademar de Barros, 1501 - B</div>
+        </button>
+        <button class="unidade-card" onclick="selectUnidade('santos', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">Santos</div>
+          <div class="unidade-end">R. Braz Cubas, 388</div>
+        </button>
+        <button class="unidade-card" onclick="selectUnidade('sao_vicente', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">São Vicente</div>
+          <div class="unidade-end">Av. Antônio Emmerich, 278</div>
+        </button>
+        <button class="unidade-card" onclick="selectUnidade('praia_grande', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">Praia Grande</div>
+          <div class="unidade-end">Av. Pres. Kennedy, 2980 - B</div>
+        </button>
+        <button class="unidade-card" onclick="selectUnidade('peruibe', this)" aria-pressed="false">
+          <div class="unidade-icon">📍</div>
+          <div class="unidade-nome">Peruíbe</div>
+          <div class="unidade-end">Av. João Abel, 273 - B</div>
+        </button>
       </div>
-      <div class="form-group">
-        <label for="telefone">WhatsApp / Telefone:</label>
-        <input type="tel" id="telefone" placeholder="(13) 99999-9999" required>
+      <p class="alert" id="alert0" role="alert" hidden>Selecione a unidade para continuar.</p>
+      <div class="nav-row">
+        <span></span>
+        <button class="btn-next" onclick="goNext(0)">Próximo &#8594;</button>
       </div>
-      <div class="form-group">
-        <label for="modelo">Modelo da Moto:</label>
-        <input type="text" id="modelo" required>
+    </section>
+
+    <!-- STEP 2: MARCA / MODELO -->
+    <section class="panel" id="panel1" aria-label="Selecione o veículo">
+      <h2 class="panel-title">Selecione a marca</h2>
+      <div class="unidade-badge" id="unidade-badge-1"></div>
+      <div class="brand-grid">
+        <button class="brand-card" onclick="selectBrand('suzuki', this)" aria-pressed="false">
+          <img src="/Ferramenta-TMO/images/LOGO SUZUKI.png" alt="Suzuki" class="brand-logo">
+          <span class="brand-name">Suzuki</span>
+        </button>
+        <button class="brand-card" onclick="selectBrand('haojue', this)" aria-pressed="false">
+          <img src="/Ferramenta-TMO/images/LOGO HAOJUE.jpg" alt="Haojue" class="brand-logo">
+          <span class="brand-name">Haojue</span>
+        </button>
+        <button class="brand-card" onclick="selectBrand('zontes', this)" aria-pressed="false">
+          <img src="/Ferramenta-TMO/images/LOGO ZONTES.png" alt="Zontes" class="brand-logo">
+          <span class="brand-name">Zontes</span>
+        </button>
       </div>
-      <div class="form-group">
-        <label for="servico">Tipo de Serviço:</label>
-        <select id="servico" required>
-          <option value="">Selecione...</option>
-          <option value="Revisão Periódica">Revisão Periódica</option>
-          <option value="Manutenção / Reparo">Manutenção / Reparo</option>
-          <option value="Garantia / Recall">Garantia / Recall</option>
+      <div class="field" id="model-field" hidden>
+        <label for="model-select">Modelo</label>
+        <select id="model-select">
+          <option value="">— Selecione o modelo —</option>
         </select>
       </div>
-      <button type="button" onclick="mudarPasso(2)">Voltar</button>
-      <button type="submit" id="btn-finalizar">Confirmar Agendamento</button>
-    </form>
-  </div>
-</div>
+      <p class="alert" id="alert1" role="alert" hidden>Selecione a marca e o modelo para continuar.</p>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack(1)">&#8592; Voltar</button>
+        <button class="btn-next" onclick="goNext(1)">Próximo &#8594;</button>
+      </div>
+    </section>
 
-<!-- Configurações Globais (Devam ficar ANTES dos scripts operacionais) -->
-<script>
+    <!-- STEP 3: QUILOMETRAGEM -->
+    <section class="panel" id="panel2" aria-label="Selecione a quilometragem">
+      <h2 class="panel-title">Quilometragem da revisão</h2>
+      <div class="unidade-badge" id="unidade-badge-2"></div>
+      <div class="km-grid" id="km-grid"></div>
+      <div class="aviso-preco" role="note">
+        <span class="aviso-icon">&#9432;</span>
+        Os preços informados neste site são sugeridos, podendo variar de acordo com a região. Consulte a concessionária de sua preferência e confira as condições. Sujeito a disponibilidade de estoque no momento da consulta.
+      </div>
+      <p class="alert" id="alert2" role="alert" hidden>Selecione a quilometragem de revisão.</p>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack(2)">&#8592; Voltar</button>
+        <button class="btn-next" onclick="goNext(2)">Próximo &#8594;</button>
+      </div>
+    </section>
+
+    <!-- STEP 4: DATA / HORA -->
+    <section class="panel" id="panel3" aria-label="Escolha data e horário">
+      <h2 class="panel-title">Data e horário</h2>
+      <div class="unidade-badge" id="unidade-badge-3"></div>
+      <div class="integration-note">
+        <span class="badge badge-cal">&#128197; Google Calendar</span>
+        <span class="note-text">Horários ocupados desta unidade são bloqueados automaticamente</span>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label for="appt-date">Data</label>
+          <input type="date" id="appt-date" onchange="onDateChange(this.value)">
+        </div>
+        <div class="field">
+          <label for="duration-display">Duração estimada</label>
+          <input type="text" id="duration-display" readonly>
+        </div>
+      </div>
+      <div class="field">
+        <label>Horário disponível</label>
+        <div class="cal-status" id="cal-status"></div>
+        <div class="time-grid" id="time-grid"></div>
+      </div>
+      <p class="alert" id="alert3" role="alert" hidden>Selecione uma data e um horário disponível.</p>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack(3)">&#8592; Voltar</button>
+        <button class="btn-next" onclick="goNext(3)">Próximo &#8594;</button>
+      </div>
+    </section>
+
+    <!-- STEP 5: DADOS DO CLIENTE -->
+    <section class="panel" id="panel4" aria-label="Dados do cliente">
+      <h2 class="panel-title">Dados do cliente</h2>
+      <div class="unidade-badge" id="unidade-badge-4"></div>
+      <div class="field">
+        <label for="cli-nome">Nome completo</label>
+        <input type="text" id="cli-nome" placeholder="Ex: João da Silva" autocomplete="name">
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label for="cli-tel">Telefone / WhatsApp</label>
+          <input type="tel" id="cli-tel" placeholder="(13) 99999-9999" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="cli-placa">Placa da moto</label>
+          <input type="text" id="cli-placa" placeholder="ABC-1D23" style="text-transform:uppercase" maxlength="8">
+        </div>
+      </div>
+      <div class="field">
+        <label for="cli-odo">Quilometragem atual do odômetro</label>
+        <input type="number" id="cli-odo" placeholder="Ex: 12500" min="0">
+      </div>
+      <div class="field">
+        <label for="cli-obs">Observações (opcional)</label>
+        <input type="text" id="cli-obs" placeholder="Barulho no motor, troca adiantada...">
+      </div>
+      <p class="alert" id="alert4" role="alert" hidden>Preencha nome, telefone e placa.</p>
+      <div class="nav-row">
+        <button class="btn-back" onclick="goBack(4)">&#8592; Voltar</button>
+        <button class="btn-next" onclick="goNext(4)">Revisar &#8594;</button>
+      </div>
+    </section>
+
+    <!-- STEP 6: RESUMO / CONFIRMAÇÃO -->
+    <section class="panel" id="panel5" aria-label="Resumo do agendamento">
+      <h2 class="panel-title">Confirmar agendamento</h2>
+      <div class="badge-row">
+        <span class="badge badge-cal">&#128197; Google Calendar</span>
+        <span class="badge badge-sheets">&#128202; Google Sheets</span>
+        <span class="badge badge-wa">&#128242; WhatsApp</span>
+      </div>
+      <div class="summary-card" id="summary-content"></div>
+      <div class="aviso-preco" role="note">
+        <span class="aviso-icon">&#9432;</span>
+        Os preços informados neste site são sugeridos, podendo variar de acordo com a região. Consulte a concessionária de sua preferência e confira as condições. Sujeito a disponibilidade de estoque no momento da consulta.
+      </div>
+      <div class="confirming-overlay" id="confirming-overlay" hidden>
+        <div class="spinner" aria-label="Carregando"></div>
+        <p id="confirming-step">Criando evento no Google Calendar...</p>
+      </div>
+      <div class="nav-row" id="confirm-nav">
+        <button class="btn-back" onclick="goBack(5)">&#8592; Voltar</button>
+        <button class="btn-confirm" onclick="confirmar()">&#10003; Confirmar agendamento</button>
+      </div>
+    </section>
+
+    <!-- STEP 7: SUCESSO -->
+    <section class="panel" id="panel6" aria-label="Agendamento confirmado">
+      <div class="success-screen">
+        <div class="success-icon" aria-hidden="true">&#10003;</div>
+        <h2 class="success-title">Agendamento confirmado!</h2>
+        <p class="success-sub" id="success-sub"></p>
+        <div class="summary-card" id="success-summary"></div>
+        <div class="cal-event-info" id="cal-event-info"></div>
+        <div class="action-btns">
+          <button class="btn-wa" id="btn-wa-final">&#128242; Notificar COMERI via WhatsApp</button>
+          <button class="btn-back" onclick="resetApp()">+ Novo agendamento</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    &copy; 2025 Portal TMO Oficina – Suzuki, Haojue e Zontes
+  </footer>
+
+ <script>
   const CONFIG = {
     APPS_SCRIPT_URL: "https://script.google.com/macros/s/SEU_SCRIPT_ID_AQUI/exec",
     WA_NUM: "5513999999999",
@@ -264,5 +386,7 @@
     window.location.href = url;
   }
 </script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="/Ferramenta-TMO/agendamento/agendamento.js"></script>
 </body>
 </html>
