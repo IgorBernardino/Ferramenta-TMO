@@ -205,30 +205,53 @@
       document.getElementById('r-cancelado').textContent = lista.filter(a=>a.status==='Cancelado').length;
     }
 
-    function renderCalendario(lista) {
-      const cal = document.getElementById('cal-grid');
-      cal.innerHTML = '';
+    // ── RENDER CALENDÁRIO 
+function renderCalendario(lista) {
+  const cal = document.getElementById('cal-grid');
+  cal.innerHTML = '';
 
-      const primeiro = new Date(anoFiltro, mesFiltro, 1);
-      const ultimoDia= new Date(anoFiltro, mesFiltro+1, 0).getDate();
-      const diaSemIni= primeiro.getDay(); // 0=Dom
+  const primeiro = new Date(anoFiltro, mesFiltro, 1);
+  const ultimoDia= new Date(anoFiltro, mesFiltro+1, 0).getDate();
+  const diaSemIni= primeiro.getDay(); // 0=Dom
 
-      // Células vazias antes do dia 1
-      for (let i = 0; i < diaSemIni; i++) {
-        cal.appendChild(criarCelulaVazia());
-      }
+  for (let i = 0; i < diaSemIni; i++) {
+    cal.appendChild(criarCelulaVazia());
+  }
 
-      const hoje = new Date();
+  const hoje = new Date();
 
-      for (let d = 1; d <= ultimoDia; d++) {
-        const dateStr = `${String(d).padStart(2,'0')}/${String(mesFiltro+1).padStart(2,'0')}/${anoFiltro}`;
-        const dodia   = lista.filter(a => a.dataRevisao === dateStr && a.status !== 'Cancelado');
-        const celula  = criarCelulaDia(d, dateStr, dodia, hoje);
-        cal.appendChild(celula);
-      }
-
-      document.getElementById('calendario').hidden = false;
+  // Função auxiliar para padronizar qualquer formato de data para YYYY-MM-DD
+  function normalizarData(dt) {
+    if (!dt) return '';
+    const str = String(dt).trim().split('T')[0];
+    if (str.includes('/')) {
+      const p = str.split('/');
+      if (p.length === 3) return `${p[2]}-${p[1].padStart(2,'0')}-${p[0].padStart(2,'0')}`;
     }
+    return str;
+  }
+
+  const mesStr = String(mesFiltro + 1).padStart(2, '0');
+
+  for (let d = 1; d <= ultimoDia; d++) {
+    const diaStr = String(d).padStart(2, '0');
+    const dataAlvoISO = `${anoFiltro}-${mesStr}-${diaStr}`; // Formato YYYY-MM-DD
+    const dateStrExibicao = `${diaStr}/${mesStr}/${anoFiltro}`;
+
+    // Filtra agendamentos comparando em formato YYYY-MM-DD
+    const dodia = lista.filter(a => {
+      const st = String(a.status || '').trim();
+      const dtRaw = a.dataRevisao || a.data || '';
+      const dtISO = normalizarData(dtRaw);
+      return dtISO === dataAlvoISO && st !== 'Cancelado';
+    });
+
+    const celula = criarCelulaDia(d, dateStrExibicao, dodia, hoje);
+    cal.appendChild(celula);
+  }
+
+  document.getElementById('calendario').hidden = false;
+}
 
     function criarCelulaVazia() {
       const div = document.createElement('div');
