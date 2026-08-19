@@ -410,7 +410,7 @@ const S = {
 // ── APPS SCRIPT BACKEND ──────────────────────────────
 // URL gerada ao publicar o Apps Script como Web App.
 // Substitua pelo valor real após publicar em script.google.com
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzS-CpP_kAUDfMUt-bXY_w2TOD007yq2jDMSC5GHXrkZKMX92TbPpqDZOBQlTEeCE6u/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKGN_wcJColdRMOJ6BzD-abfSxgj3RmXoazXSujjRTPc66H_XUIx2FVe_VKsaZ0RxFzQ/exec';
 
 async function chamarBackend(payload) {
   // Apps Script Web Apps não suportam CORS preflight com POST+JSON.
