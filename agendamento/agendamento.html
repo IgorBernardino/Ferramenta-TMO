@@ -218,174 +218,46 @@
     &copy; 2025 Portal TMO Oficina – Suzuki, Haojue e Zontes
   </footer>
 
- <script>
-  const CONFIG = {
-    APPS_SCRIPT_URL: "https://script.google.com/macros/s/SEU_SCRIPT_ID_AQUI/exec",
-    WA_NUM: "5513999999999",
-    UNIDADES: {
-      "Santos": { tel: "5513999990001", endereco: "Av. Ana Costa, Santos - SP" },
-      "São Vicente": { tel: "5513999990002", endereco: "Av. Presidente Wilson, São Vicente - SP" },
-      "Praia Grande": { tel: "5513999990003", endereco: "Av. Ayrton Senna, Praia Grande - SP" },
-      "Guarujá": { tel: "5513999990004", endereco: "Av. Adhemar de Barros, Guarujá - SP" },
-      "Peruíbe": { tel: "5513999990005", endereco: "Av. Padre Anchieta, Peruíbe - SP" }
-    },
-    HORARIOS: ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"]
-  };
+  <!-- CONFIGURAÇÕES — edite aqui -->
+  <script>
+    const CONFIG = {
+      // URL do AppScript
+      APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwhN5FzPcrTTtBjy39zuDLgfGAEXHnwwsqNeSPue8YbIfF7fEfkOEcsngRW_Ikviz82sg/exec',
 
-  let estadoAgendamento = {
-    marca: "",
-    unidade: "",
-    data: "",
-    horario: "",
-    cliente: {}
-  };
-</script>
+      // Número de fallback se a unidade não tiver telefone definido
+      WA_NUM_PADRAO: '5513982065467',
 
-<script>
-  // Lógica de manipulação da aplicação
-  function mudarPasso(passo) {
-    document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
-    document.getElementById(`step-${passo}`).classList.add('active');
-  }
+      // Calendário Google
+      CALENDAR_ID: 'primary',
 
-  function selecionarMarca(marca) {
-    estadoAgendamento.marca = marca;
-    renderUnidades();
-    mudarPasso(1);
-  }
+      // Mão de obra padrão Haojue/Zontes (R$/h)
+      MO_HORA: 110,
 
-  function renderUnidades() {
-    const container = document.getElementById('unidades-container');
-    container.innerHTML = '';
-    Object.keys(CONFIG.UNIDADES).forEach(unidade => {
-      const card = document.createElement('div');
-      card.className = 'card-option';
-      card.innerText = unidade;
-      card.onclick = () => selecionarUnidade(unidade);
-      container.appendChild(card);
-    });
-  }
+      // Buffer de bloqueio após cada revisão (minutos)
+      BUFFER_MIN: 90,
 
-  function selecionarUnidade(unidade) {
-    estadoAgendamento.unidade = unidade;
-    document.getElementById('badge-unidade').innerText = `Unidade: ${unidade} | Marca: ${estadoAgendamento.marca}`;
-    
-    // Configurar limite do DatePicker (Data mínima: Hoje)
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById('data-agendamento').min = today;
-    
-    mudarPasso(2);
-  }
+      // Tamanho do slot (minutos)
+      SLOT_MIN: 30,
 
-  async function onDateChange(data) {
-    if (!data) return;
-    estadoAgendamento.data = data;
-    estadoAgendamento.horario = "";
-    document.getElementById('btn-step2-next').disabled = true;
+      // Horários de atendimento
+      HORARIOS: [
+        '08:00','08:30','09:00','09:30',
+        '10:00','10:30','11:00',
+        '14:00','14:30',
+        '15:00','15:30','16:00','16:30'
+      ],
 
-    const grid = document.getElementById('time-grid');
-    grid.innerHTML = '<p>Buscando horários disponíveis...</p>';
-
-    try {
-      const ocupados = await consultarHorariosOcupados(data, estadoAgendamento.unidade);
-      buildTimeGrid(ocupados);
-    } catch (err) {
-      grid.innerHTML = '<p style="color:red;">Erro ao carregar horários. Tente novamente.</p>';
-    }
-  }
-
-  async function consultarHorariosOcupados(data, unidade) {
-    const response = await chamarBackend({
-      action: 'horarios_ocupados',
-      data: data,
-      unidade: unidade
-    });
-    return response.ocupados || [];
-  }
-
-  function buildTimeGrid(ocupados) {
-    const grid = document.getElementById('time-grid');
-    grid.innerHTML = '';
-
-    CONFIG.HORARIOS.forEach(hora => {
-      const slot = document.createElement('div');
-      const isOcupado = ocupados.includes(hora);
-      
-      slot.className = `time-slot ${isOcupado ? 'disabled' : ''}`;
-      slot.innerText = hora;
-
-      if (!isOcupado) {
-        slot.onclick = () => {
-          document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-          slot.classList.add('selected');
-          estadoAgendamento.horario = hora;
-          document.getElementById('btn-step2-next').disabled = false;
-        };
+      // Unidades com números de WhatsApp atualizados da Baixada Santista
+      UNIDADES: {
+        guaruja:    { label: 'Guarujá',     end: 'Av. Ademar de Barros, 1501 - B', cor: '#E24B4A', tel: '5513991444073' },
+        santos:     { label: 'Santos',      end: 'R. Braz Cubas, 388',         cor: '#2563EB', tel: '5513991148166' },
+        sao_vicente:{ label: 'São Vicente', end: 'Av. Antônio Emmerich, 278',    cor: '#7C3AED', tel: '5513991929661' },
+        praia_grande:{ label:'Praia Grande',end: 'Av. Pres. Kennedy, 2980 - B',  cor: '#059669', tel: '5513988023567' },
+        peruibe:    { label: 'Peruíbe',     end: 'Av. João Abel, 273 - B',      cor: '#D97706', tel: '5513996118940' }
       }
-      grid.appendChild(slot);
-    });
-  }
-
-  async function finalizarAgendamento(e) {
-    e.preventDefault();
-    const btn = document.getElementById('btn-finalizar');
-    btn.disabled = true;
-    btn.innerText = "Agendando...";
-
-    estadoAgendamento.cliente = {
-      nome: document.getElementById('nome').value,
-      telefone: document.getElementById('telefone').value,
-      modelo: document.getElementById('modelo').value,
-      servico: document.getElementById('servico').value
     };
+  </script>
 
-    try {
-      const res = await chamarBackend({
-        action: 'confirmar_agendamento',
-        ...estadoAgendamento
-      });
-
-      if (res.status === 'success') {
-        alert('Agendamento realizado com sucesso!');
-        redirecionarWhatsApp();
-      } else {
-        alert('Erro ao agendar: ' + (res.message || 'Tente novamente.'));
-      }
-    } catch (err) {
-      alert('Erro de comunicação com o servidor.');
-    } finally {
-      btn.disabled = false;
-      btn.innerText = "Confirmar Agendamento";
-    }
-  }
-
-  async function chamarBackend(payload) {
-    const params = new URLSearchParams();
-    params.append('payload', JSON.stringify(payload));
-
-    const response = await fetch(CONFIG.APPS_SCRIPT_URL, {
-      method: 'POST',
-      body: params
-    });
-    return await response.json();
-  }
-
-  function redirecionarWhatsApp() {
-    const infoUnidade = CONFIG.UNIDADES[estadoAgendamento.unidade];
-    const rawTel = (infoUnidade && infoUnidade.tel) ? infoUnidade.tel : CONFIG.WA_NUM;
-    const numZap = rawTel.replace(/\D/g, ''); // Remove caracteres não numéricos
-
-    const msg = `Olá! Fiz um agendamento pelo site.
-*Nome:* ${estadoAgendamento.cliente.nome}
-*Marca/Modelo:* ${estadoAgendamento.marca} - ${estadoAgendamento.cliente.modelo}
-*Serviço:* ${estadoAgendamento.cliente.servico}
-*Unidade:* ${estadoAgendamento.unidade}
-*Data/Hora:* ${estadoAgendamento.data} às ${estadoAgendamento.horario}`;
-
-    const url = `https://wa.me/${numZap}?text=${encodeURIComponent(msg)}`;
-    window.location.href = url;
-  }
-</script>
   <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="/Ferramenta-TMO/agendamento/agendamento.js"></script>
 </body>
