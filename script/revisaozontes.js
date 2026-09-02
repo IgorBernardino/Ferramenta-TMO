@@ -49,6 +49,40 @@ const dadosRevisao = {
     24000: [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
     tmo:{1000:0.0,4000:0.8,8000:1.2,12000:0.8,16000:1.2,20000:2.0,24000:1.5},
   }
+
+  '350E': {
+            1000: [
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
+                { codigo: '1050871006000', nome: 'Filtro de Óleo', qtd: 1, valor: 120.00 }
+            ],
+            3000: [
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            ],
+            6000: [
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
+                { codigo: '1050871006000', nome: 'Filtro de Óleo', qtd: 1, valor: 120.00 }
+            ],
+            9000: [
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            ],
+            12000: [
+                { codigo: '1226400175000', nome: 'Filtro de Ar', qtd: 1, valor: 180.00 },
+                { codigo: '1050970004000', nome: 'Velas', qtd: 1, valor: 165.00 },
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
+                { codigo: '1050871006000', nome: 'Filtro de Óleo', qtd: 1, valor: 120.00 },
+                { codigo: '319717', nome: 'Líquido Arrefecimento', qtd: 1, valor: 30.00 }
+            ],
+            15000: [
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 }
+            ],
+            18000: [
+                { codigo: 'MT114', nome: 'Óleo do Motor', qtd: 2, valor: 70.00 },
+                { codigo: '1050871006000', nome: 'Filtro de Óleo', qtd: 1, valor: 120.00 },
+                { codigo: '1050771003000', nome: 'Correia CVT', qtd: 1, valor: 1150.00 },
+                { codigo: '324950', nome: 'Fluido de Freio', qtd: 1, valor: 22.00 }
+            ],
+            tmo: { 1000: 0.5, 3000: 0.5, 6000: 0.5, 9000: 0.5, 12000: 1.5, 15000: 0.5, 18000: 2.5 }
+        }
 };
 
 dadosRevisao.T350  = dadosRevisao.V350;
