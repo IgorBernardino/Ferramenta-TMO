@@ -288,7 +288,16 @@ function atualizarCardVeiculo(modelo) { atualizarImagemVeiculo(); }
 function atualizarKmPorVeiculo(veiculo) {
     var sel = document.getElementById('kmSelect');
     sel.innerHTML = '<option value="">Selecione o KM</option>';
-    KM_LISTA.forEach(function(km) {
+
+    /* Cada modelo lista só os KM que realmente tem peças cadastradas.
+       A Lindy 125, por exemplo, vai até 36.000 km — sem isso a tela
+       oferecia até 57.000 km e cobrava mão de obra sem peça nenhuma. */
+    var dv    = dadosRevisao[veiculo];
+    var kms   = dv
+        ? Object.keys(dv).filter(function(k){ return !isNaN(k); }).map(Number).sort(function(a,b){ return a-b; })
+        : KM_LISTA;
+
+    kms.forEach(function(km) {
         var o = document.createElement('option');
         o.value = km;
         o.textContent = km.toLocaleString('pt-BR') + ' km';

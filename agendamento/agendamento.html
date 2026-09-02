@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agendamento de Revisão — COMERI MOTOS</title>
+  <meta name="description" content="Agende a revisão da sua moto Suzuki, Haojue ou Zontes em uma das 5 unidades COMERI da Baixada Santista.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>">
   <link rel="stylesheet" href="/Ferramenta-TMO/agendamento/agendamento.css">
 </head>
 <body>
+
+  <a href="/Ferramenta-TMO/index.html" class="btn-home" title="Início">🏠</a>
 
   <header class="site-header">
     <div class="header-brand">
@@ -152,11 +156,13 @@
       <div class="two-col">
         <div class="field">
           <label for="cli-tel">Telefone / WhatsApp</label>
-          <input type="tel" id="cli-tel" placeholder="(13) 99999-9999" autocomplete="tel">
+          <input type="tel" id="cli-tel" placeholder="(13) 99999-9999" autocomplete="tel"
+                 inputmode="tel" maxlength="16" pattern="[0-9()+- ]{10,16}">
         </div>
         <div class="field">
           <label for="cli-placa">Placa da moto</label>
-          <input type="text" id="cli-placa" placeholder="ABC-1D23" style="text-transform:uppercase" maxlength="8">
+          <input type="text" id="cli-placa" placeholder="ABC-1D23" style="text-transform:uppercase" maxlength="8"
+                 pattern="[A-Za-z]{3}-?[0-9][A-Za-z0-9][0-9]{2}" title="Formato ABC-1D23 ou ABC-1234">
         </div>
       </div>
       <div class="field">
@@ -258,7 +264,6 @@
     };
   </script>
 
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
   <script src="/Ferramenta-TMO/agendamento/agendamento.js"></script>
 </body>
 </html>

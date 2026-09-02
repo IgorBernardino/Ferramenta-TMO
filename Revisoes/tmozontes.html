@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Calculadora de Revisão Zontes</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏍️</text></svg>">
+  <meta name="description" content="Calculadora de revisão Zontes: peças, códigos, TMO e checklist por quilometragem.">
     <link rel="stylesheet" href="/Ferramenta-TMO/style/revisoes.css">
 </head>
 <body>
@@ -35,7 +37,8 @@
                     <option value="GK350">GK 350</option>
                     <option value="S350">S 350</option>
                     <option value="R350">R 350</option>
-                    <option value="E350">350 E</option>
+                    <option value="E350">350 E (a partir de 01/02/2026)</option>
+                    <option value="E350_ANTIGA">350 E (antiga — até 31/01/2026)</option>
                     <option value="ZT368G">368G</option>
                 </select>
                 <select id="kmSelect">
@@ -68,7 +71,7 @@
 
         <!-- CHECKLIST -->
         <div class="secao-checklist" id="secaoChecklist" style="display:none;">
-            <div class="ck-header" onclick="toggleChecklist()">
+            <div class="ck-header">
                 <div class="ck-header-left">
                     <div class="ck-icon">📋</div>
                     <div>

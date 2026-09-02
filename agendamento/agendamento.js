@@ -41,8 +41,8 @@ const DADOS = {
 
   // ── ZONTES ────────────────────────────────────────────
   zontes: {
-    modelos: ['V350','T350','GK350','S350','R350','E350','E350_ANTIGA'],
-    labels:  ['V 350','T 350 / T 350 X','GK 350','S 350','R 350','350 E','350 E (Antiga)'],
+    modelos: ['V350','T350','GK350','S350','R350','E350','E350_ANTIGA','ZT368G'],
+    labels:  ['V 350','T 350 / T 350 X','GK 350','S 350','R 350','350 E (a partir de 01/02/2026)','350 E (antiga — até 31/01/2026)','368G'],
     TMO_HORA: 350,
     pecas350: {
       1000: [{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
@@ -67,16 +67,21 @@ const DADOS = {
       57000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
     },
     tmo350: {1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:1.0,21000:0.3,24000:1.5,27000:0.3,30000:0.6,33000:0.3,36000:1.5,39000:0.3,42000:0.6,45000:0.3,48000:1.5,51000:0.3,54000:1.0,57000:1.5},
+    /* Espelha revisaozontes.js -> dadosRevisao.E350. O 1.000 km sai R$ 260
+       (oleo + filtro), confirmado pela oficina: antes somava filtro do CVT e
+       oleo de caixa, que nao entram nessa revisao. */
     pecasE350: {
-      1000: [{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Filtro do CVT',qtd:1,valor:84},{nome:'Óleo Caixa Transm. Final',qtd:1,valor:70}],
-      4000: [{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do CVT',qtd:1,valor:84},{nome:'Óleo Caixa Transm. Final',qtd:1,valor:70}],
-      8000: [{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Filtro do CVT',qtd:1,valor:84}],
-      12000:[{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do CVT',qtd:1,valor:84}],
-      16000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Filtro do CVT',qtd:1,valor:84},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Óleo Caixa Transm. Final',qtd:1,valor:70}],
-      20000:[{nome:'Correia CVT',qtd:1,valor:1150},{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do CVT',qtd:1,valor:84}],
-      24000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Filtro do CVT',qtd:1,valor:84},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Óleo Caixa Transm. Final',qtd:1,valor:70}],
+      1000: [{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120}],
+      4000: [{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro Esponja Motor (ZT350-E)',qtd:1,valor:84}],
+      8000: [{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120}],
+      12000:[{nome:'Óleo de Motor',qtd:2,valor:70}],
+      16000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+      20000:[{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Correia CVT',qtd:1,valor:1150}],
+      24000:[{nome:'Óleo de Motor',qtd:2,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Fluido de Freio',qtd:1,valor:22}],
     },
-    tmoE350: {1000:0.0,4000:0.5,8000:0.8,12000:1.2,16000:1.0,20000:0.3,24000:2.0},
+    tmoE350: {1000:0.0,4000:0.5,8000:0.8,12000:0.3,16000:1.0,20000:0.3,24000:2.0},
+    /* Preco fechado por revisao (mesma tabela de revisaozontes.js). */
+    pacoteE350: {1000:260,4000:660,8000:980,12000:800,16000:980,20000:2300,24000:1200},
 
     // 350E ANTIGA — ciclo de 3.000 km (tabela revisão antiga)
     pecasE350Antiga: {
@@ -98,13 +103,25 @@ const DADOS = {
       1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:2.0,
       21000:0.3,24000:0.6,27000:0.3,30000:1.5,33000:0.3,36000:2.0,
     },
+
+    /* 368G — migrada da Suzuki (estava cadastrada como GSX_S800_368G).
+       É uma Zontes: usa TMO_HORA da marca (R$ 350/h), não a tabela Suzuki.
+       Peças e TMO espelham revisaozontes.js → dadosRevisao.ZT368G. */
+    pecas368G: {
+      1000: [{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
+      6000: [{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{nome:'Filtro de Ar (elemento)',qtd:1,valor:120}],
+      12000:[{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
+      18000:[{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{nome:'Filtro de Ar (elemento)',qtd:1,valor:120},{nome:'Correia de Transmissão CVT',qtd:1,valor:1150}],
+      24000:[{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:70},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{nome:'Fluido de Freio',qtd:1,valor:22}],
+    },
+    tmo368G: {1000:0.0,6000:0.8,12000:1.2,18000:2.0,24000:1.5},
   },
 
   // ── SUZUKI ────────────────────────────────────────────
   suzuki: {
-    modelos: ['BURGMAN_I','GSX800','HAYABUSA','GSXR1000','GSX750','GSXS1000','SV650A','VSTROM650','VSTROM800','VSTROM1000','VSTROM1050XT','GSX_S800_368G'],
-    labels:  ['Burgman i','GSX 800','Hayabusa GSX1300R','GSX-R1000','GSX 750','GSX-S1000A','SV 650A','V-Strom 650 A','V-Strom 800 DE','V-Strom 1050','V-Strom 1050 XT','GSX-S 800 (368G)'],
-    tmoHora: {BURGMAN_I:100,GSX800:800,HAYABUSA:1300,GSXR1000:1000,GSX750:750,GSXS1000:1000,SV650A:650,VSTROM650:650,VSTROM800:800,VSTROM1000:1000,VSTROM1050XT:1050,GSX_S800_368G:800},
+    modelos: ['BURGMAN_I','GSX800','HAYABUSA','GSXR1000','GSX750','GSXS1000','SV650A','VSTROM650','VSTROM800','VSTROM1000','VSTROM1050XT'],
+    labels:  ['Burgman i','GSX 800','Hayabusa GSX1300R','GSX-R1000','GSX 750','GSX-S1000A','SV 650A','V-Strom 650 A','V-Strom 800 DE','V-Strom 1050','V-Strom 1050 XT'],
+    tmoHora: {BURGMAN_I:100,GSX800:800,HAYABUSA:1300,GSXR1000:1000,GSX750:750,GSXS1000:1000,SV650A:650,VSTROM650:650,VSTROM800:800,VSTROM1000:1000,VSTROM1050XT:1050},
     tmo: {
       BURGMAN_I:   {1000:0,6000:0,12000:0.8,18000:2.5,24000:1,30000:1,36000:2.5,42000:1,48000:1,54000:2.5,60000:1},
       GSX800:      {1000:0,6000:0,12000:0.4,18000:0.2,24000:0.4,30000:0.2,36000:0.4,42000:0.2,48000:0.4,54000:0.2,60000:0.4},
@@ -117,7 +134,6 @@ const DADOS = {
       VSTROM800:   {1000:0,6000:0,12000:0.4,18000:0.2,24000:0.4,30000:0.2,36000:0.4,42000:0.2,48000:0.4,54000:0.2,60000:0.4},
       VSTROM1000:  {1000:0,6000:0,12000:0.3,18000:0.1,24000:0.3,30000:0.1,36000:0.3,42000:0.1,48000:0.3,54000:0.1,60000:0.3},
       VSTROM1050XT:{1000:0,6000:0,12000:0.3,18000:0.1,24000:0.3,30000:0.1,36000:0.3,42000:0.1,48000:0.3,54000:0.1,60000:0.3},
-      GSX_S800_368G:{1000:0,4000:0.2,8000:0.4,12000:0.2,16000:0.6,20000:0.2,24000:0.4,28000:0.2,32000:0.8},
     },
     pecas: {
       BURGMAN_I:   {1000:[{nome:'Óleo do Motor',qtd:1,valor:70}],6000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],12000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],18000:[{nome:'Filtro de Ar',qtd:1,valor:115},{nome:'Vela de Ignição',qtd:1,valor:150},{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],24000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],30000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],36000:[{nome:'Filtro de Ar',qtd:1,valor:115},{nome:'Vela de Ignição',qtd:1,valor:150},{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],42000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],48000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],54000:[{nome:'Filtro de Ar',qtd:1,valor:115},{nome:'Vela de Ignição',qtd:1,valor:150},{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}],60000:[{nome:'Óleo do Motor',qtd:1,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:50}]},
@@ -131,17 +147,6 @@ const DADOS = {
       VSTROM800:   {1000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],6000:[{nome:'Óleo do Motor',qtd:4,valor:70}],12000:[{nome:'Vela de Ignição',qtd:2,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],18000:[{nome:'Filtro de Ar',qtd:1,valor:320},{nome:'Óleo do Motor',qtd:4,valor:70}],24000:[{nome:'Vela de Ignição',qtd:2,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],30000:[{nome:'Óleo do Motor',qtd:4,valor:70}],36000:[{nome:'Vela de Ignição',qtd:2,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],42000:[{nome:'Filtro de Ar',qtd:1,valor:320},{nome:'Óleo do Motor',qtd:4,valor:70}],48000:[{nome:'Vela de Ignição',qtd:2,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],54000:[{nome:'Óleo do Motor',qtd:4,valor:70}],60000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}]},
       VSTROM1000:  {1000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],6000:[{nome:'Óleo do Motor',qtd:4,valor:70}],12000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],18000:[{nome:'Filtro de Ar',qtd:1,valor:430},{nome:'Óleo do Motor',qtd:4,valor:70}],24000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],30000:[{nome:'Óleo do Motor',qtd:4,valor:70}],36000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],42000:[{nome:'Filtro de Ar',qtd:1,valor:430},{nome:'Óleo do Motor',qtd:4,valor:70}],48000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],54000:[{nome:'Óleo do Motor',qtd:4,valor:70}],60000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}]},
       VSTROM1050XT:{1000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],6000:[{nome:'Óleo do Motor',qtd:4,valor:70}],12000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],18000:[{nome:'Filtro de Ar',qtd:1,valor:430},{nome:'Óleo do Motor',qtd:4,valor:70}],24000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],30000:[{nome:'Óleo do Motor',qtd:4,valor:70}],36000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],42000:[{nome:'Filtro de Ar',qtd:1,valor:430},{nome:'Óleo do Motor',qtd:4,valor:70}],48000:[{nome:'Vela de Ignição',qtd:4,valor:340},{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}],54000:[{nome:'Óleo do Motor',qtd:4,valor:70}],60000:[{nome:'Óleo do Motor',qtd:4,valor:70},{nome:'Filtro de Óleo',qtd:1,valor:185}]},
-      GSX_S800_368G:{
-        1000: [{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
-        4000: [{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:4,valor:70}],
-        8000: [{nome:'Vela de Ignição',qtd:2,valor:165},{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
-        12000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:4,valor:70}],
-        16000:[{nome:'Correia de Transmissão',qtd:1,valor:1150},{nome:'Vela de Ignição',qtd:2,valor:165},{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
-        20000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:4,valor:70}],
-        24000:[{nome:'Vela de Ignição',qtd:2,valor:165},{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
-        28000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Óleo de Motor',qtd:4,valor:70}],
-        32000:[{nome:'Correia de Transmissão',qtd:1,valor:1150},{nome:'Líquido de Refrigeração',qtd:1,valor:30},{nome:'Vela de Ignição',qtd:2,valor:165},{nome:'Óleo de Motor',qtd:4,valor:70},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Óleo Caixa de Velocidades',qtd:1,valor:70}],
-      }
     }
   }
 };
@@ -158,6 +163,7 @@ function getKmsDisponiveis(brand, modelo) {
   if (brand === 'zontes') {
     if (modelo === 'E350') return Object.keys(DADOS.zontes.pecasE350).filter(k=>!isNaN(k)).map(Number).sort((a,b)=>a-b);
     if (modelo === 'E350_ANTIGA') return Object.keys(DADOS.zontes.pecasE350Antiga).filter(k=>!isNaN(k)).map(Number).sort((a,b)=>a-b);
+    if (modelo === 'ZT368G') return Object.keys(DADOS.zontes.pecas368G).filter(k=>!isNaN(k)).map(Number).sort((a,b)=>a-b);
     return Object.keys(DADOS.zontes.pecas350).filter(k=>!isNaN(k)).map(Number).sort((a,b)=>a-b);
   }
   if (brand === 'suzuki') {
@@ -263,6 +269,10 @@ function getTmo(brand, modelo, km) {
     if (k === 24000) return 1.5;
     return 1.0;
   }
+  if (brand === 'zontes' && modelo === 'ZT368G') {
+    const t = DADOS.zontes.tmo368G[k] || 0;
+    return t >= 2 ? 3.0 : t >= 1 ? 1.5 : 1.0;
+  }
   if (brand === 'zontes' && modelo === 'E350_ANTIGA') {
     if (k === 12000 || k === 30000) return 3.0;
     if (k === 18000 || k === 36000) return 3.0;
@@ -285,6 +295,7 @@ function getTmoReal(brand, modelo, km) {
   if (brand === 'zontes') {
     if (modelo === 'E350') return DADOS.zontes.tmoE350[k] || 0;
     if (modelo === 'E350_ANTIGA') return DADOS.zontes.tmoE350Antiga[k] || 0;
+    if (modelo === 'ZT368G') return DADOS.zontes.tmo368G[k] || 0;
     return DADOS.zontes.tmo350[k] || 0;
   }
   if (brand === 'suzuki') {
@@ -297,17 +308,22 @@ function getTmoReal(brand, modelo, km) {
 // T=Trocar  I=Inspecionar  L=Limpar  IAL=Insp/Ajust/Lubr  A=Ajustar  IL=Insp/Lubr
 function getChecklist(brand, modelo, km) {
   const k = parseInt(km);
+  // Scooters/CVT: sem corrente de transmissão e sem cabo de embreagem
+  const ehCVT = (brand === 'zontes' && ['E350','E350_ANTIGA','ZT368G'].includes(modelo))
+             || (brand === 'haojue' && modelo === 'LINDY125')
+             || (brand === 'suzuki' && modelo === 'BURGMAN_I');
 
   // Checklist base — revisões leves (1k a 9k, e 15k,18k,21k...)
   const base = [
     { op:'T', item:'Óleo do motor' },
     { op:'I', item:'Nível do fluido de freio' },
     { op:'I', item:'Desgaste das pastilhas/lonas de freio' },
-    { op:'IAL', item:'Cabo e alavanca de embreagem' },
+    ...(ehCVT ? [] : [{ op:'IAL', item:'Cabo e alavanca de embreagem' }]),
     { op:'IAL', item:'Cabo e alavanca do acelerador' },
     { op:'I', item:'Funcionamento dos freios dianteiro e traseiro' },
     { op:'I', item:'Pneus (pressão e desgaste)' },
-    { op:'IL', item:'Corrente de transmissão' },
+    ...(ehCVT ? [{ op:'I', item:'Correia CVT (estado e desgaste)' }]
+              : [{ op:'IL', item:'Corrente de transmissão' }]),
     { op:'I', item:'Faróis, lanternas e sinaleiras' },
     { op:'I', item:'Bateria' },
     { op:'I', item:'Fixações gerais (parafusos e porcas)' },
@@ -346,6 +362,11 @@ function getChecklist(brand, modelo, km) {
     extras.push({ op:'T', item:'Correia CVT' });
   }
 
+  // 368G — correia CVT no 18.000 km
+  if (brand === 'zontes' && modelo === 'ZT368G' && k === 18000) {
+    extras.push({ op:'T', item:'Correia de transmissão CVT' });
+  }
+
   // Lindy125 — correia CVT a cada 18k
   if (brand === 'haojue' && modelo === 'LINDY125' && k % 18000 === 0 && k > 0) {
     extras.push({ op:'T', item:'Correia CVT' });
@@ -369,6 +390,7 @@ function getPecas(brand, modelo, km) {
   if (brand === 'zontes') {
     if (modelo === 'E350') return DADOS.zontes.pecasE350[k] || [];
     if (modelo === 'E350_ANTIGA') return DADOS.zontes.pecasE350Antiga[k] || [];
+    if (modelo === 'ZT368G') return DADOS.zontes.pecas368G[k] || [];
     return DADOS.zontes.pecas350[k] || [];
   }
   if (brand === 'suzuki') {
@@ -384,12 +406,28 @@ function getValorHoraMO(brand, modelo) {
   return CONFIG.MO_HORA;
 }
 
+// Preco fechado por revisao, quando o modelo tiver. undefined = calcula por TMO.
+function getPacote(brand, modelo, km) {
+  const k = parseInt(km);
+  if (brand === 'zontes' && modelo === 'E350') return DADOS.zontes.pacoteE350[k];
+  return undefined;
+}
+
 function calcularTotais(brand, modelo, km) {
   const pecas      = getPecas(brand, modelo, km);
   const tmo        = getTmo(brand, modelo, km);        // duração exibida (mín 1h)
   const tmoReal    = getTmoReal(brand, modelo, km);    // TMO real para custo
   const hora       = getValorHoraMO(brand, modelo);
   const totalPecas = pecas.reduce((s, p) => s + p.qtd * p.valor, 0);
+
+  // Modelos com preco fechado por revisao: o total e o pacote e a mao de obra
+  // e o que sobra depois das pecas (no 1.000 km da 350 E, a MO e cortesia).
+  const pacote = getPacote(brand, modelo, km);
+  if (pacote !== undefined) {
+    const moPacote = Math.max(0, pacote - totalPecas);
+    return { pecas, tmo, tmoReal, hora, totalPecas, totalMO: moPacote, total: pacote, pacote };
+  }
+
   const totalMO    = tmoReal * hora;                   // custo usa TMO real
   return { pecas, tmo, tmoReal, hora, totalPecas, totalMO, total: totalPecas + totalMO };
 }
@@ -408,9 +446,9 @@ const S = {
 };
 
 // ── APPS SCRIPT BACKEND ──────────────────────────────
-// URL gerada ao publicar o Apps Script como Web App.
-// Substitua pelo valor real após publicar em script.google.com
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwhN5FzPcrTTtBjy39zuDLgfGAEXHnwwsqNeSPue8YbIfF7fEfkOEcsngRW_Ikviz82sg/exec';
+// A URL vive só em CONFIG.APPS_SCRIPT_URL (agendamento.html).
+// Manter uma cópia aqui já causou divergência ao republicar o Web App.
+const APPS_SCRIPT_URL = CONFIG.APPS_SCRIPT_URL;
 
 async function chamarBackend(payload) {
   // Apps Script Web Apps não suportam CORS preflight com POST+JSON.
@@ -506,7 +544,7 @@ function gerarMsgWA() {
   ].filter(l => l !== null);
 
   // 1. Identifica o WhatsApp da loja selecionada (ou usa o central de fallback)
-  const numZap = (unidadeInfo && unidadeInfo.tel) ? unidadeInfo.tel : CONFIG.WA_NUM;
+  const numZap = (unidadeInfo && unidadeInfo.tel) ? unidadeInfo.tel : CONFIG.WA_NUM_PADRAO;
 
   // 2. Codifica o texto para o formato URL
   const textoEncoded = encodeURIComponent(linhas.join('\n'));

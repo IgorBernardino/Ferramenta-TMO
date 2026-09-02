@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard de Revisões — COMERI MOTOS</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+  <meta name="description" content="Calendário mensal de revisões agendadas nas 5 unidades COMERI, com controle de status.">
   <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+
+  <a href="/Ferramenta-TMO/index.html" class="btn-home" title="Início">🏠</a>
 
   <header class="site-header">
     <a href="/Ferramenta-TMO/index.html" class="header-back">&#8592; Portal TMO</a>
@@ -134,12 +138,22 @@
       'Cancelado':  { cor:'#DC2626', bg:'#FEF2F2', label:'Cancelado'  },
     };
 
+    /* Todo texto abaixo vem do formulário público de agendamento.
+       Sem escapar, um cliente que digitasse HTML no nome/placa/observações
+       executaria script no navegador de quem abre o dashboard. */
+    function esc(v) {
+      return String(v == null ? '' : v)
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
     // Estado
     let agendamentos = [];
     let mesFiltro    = new Date().getMonth();
     let anoFiltro    = new Date().getFullYear();
     let unidadeFiltro= 'todas';
     let modalAgId    = null;
+    let detalheAberto = null;   // { dateStr } do dia exibido no painel de detalhe
 
     // ── BACKEND ───────────────────────────────────────────────
     async function chamarBackend(payload) {
@@ -280,7 +294,7 @@ function renderCalendario(lista) {
           tag.style.borderLeft = `3px solid ${ucor}`;
           tag.style.background = scfg.bg;
           tag.style.color      = scfg.cor;
-          tag.textContent      = `${ag.horario} ${ag.nomeCliente.split(' ')[0]}`;
+          tag.textContent      = `${ag.horario || ''} ${String(ag.nomeCliente || '').split(' ')[0]}`;
           div.appendChild(tag);
         });
         if (agsDia.length > 3) {
@@ -298,6 +312,7 @@ function renderCalendario(lista) {
 
     // ── DETALHE DO DIA ────────────────────────────────────────
     function abrirDetalhe(dateStr, agsDia) {
+      detalheAberto = dateStr;
       const [d,m,y] = dateStr.split('/');
       const diasSem = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
       const dSem    = new Date(y, m-1, d).getDay();
@@ -317,19 +332,19 @@ function renderCalendario(lista) {
         const ucfg = UNIDADES[ag.unidadeKey] || { label: ag.unidade, cor:'#888' };
         card.innerHTML = `
           <div class="ag-card-header">
-            <span class="ag-horario">${ag.horario}</span>
-            <span class="ag-unidade-badge" style="background:${ucfg.cor}20;color:${ucfg.cor}">${ucfg.label}</span>
+            <span class="ag-horario">${esc(ag.horario)}</span>
+            <span class="ag-unidade-badge" style="background:${ucfg.cor}20;color:${ucfg.cor}">${esc(ucfg.label)}</span>
             <span class="ag-status-badge" style="background:${scfg.bg};color:${scfg.cor}">${scfg.label}</span>
           </div>
           <div class="ag-card-body">
-            <div class="ag-info"><strong>${ag.nomeCliente}</strong> · ${ag.telefone}</div>
-            <div class="ag-info">🏍 ${ag.marca} ${ag.modelo} · Placa: <strong>${ag.placa}</strong></div>
-            <div class="ag-info">🔧 Revisão ${ag.revisaoKm} · ⏱ ${ag.duracao || '1 hora'}</div>
-            ${ag.obs ? `<div class="ag-obs">📝 ${ag.obs}</div>` : ''}
+            <div class="ag-info"><strong>${esc(ag.nomeCliente)}</strong> · ${esc(ag.telefone)}</div>
+            <div class="ag-info">🏍 ${esc(ag.marca)} ${esc(ag.modelo)} · Placa: <strong>${esc(ag.placa)}</strong></div>
+            <div class="ag-info">🔧 Revisão ${esc(ag.revisaoKm)} · ⏱ ${esc(ag.duracao || '1 hora')}</div>
+            ${ag.obs ? `<div class="ag-obs">📝 ${esc(ag.obs)}</div>` : ''}
           </div>
           <div class="ag-card-footer">
-            <span class="ag-total">💵 Total estimado: <strong>${ag.total}</strong></span>
-            <button class="btn-status" data-id="${ag.id}">Alterar status</button>
+            <span class="ag-total">💵 Total estimado: <strong>${esc(ag.total)}</strong></span>
+            <button class="btn-status" data-id="${esc(ag.id)}">Alterar status</button>
           </div>
         `;
         card.querySelector('.btn-status').onclick = () => abrirModal(ag);
@@ -343,10 +358,10 @@ function renderCalendario(lista) {
     // ── MODAL STATUS ──────────────────────────────────────────
     function abrirModal(ag) {
       modalAgId = ag.id;
-      document.getElementById('modal-titulo').textContent = `Status — ${ag.nomeCliente}`;
+      document.getElementById('modal-titulo').textContent = 'Status — ' + (ag.nomeCliente || '');
       const body = document.getElementById('modal-body');
       body.innerHTML = `
-        <p style="font-size:13px;color:#666;margin-bottom:1rem">${ag.marca} ${ag.modelo} · ${ag.revisaoKm} · ${ag.horario}</p>
+        <p style="font-size:13px;color:#666;margin-bottom:1rem">${esc(ag.marca)} ${esc(ag.modelo)} · ${esc(ag.revisaoKm)} · ${esc(ag.horario)}</p>
         <div class="status-opcoes">
           ${Object.entries(STATUS_CONFIG).map(([k,v]) => `
             <label class="status-opcao ${ag.status===k?'selecionado':''}">
@@ -371,12 +386,29 @@ function renderCalendario(lista) {
       const btn = document.getElementById('modal-salvar');
       btn.textContent = 'Salvando...';
       btn.disabled = true;
+      const dia = detalheAberto;          // fecharModal() zera modalAgId
       await atualizarStatus(modalAgId, sel.value);
       fecharModal();
       btn.textContent = 'Salvar';
       btn.disabled = false;
-      // Reabre o detalhe do dia atualizado
-      const ag = agendamentos.find(a => a.id === modalAgId || true); // já atualizado
+      // Redesenha o detalhe do dia com o status já atualizado
+      if (dia) reabrirDetalhe(dia);
+    }
+
+    /* Remonta o painel do dia a partir da lista já filtrada/atualizada.
+       Sem isso o card continuava mostrando o status antigo até trocar de mês. */
+    function reabrirDetalhe(dateStr) {
+      const [d, m, y] = dateStr.split('/');
+      const alvoISO = y + '-' + m + '-' + d;
+      const doDia = getFiltrados().filter(a => {
+        const dt = String(a.dataRevisao || a.data || '').trim().split('T')[0];
+        const iso = dt.includes('/')
+          ? dt.split('/').reverse().map((v,i) => i ? v.padStart(2,'0') : v).join('-')
+          : dt;
+        return iso === alvoISO && String(a.status || '').trim() !== 'Cancelado';
+      });
+      if (doDia.length) abrirDetalhe(dateStr, doDia);
+      else { document.getElementById('dia-detalhe').hidden = true; detalheAberto = null; }
     }
 
     // ── NAVEGAÇÃO MÊS ─────────────────────────────────────────
@@ -414,6 +446,7 @@ function renderCalendario(lista) {
 
     document.getElementById('btn-fechar-detalhe').onclick = () => {
       document.getElementById('dia-detalhe').hidden = true;
+      detalheAberto = null;
     };
     document.getElementById('modal-fechar').onclick   = fecharModal;
     document.getElementById('modal-cancelar').onclick = fecharModal;

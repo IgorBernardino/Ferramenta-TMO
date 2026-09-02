@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VITRINE VIRTUAL</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+  <meta name="description" content="Vitrine de capacetes, jaquetas, luvas, botas e acessórios COMERI Motos.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+<a href="/Ferramenta-TMO/index.html" class="btn-home" title="Início">🏠</a>
 
 <header>
     <div class="logo-block">
@@ -430,9 +434,11 @@
 
         document.getElementById('count').textContent = count;
 
+        // compara pela categoria do onclick, não pelo rótulo: "Acessórios"
+        // (com acento e no plural) nunca casava com a categoria "acessorios"
         document.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.textContent.toLowerCase() === cat ||
-                (cat === 'todos' && btn.textContent === 'Todos'));
+            const alvo = (btn.getAttribute('onclick') || '').match(/filterItems('([^']+)')/);
+            btn.classList.toggle('active', !!alvo && alvo[1] === cat);
         });
     }
 
@@ -460,12 +466,23 @@
         document.getElementById('img-ampliada').src = modalImgs[modalIdx];
     }
 
-    document.querySelector('.close-modal').addEventListener('click', () => {
-        document.getElementById('zoom-modal').style.display = 'none';
-    });
+    document.querySelector('.close-modal').addEventListener('click', fecharModal);
 
     document.getElementById('zoom-modal').addEventListener('click', e => {
         if (e.target === e.currentTarget) e.currentTarget.style.display = 'none';
+    });
+
+    function fecharModal() {
+        document.getElementById('zoom-modal').style.display = 'none';
+    }
+
+    // ── TECLADO: Esc fecha, setas trocam a foto ──
+    document.addEventListener('keydown', e => {
+        const aberto = document.getElementById('zoom-modal').style.display === 'flex';
+        if (!aberto) return;
+        if (e.key === 'Escape')     fecharModal();
+        if (e.key === 'ArrowRight') changeModalImg(1);
+        if (e.key === 'ArrowLeft')  changeModalImg(-1);
     });
 
     // ── INIT: count all visible items ──

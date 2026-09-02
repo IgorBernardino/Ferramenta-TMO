@@ -6,53 +6,62 @@
 /* ==============================
    CILINDRADA POR MODELO
 ============================== */
+/* Chave = chave do modelo em tmo-data.js. Manter os dois arquivos em sincronia:
+   modelo sem cilindrada aqui = "Cilindrada não encontrada" na tela. */
 const cilindradaPorModelo = {
-  // Haojue
-  nex110: 110,
-  lindy125: 125,
-  chopper150: 150,
-  dk150: 150,
-  dk160: 160,
-  dr160: 160,
-  dl160: 160,
-  nk150: 150,
-  masterride150: 150,
+  // ── Haojue ──
+  nex110:         110,
+  lindy:          125,   // chave usada em tmo-data.js
+  lindy125:       125,   // alias
+  chopper150:     150,
+  dk150:          150,
+  dk160:          160,
+  dr160:          160,
+  dl160:          160,
+  nk150:          150,
+  nk160:          160,
+  masterride150:  150,
 
-  // Zontes
-  v350: 350,
-  t350: 350,
-  gk350: 350,
-  s350: 350,
-  r350: 350,
-  e350: 350,
+  // ── Zontes ──
+  zontes350e:     350,
+  v350:           350,
+  t350:           350,
+  gk350:          350,
+  s350:           350,
+  r350:           350,
+  e350:           350,
+  zt368g:         368,
 
-  // Suzuki
-  gsr150i: 150,
-  inazuma250: 250,
-  boulevardm1800: 1800,
-  boulevardm1500: 1500,
-  bandit1250: 1250,
-  boulevardm800: 800,
-  gsx650f: 650,
-  burgman650: 650,
-  dl650: 650,
-  gs120: 120,
-  lta750x: 750,
-  drz400e: 400,
-  lta450x: 450,
-  gsx150: 150,
-  sv650a: 650,
-  dl650: 650,
-  dl650a: 650,
-  gsx650f: 650,
-  bandit650s: 650,
-  gsr750: 750,
-  gsxr750: 750,
-  gsxs750a: 750,
-  gsxs1000: 1000,
-  gsxr1000: 1000,
-  dl1000a: 1000,
-  gsx1300: 1300
+  // ── Suzuki ──
+  gs120:          120,
+  burgman125:     125,
+  en125:          125,
+  gsr125s:        125,
+  intruder125:    125,
+  gsx150:         150,
+  gsr150i:        150,
+  inazuma250:     250,
+  burgman400:     400,
+  drz400e:        400,
+  lta450x:        450,
+  sv650a:         650,
+  dl650:          650,
+  dl650a:         650,
+  gsx650f:        650,
+  bandit650s:     650,
+  burgman650:     650,
+  lta750x:        750,
+  gsr750:         750,
+  gsxr750:        750,
+  gsxs750a:       750,
+  boulevardm800:  800,
+  gsxs1000:      1000,
+  gsxr1000:      1000,
+  dl1000a:       1000,
+  bandit1250:    1250,
+  gsx1300:       1300,
+  boulevardm1500:1500,
+  boulevardm1800:1800,
 };
 
 /* ==============================
@@ -102,16 +111,14 @@ function atualizarCilindrada() {
 
   if (!valorHora) {
     info.style.display = 'none';
-    document.getElementById('taxa').value = '';
     return;
   }
 
   document.getElementById('valorHora').textContent =
-    `R$ ${valorHora.toFixed(2)} / h`;
+    valorHora.toLocaleString('pt-BR', { style:'currency', currency:'BRL' }) + ' / h';
   document.getElementById('detalheCilindrada').textContent =
     `${cc} cc`;
 
-  document.getElementById('taxa').value = valorHora;
   info.style.display = 'block';
 }
 
@@ -119,7 +126,7 @@ function atualizarCilindrada() {
    CÁLCULO
 ============================== */
 function calcular() {
-  const veiculo = document.getElementById('veiculo').value;
+  const veiculo = document.getElementById('veiculo').value.toLowerCase();
   const servico = document.getElementById('servico').value;
   const tipo = document.getElementById('tipoAtendimento').value;
 
@@ -152,27 +159,13 @@ function calcular() {
     <strong>${dados.desc}</strong><br>
     Tempo: ${dados.tempo}h<br>
     Atendimento: ${tipo.toUpperCase()}<br>
-    Valor hora: R$ ${valorHora},00
+    Valor hora: ${valorHora.toLocaleString('pt-BR', { style:'currency', currency:'BRL' })}
     ${tipo === 'interna' ? '<br><em>(interna)</em>' : ''}
   `;
 
   document.getElementById('resultado').style.display = 'block';
 }
 
-
-/* ==============================
-   EVENTOS
-============================== */
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('veiculo')
-    .addEventListener('change', () => {
-      atualizarServicos();
-      atualizarCilindrada();
-    });
-
-  document.getElementById('calcularBtn')
-    .addEventListener('click', calcular);
-});
 
 function carregarVeiculos() {
   const selectVeiculo = document.getElementById('veiculo');
@@ -181,7 +174,7 @@ function carregarVeiculos() {
 
   selectVeiculo.innerHTML = '<option value="">Selecione o veículo</option>';
 
-  Object.keys(tmoData).forEach(veiculo => {
+  Object.keys(tmoData).sort((a, b) => a.localeCompare(b, 'pt-BR')).forEach(veiculo => {
     const option = document.createElement('option');
     option.value = veiculo;
     option.textContent = veiculo.toUpperCase();
