@@ -409,7 +409,25 @@ function getValorHoraMO(brand, modelo) {
 // Preco fechado por revisao, quando o modelo tiver. undefined = calcula por TMO.
 function getPacote(brand, modelo, km) {
   const k = parseInt(km);
-  if (brand === 'zontes' && modelo === 'E350') return DADOS.zontes.pacoteE350[k];
+  
+  // Regra existente da Zontes
+  if (brand === 'zontes' && modelo === 'E350') {
+    return DADOS.zontes.pacoteE350[k];
+  }
+  
+  // NOVA REGRA: Travar revisão de 6.000 km da Suzuki em R$ 520
+  if (brand === 'suzuki' && k === 6000) {
+    // Lista dos modelos que atualmente custavam R$ 280 (levam 4L de óleo)
+    const modelos520 = [
+      'GSX800', 'HAYABUSA', 'GSXR1000', 'GSXS1000', 
+      'VSTROM800', 'VSTROM1000', 'VSTROM1050XT'
+    ];
+    
+    if (modelos520.includes(modelo)) {
+      return 520;
+    }
+  }
+
   return undefined;
 }
 
