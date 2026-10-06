@@ -1,13 +1,3 @@
-/* =====================================================
-   AGENDAMENTO DE REVISÃO — COMERI MOTOS
-   agendamento.js
-   Dados extraídos diretamente dos scripts TMO oficiais:
-   revisaohaojue.js · revisaozontes.js · revisaosuzuki.js
-   ===================================================== */
-
-// ── DADOS REAIS DAS REVISÕES ──────────────────────────
-// Fonte direta: revisaohaojue.js · revisaozontes.js · revisaosuzuki.js
-
 const DADOS = {
 
   // ── HAOJUE ────────────────────────────────────────────
@@ -417,10 +407,10 @@ function getPacote(brand, modelo, km) {
   
   // NOVA REGRA: Travar revisão de 6.000 km da Suzuki em R$ 520
   if (brand === 'suzuki' && k === 6000) {
-    // Lista dos modelos que atualmente custavam R$ 280 (levam 4L de óleo)
     const modelos520 = [
       'GSX800', 'HAYABUSA', 'GSXR1000', 'GSXS1000', 
-      'VSTROM800', 'VSTROM1000', 'VSTROM1050XT'
+      'VSTROM800', 'VSTROM1000', 'VSTROM1050XT',
+      'SV650A', 'GSX750', 'VSTROM650'
     ];
     
     if (modelos520.includes(modelo)) {
