@@ -9,19 +9,19 @@
 function _basePecas(filtroAr, vela) {
     return {
         simples: [
-            { codigo: 'MT114',   nome: 'Óleo do Motor',         qtd: 1, valor: 70   },
+            { codigo: 'MT114',   nome: 'Óleo do Motor',         qtd: 1, valor: 90   },
             { codigo: 'LUBMINI', nome: 'Lubrificante Corrente', qtd: 1, valor: 25   },
             { codigo: 'DESMINI', nome: 'Desingripante',         qtd: 1, valor: 20   },
         ],
         arruela: [
-            { codigo: 'MT114',   nome: 'Óleo do Motor',         qtd: 1, valor: 70   },
-            { codigo: 'ARRUELA', nome: 'Arruela de Dreno',      qtd: 1, valor: 5    },
+            { codigo: 'MT114',   nome: 'Óleo do Motor',         qtd: 1, valor: 90   },
+            { codigo: 'ARRUELA', nome: 'Arruela de Dreno',      qtd: 1, valor: 10    },
             { codigo: 'LUBMINI', nome: 'Lubrificante Corrente', qtd: 1, valor: 25   },
             { codigo: 'DESMINI', nome: 'Desingripante',         qtd: 1, valor: 20   },
         ],
         completo: [
             { codigo: filtroAr,           nome: 'Filtro de Ar',         qtd: 1, valor: 85   },
-            { codigo: 'MT114',            nome: 'Óleo do Motor',         qtd: 1, valor: 70   },
+            { codigo: 'MT114',            nome: 'Óleo do Motor',         qtd: 1, valor: 90   },
             { codigo: '16561H3E000H000',  nome: 'Junta Capa Óleo',      qtd: 1, valor: 12.5 },
             { codigo: '11482H3J012H000',  nome: 'Junta Tampa Direita',  qtd: 1, valor: 85   },
             { codigo: '14181H11200H000',  nome: 'Junta Escapamento',    qtd: 1, valor: 21   },
@@ -62,18 +62,18 @@ var dadosRevisao = {
     CHOPPER150:_gerarCiclo('13781H2A300H000', '09482Z00001H000', _tmo),
     NK160:  _gerarCiclo('13780H2J000H000', '09482H00010H000', _tmo),
     LINDY125: {
-        1000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
-        3000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
+        1000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
+        3000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         6000:  [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
-        9000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
+        9000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         12000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41}],
-        15000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
-        18000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
-        21000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
+        15000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
+        18000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
+        21000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         24000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41}],
-        27000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
-        30000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
-        33000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
+        27000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
+        30000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
+        33000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         36000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
         tmo: {1000:0,3000:0.5,6000:1.5,9000:0.5,12000:2,15000:0.5,18000:3,21000:0.5,24000:2,27000:0.5,30000:2,33000:0.5,36000:3,39000:0.5,42000:2,45000:0.5,48000:3,51000:0.5,54000:3,57000:0.5}
     }
