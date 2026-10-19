@@ -137,16 +137,27 @@ Para ativar o GitHub Pages em um fork:
 
 ---
 
-## ⚠️ Pendências conhecidas
+## 🧪 Testes Automatizados
 
-- **Dashboard sem autenticação** — publicado no GitHub Pages, expõe nome, telefone e
-  placa dos clientes. A URL do Apps Script também está no código-fonte público, o que
-  permite chamar `listar_agendamentos` e `atualizar_status` de fora. Precisa de token
-  no Apps Script e validação de origem.
-- **Dados duplicados** — os planos de revisão vivem em `script/revisao*.js` **e** em
-  `agendamento/agendamento.js`. Divergências já apareceram; o ideal é uma base única.
-- **Caminhos absolutos** — as páginas usam `/Ferramenta-TMO/...`, então o site só
-  funciona nesse subdiretório (não abre via `file://` nem em domínio próprio).
+O projeto conta com suíte de testes unitários e de integração utilizando o runner nativo do Node.js (sem dependências externas):
+
+```bash
+node --test test/
+```
+
+Cobre:
+- Sincronização e integridade de preços entre calculadoras e agendamento.
+- Regras de negócio de revisão (ciclos de peças, planos fechados, CVT).
+- Algoritmo de feriados móveis (Páscoa / Carnaval) e cálculo de dias úteis.
+- Proteção contra injeção XSS e validação de placas (Mercosul e padrão tradicional).
+
+---
+
+## ⚠️ Pendências conhecidas e Segurança
+
+- **Dashboard sem autenticação no Apps Script** — a URL do Apps Script está no frontend público, permitindo chamadas diretas às ações `listar_agendamentos` e `atualizar_status`. Recomenda-se adicionar validação de token ou PIN de acesso no Apps Script e no dashboard interno.
+- **Caminhos relativos e portabilidade** — *(Resolvido)* Todos os caminhos foram convertidos para relativos, funcionando em qualquer subdiretório, domínio customizado ou localmente (`file://`).
+- **Sincronização de preços** — *(Resolvido)* Preços de peças e óleo do agendamento sincronizados com as calculadoras e protegidos por testes automatizados.
 ---
 
 ## 📄 Licença

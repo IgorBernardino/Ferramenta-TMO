@@ -64,17 +64,17 @@ var dadosRevisao = {
     LINDY125: {
         1000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         3000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
-        6000:  [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
+        6000:  [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         9000:  [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
-        12000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41}],
+        12000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41}],
         15000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         18000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
         21000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
-        24000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41}],
+        24000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41}],
         27000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
         30000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
         33000: [{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21}],
-        36000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:70},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
+        36000: [{codigo:'13780H7A001H000',nome:'Filtro de Ar',qtd:1,valor:75},{codigo:'MT114',nome:'Óleo do Motor',qtd:1,valor:90},{codigo:'16510-26H00-000',nome:'Filtro de Óleo',qtd:1,valor:43},{codigo:'0928054001000',nome:'Junta Tampa Filtro',qtd:1,valor:21},{codigo:'11173-33G50-000',nome:'Junta Tampa Válvula',qtd:1,valor:56},{codigo:'09482-00406-000',nome:'Vela de Ignição',qtd:1,valor:41},{codigo:'27601H33G11H000',nome:'Correia CVT',qtd:1,valor:245}],
         tmo: {1000:0,3000:0.5,6000:1.5,9000:0.5,12000:2,15000:0.5,18000:3,21000:0.5,24000:2,27000:0.5,30000:2,33000:0.5,36000:3,39000:0.5,42000:2,45000:0.5,48000:3,51000:0.5,54000:3,57000:0.5}
     }
 };
@@ -199,15 +199,15 @@ var checklist = {
 // ─── 3. DADOS DO MODELO (imagem + specs) ─────────────────────
 
 var modeloInfo = {
-    DK160:     { nome: 'DK 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/DK160.png'      },
-    DR160:     { nome: 'DR 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/DR160.png'      },
-    DL160:     { nome: 'DL 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/DL160.png'      },
-    NK150:     { nome: 'NK 150',           motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/NK 150.png'    },
-    MASTER150: { nome: 'Master Ride 150',  motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/MASTERRIDE.png' },
-    CHOPPER150:{ nome: 'Chopper Road 150', motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/CHOPPER150.png' },
-    LINDY125:  { nome: 'Lindy 125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/LINDY125.png'   },
-    NK160:     { nome: 'NK 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/NK160.png'      },
-    ADX125:  { nome: 'ADX125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '/Ferramenta-TMO/images/HAOJUE/ADX125.png'   },
+    DK160:     { nome: 'DK 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/DK160.png'      },
+    DR160:     { nome: 'DR 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/DR160.png'      },
+    DL160:     { nome: 'DL 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/DL160.png'      },
+    NK150:     { nome: 'NK 150',           motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/NK 150.png'    },
+    MASTER150: { nome: 'Master Ride 150',  motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/MASTERRIDE.png' },
+    CHOPPER150:{ nome: 'Chopper Road 150', motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/CHOPPER150.png' },
+    LINDY125:  { nome: 'Lindy 125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/LINDY125.png'   },
+    NK160:     { nome: 'NK 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/NK160.png'      },
+    ADX125:  { nome: 'ADX125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/ADX125.png'   },
     
 };
 
