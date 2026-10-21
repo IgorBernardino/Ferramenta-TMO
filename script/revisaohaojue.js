@@ -230,7 +230,7 @@ var pecasAvulsas = [
 ];
 
 var itensAdicionais = [];
-function fmt(v) { return 'R$ ' + v.toFixed(2).replace('.', ','); }
+function fmt(v) { return 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
 
 
 // ─── 5. IMAGEM DO VEÍCULO ─────────────────────────────────────
@@ -420,12 +420,12 @@ function renderizarItensAdicionais() {
 
 function adicionarItemAdicional() {
     var sel = document.getElementById('selectAvulso');
-    var qtd = parseInt(document.getElementById('qtdAvulso').value) || 1;
+    var qtd = Math.min(99, Math.max(1, parseInt(document.getElementById('qtdAvulso').value, 10) || 1));
     var idx = parseInt(sel.value);
     if (isNaN(idx)) return;
     var peca = pecasAvulsas[idx];
     var ex   = itensAdicionais.find(function(i) { return i.codigo === peca.codigo; });
-    if (ex) { ex.qtd += qtd; } else { itensAdicionais.push(Object.assign({}, peca, { qtd: qtd })); }
+    if (ex) { ex.qtd = Math.min(99, ex.qtd + qtd); } else { itensAdicionais.push(Object.assign({}, peca, { qtd: qtd })); }
     sel.value = '';
     document.getElementById('qtdAvulso').value = 1;
     renderizarItensAdicionais();

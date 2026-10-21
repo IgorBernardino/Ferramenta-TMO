@@ -10,8 +10,6 @@
 </head>
 <body>
 
-  <a href="../index.html" class="btn-home" title="Início">🏠</a>
-
   <header class="site-header">
     <a href="../index.html" class="header-back">&#8592; Portal TMO</a>
     <div class="header-brand">
@@ -145,6 +143,20 @@
       return String(v == null ? '' : v)
         .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    /* O Google Sheets guarda horário como data de 30/12/1899 e o Apps Script
+       manda "1899-12-30T11:06:28.000Z". Os :06:28 são o fuso de São Paulo em
+       1899 (UTC−3:06:28), então converter com America/Sao_Paulo devolve 08:00. */
+    function formatarHora(v) {
+      const s = String(v == null ? '' : v).trim();
+      const hm = s.match(/^(\d{1,2}):(\d{2})$/);
+      if (hm) return hm[1].padStart(2, '0') + ':' + hm[2];
+      if (/^\d{4}-\d{2}-\d{2}T/.test(s)) {
+        const d = new Date(s);
+        if (!isNaN(d)) return d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
+      }
+      return s;
     }
 
     // Estado
@@ -294,7 +306,7 @@ function renderCalendario(lista) {
           tag.style.borderLeft = `3px solid ${ucor}`;
           tag.style.background = scfg.bg;
           tag.style.color      = scfg.cor;
-          tag.textContent      = `${ag.horario || ''} ${String(ag.nomeCliente || '').split(' ')[0]}`;
+          tag.textContent      = `${formatarHora(ag.horario)} ${String(ag.nomeCliente || '').split(' ')[0]}`;
           div.appendChild(tag);
         });
         if (agsDia.length > 3) {
@@ -323,7 +335,7 @@ function renderCalendario(lista) {
       lista.innerHTML = '';
 
       // Ordena por horário
-      const ordenado = [...agsDia].sort((a,b) => a.horario.localeCompare(b.horario));
+      const ordenado = [...agsDia].sort((a,b) => formatarHora(a.horario).localeCompare(formatarHora(b.horario)));
 
       ordenado.forEach(ag => {
         const card = document.createElement('div');
@@ -332,7 +344,7 @@ function renderCalendario(lista) {
         const ucfg = UNIDADES[ag.unidadeKey] || { label: ag.unidade, cor:'#888' };
         card.innerHTML = `
           <div class="ag-card-header">
-            <span class="ag-horario">${esc(ag.horario)}</span>
+            <span class="ag-horario">${esc(formatarHora(ag.horario))}</span>
             <span class="ag-unidade-badge" style="background:${ucfg.cor}20;color:${ucfg.cor}">${esc(ucfg.label)}</span>
             <span class="ag-status-badge" style="background:${scfg.bg};color:${scfg.cor}">${scfg.label}</span>
           </div>
@@ -361,7 +373,7 @@ function renderCalendario(lista) {
       document.getElementById('modal-titulo').textContent = 'Status — ' + (ag.nomeCliente || '');
       const body = document.getElementById('modal-body');
       body.innerHTML = `
-        <p style="font-size:13px;color:#666;margin-bottom:1rem">${esc(ag.marca)} ${esc(ag.modelo)} · ${esc(ag.revisaoKm)} · ${esc(ag.horario)}</p>
+        <p style="font-size:13px;color:#666;margin-bottom:1rem">${esc(ag.marca)} ${esc(ag.modelo)} · ${esc(ag.revisaoKm)} · ${esc(formatarHora(ag.horario))}</p>
         <div class="status-opcoes">
           ${Object.entries(STATUS_CONFIG).map(([k,v]) => `
             <label class="status-opcao ${ag.status===k?'selecionado':''}">

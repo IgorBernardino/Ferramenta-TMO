@@ -100,6 +100,9 @@ Ferramenta-TMO/
 │   ├── style.css
 │   └── acessorios/                 # Fotos dos produtos
 │
+├── test/                           # Testes automatizados (npm test)
+├── package.json                    # Só o comando de teste — sem dependências
+│
 └── images/                         # Logos e fotos das motos
     ├── SUZUKI/  ├── HAOJUE/  └── ZONTES/
 ```
@@ -139,23 +142,32 @@ Para ativar o GitHub Pages em um fork:
 
 ## 🧪 Testes Automatizados
 
-O projeto conta com suíte de testes unitários e de integração utilizando o runner nativo do Node.js (sem dependências externas):
+O projeto conta com suíte de testes unitários e de integração utilizando o runner nativo do Node.js (sem dependências externas; Node 21 ou mais novo):
 
 ```bash
-node --test test/
+npm test
 ```
 
+Os testes carregam os scripts reais do site numa "caixa de areia" (`test/helpers.js`),
+com `window`/`document` falsos — não testam cópias das funções.
+
 Cobre:
-- Sincronização e integridade de preços entre calculadoras e agendamento.
-- Regras de negócio de revisão (ciclos de peças, planos fechados, CVT).
-- Algoritmo de feriados móveis (Páscoa / Carnaval) e cálculo de dias úteis.
-- Proteção contra injeção XSS e validação de placas (Mercosul e padrão tradicional).
+- Sincronização de **cada revisão** (peças e TMO) entre as calculadoras e o agendamento.
+- Todas as combinações marca × modelo × km: total finito, não negativo e = peças + mão de obra.
+- Regras de negócio de revisão (ciclos de peças, planos fechados, CVT, pacote Suzuki 6.000 km).
+- Feriados móveis (Páscoa / Carnaval / Corpus Christi), dias úteis, virada de ano e ano bissexto.
+- Validação dos dados do cliente (placa, telefone, odômetro, textos longos) e escape de HTML.
+- Falhas de rede: consulta de horários e confirmação não podem esconder o erro do cliente.
+- Itens adicionais das calculadoras (quantidade sempre entre 1 e 99) e formatação em R$.
+- Horário vindo do Google Sheets no dashboard (formato `1899-12-30T…`).
 
 ---
 
 ## ⚠️ Pendências conhecidas e Segurança
 
 - **Dashboard sem autenticação no Apps Script** — a URL do Apps Script está no frontend público, permitindo chamadas diretas às ações `listar_agendamentos` e `atualizar_status`. Recomenda-se adicionar validação de token ou PIN de acesso no Apps Script e no dashboard interno.
+- **Feriados municipais** — só os nacionais são bloqueados. Feriados das cidades (ex.: aniversário de Santos, 26/01) ainda aparecem como dia útil.
+- **Checklist do agendamento × calculadoras** — o checklist do agendamento é genérico (ciclo de 12 mil km) e não segue o plano da 350 E nova (4 mil km) nem da 368G (6 mil km); as peças e os preços já batem, só a lista de itens exibida ao cliente difere.
 - **Caminhos relativos e portabilidade** — *(Resolvido)* Todos os caminhos foram convertidos para relativos, funcionando em qualquer subdiretório, domínio customizado ou localmente (`file://`).
 - **Sincronização de preços** — *(Resolvido)* Preços de peças e óleo do agendamento sincronizados com as calculadoras e protegidos por testes automatizados.
 ---

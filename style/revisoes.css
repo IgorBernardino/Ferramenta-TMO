@@ -605,3 +605,10 @@ select option { background: #fff; color: var(--text); }
   .hero-img { flex: none; border-right: none; border-bottom: 1px solid var(--border); padding: 16px; }
   .ck-grupos { grid-template-columns: 1fr; }
 }
+
+/* Celular: o botão fixo no topo cobria o título. No canto inferior direito
+   ele fica ao alcance do polegar e não esconde conteúdo. */
+@media (max-width: 640px) {
+  .btn-home { top: auto; left: auto; bottom: 16px; right: 16px; width: 48px; height: 48px; font-size: 1.15rem; }
+  body { padding-bottom: 80px; }
+}

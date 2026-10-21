@@ -1,0 +1,11 @@
+{
+  "name": "portal-tmo",
+  "private": true,
+  "description": "Portal TMO — calculadoras de revisão, TMO, agendamento e vitrine (site estático).",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\""
+  },
+  "engines": {
+    "node": ">=21"
+  }
+}

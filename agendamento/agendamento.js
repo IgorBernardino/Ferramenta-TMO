@@ -98,11 +98,11 @@ const DADOS = {
        É uma Zontes: usa TMO_HORA da marca (R$ 350/h), não a tabela Suzuki.
        Peças e TMO espelham revisaozontes.js → dadosRevisao.ZT368G. */
     pecas368G: {
-      1000: [{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
-      6000: [{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Filtro de Ar (elemento)',qtd:1,valor:120}],
-      12000:[{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
-      18000:[{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Filtro de Ar (elemento)',qtd:1,valor:120},{nome:'Correia de Transmissão CVT',qtd:1,valor:1150}],
-      24000:[{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{nome:'Fluido de Freio',qtd:1,valor:22}],
+      1000: [{nome:'Filtro do Óleo (ZT368-G)',qtd:1,valor:160},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
+      6000: [{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Filtro de Ar (elemento)',qtd:1,valor:195}],
+      12000:[{nome:'Filtro do Óleo (ZT368-G)',qtd:1,valor:160},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{nome:'Filtro Esponja Motor',qtd:1,valor:84}],
+      18000:[{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Filtro de Ar (elemento)',qtd:1,valor:195},{nome:'Correia de Transmissão CVT',qtd:1,valor:1150}],
+      24000:[{nome:'Filtro do Óleo (ZT368-G)',qtd:1,valor:160},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Filtro Esponja Motor',qtd:1,valor:84}],
     },
     tmo368G: {1000:0.0,6000:0.8,12000:1.2,18000:2.0,24000:1.5},
   },
@@ -474,18 +474,16 @@ async function chamarBackend(payload) {
 }
 
 // ── CONSULTAR HORÁRIOS OCUPADOS ───────────────────────
+// Não engole o erro: se devolvesse [] numa falha, todos os horários
+// apareceriam livres e dois clientes poderiam marcar o mesmo horário.
+// Quem chama (onDateChange) decide o que mostrar.
 async function buscarOcupados(dateStr) {
-  try {
-    const data = await chamarBackend({
-      action:  'horarios_ocupados',
-      data:    dateStr,
-      unidade: S.unidade,
-    });
-    return data.ocupados || [];
-  } catch(e) {
-    console.warn('buscarOcupados error:', e.message);
-    return [];
-  }
+  const data = await chamarBackend({
+    action:  'horarios_ocupados',
+    data:    dateStr,
+    unidade: S.unidade,
+  });
+  return data.ocupados || [];
 }
 
 // ── CRIAR EVENTO + GRAVAR PLANILHA (via Apps Script) ──
@@ -518,6 +516,8 @@ async function confirmarNoBackend() {
   };
 
   const result = await chamarBackend(payload);
+  // O Apps Script responde 200 mesmo quando falha por dentro; o erro vem no JSON.
+  if (result && (result.erro || result.error)) throw new Error(result.erro || result.error);
   return result;
 }
 
@@ -620,25 +620,33 @@ function buildKmGrid() {
 }
 
 // ── UI: CALENDÁRIO ────────────────────────────────────
-async function onDateChange(val) {
+// `aviso`: mensagem a manter visível quando a data foi trocada automaticamente
+// (antes ela sumia assim que os horários carregavam).
+async function onDateChange(val, aviso = '') {
   S.data = null;
   S.hora = null;
   const status = document.getElementById('cal-status');
   if (!val) { buildTimeGrid([]); return; }
+
+  // O "min" do input só limita o calendário; digitando dá para pôr uma data passada.
+  const minima = dataMinimaAgendamento(new Date());
+  if (val < minima) {
+    document.getElementById('appt-date').value = minima;
+    return onDateChange(minima, `Datas passadas não estão disponíveis — mostrando ${fmtDate(minima)}.`);
+  }
 
   // Valida dia útil
   if (!isDiaUtil(val)) {
     const parts = val.split('-');
     const data  = new Date(parseInt(parts[0]), parseInt(parts[1])-1, parseInt(parts[2]));
     const diaSem = data.getDay();
-    let motivo = isFeriado(val) ? 'Feriado' : diaSem === 0 ? 'Domingo' : 'Sábado';
-    status.innerHTML = `<span style="color:var(--red);font-weight:600">⚠️ ${motivo} — por favor escolha um dia útil.</span>`;
+    const motivo = isFeriado(val) ? 'Feriado' : diaSem === 0 ? 'Domingo' : 'Sábado';
     buildTimeGrid([]);
     // Pula para próximo dia útil
     const proximo = proximoDiaUtil(val);
     document.getElementById('appt-date').value = proximo;
     S.data = proximo;
-    return onDateChange(proximo);
+    return onDateChange(proximo, `${fmtDate(val)} é ${motivo.toLowerCase()} — mostrando o próximo dia útil, ${fmtDate(proximo)}.`);
   }
 
   S.data = val;
@@ -651,18 +659,21 @@ async function onDateChange(val) {
 
   try {
     const ocupados = await buscarOcupados(val);
+    // Se o cliente trocou de data enquanto esperava, esta resposta é velha.
+    if (document.getElementById('appt-date').value !== val) return;
     buildTimeGrid(ocupados);
     // Mostra aviso só se agenda estiver completamente lotada
     const horariosLivres = CONFIG.HORARIOS.filter(h => !ocupados.includes(h));
-    if (horariosLivres.length === 0) {
-      status.innerHTML = `<span style="color:var(--red);font-weight:600">⚠️ Agenda lotada para esta data. Por favor, escolha outra data.</span>`;
-    } else {
-      status.innerHTML = '';
-    }
+    const msgs = aviso ? [aviso] : [];
+    if (horariosLivres.length === 0) msgs.push('Agenda lotada para esta data. Por favor, escolha outra data.');
+    status.innerHTML = msgs.map(m => `<span style="color:var(--red);font-weight:600">⚠️ ${esc(m)}</span>`).join('<br>');
   } catch(e) {
+    if (document.getElementById('appt-date').value !== val) return;
     console.warn('Calendar error:', e.message);
     buildTimeGrid([]);
-    status.innerHTML = '⚠️ Não foi possível consultar a agenda — horários estimados exibidos';
+    const msgs = aviso ? [aviso] : [];
+    msgs.push('Não conseguimos consultar a agenda agora. O horário escolhido ainda precisa ser confirmado pela loja.');
+    status.innerHTML = msgs.map(m => `<span style="color:var(--red);font-weight:600">⚠️ ${esc(m)}</span>`).join('<br>');
   }
 }
 
@@ -750,8 +761,10 @@ async function confirmar() {
   const nav     = document.getElementById('confirm-nav');
   const overlay = document.getElementById('confirming-overlay');
   const step    = document.getElementById('confirming-step');
+  const alerta  = document.getElementById('alert5');
   nav.style.display = 'none';
   overlay.hidden    = false;
+  alerta.hidden     = true;
 
   S.calEventId = null;
   S.sheetUrl   = null;
@@ -762,7 +775,13 @@ async function confirmar() {
     S.calEventId  = result.calEventId  || null;
     S.sheetUrl    = result.sheetUrl    || null;
   } catch(e) {
+    // Antes ia para a tela de sucesso mesmo com erro: o cliente achava que
+    // estava agendado e nada tinha sido gravado. Agora ele pode tentar de novo.
     console.warn('Backend error:', e.message);
+    overlay.hidden    = true;
+    nav.style.display = 'flex';
+    alerta.hidden     = false;
+    return;
   }
 
   overlay.hidden    = true;
@@ -834,11 +853,7 @@ function goNext(from) {
     hideAlert('alert2');
     renderUnidadeBadge(3);
     const inp = document.getElementById('appt-date');
-    const tom = new Date(); tom.setDate(tom.getDate() + 1);
-    const tomStr = tom.getFullYear() + '-' +
-      String(tom.getMonth()+1).padStart(2,'0') + '-' +
-      String(tom.getDate()).padStart(2,'0');
-    inp.min   = proximoDiaUtil(tomStr);
+    inp.min   = dataMinimaAgendamento(new Date());
     inp.value = ''; S.data = null; S.hora = null;
     document.getElementById('cal-status').innerHTML = '';
     buildTimeGrid([]);
@@ -854,37 +869,17 @@ function goNext(from) {
   }
   // Step 4 → Dados do cliente
   if (from === 4) {
-    const nome  = document.getElementById('cli-nome').value.trim();
-    const tel   = document.getElementById('cli-tel').value.trim();
-    const placa = document.getElementById('cli-placa').value.trim().toUpperCase().replace(/[^A-Z0-9-]/g, '');
-    const alertEl = document.getElementById('alert4');
-
-    if (!nome || !tel || !placa) {
-      if (alertEl) alertEl.textContent = 'Preencha nome, telefone e placa.';
+    const campo = id => document.getElementById(id).value;
+    const r = validarCliente({
+      nome: campo('cli-nome'), tel: campo('cli-tel'), placa: campo('cli-placa'),
+      odo: campo('cli-odo'), obs: campo('cli-obs'),
+    });
+    if (r.erro) {
+      document.getElementById('alert4').textContent = r.erro;
       showAlert('alert4');
       return;
     }
-    const telDigitos = tel.replace(/\D/g, '');
-    if (telDigitos.length < 10 || telDigitos.length > 11) {
-      if (alertEl) alertEl.textContent = 'Informe um telefone/WhatsApp válido com DDD (ex: 13 99999-9999).';
-      showAlert('alert4');
-      return;
-    }
-    const placaLimpa = placa.replace('-', '');
-    const regexPlaca = /^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/;
-    if (!regexPlaca.test(placaLimpa)) {
-      if (alertEl) alertEl.textContent = 'Placa inválida. Utilize o formato ABC-1234 ou Mercosul ABC1D23.';
-      showAlert('alert4');
-      return;
-    }
-    const placaFormatada = placaLimpa.length === 7 ? placaLimpa.slice(0, 3) + '-' + placaLimpa.slice(3) : placa;
-    S.cliente = {
-      nome,
-      tel,
-      placa: placaFormatada,
-      odo: document.getElementById('cli-odo').value,
-      obs: document.getElementById('cli-obs').value.trim()
-    };
+    S.cliente = r.cliente;
     hideAlert('alert4');
     buildSummary(document.getElementById('summary-content'));
   }
@@ -920,6 +915,43 @@ function esc(v) {
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 }
+// Valida e normaliza os dados do passo "Dados do cliente".
+// Devolve { erro: 'mensagem' } ou { erro: null, cliente: {...} }.
+function validarCliente(d) {
+  const txt = (v, max) => String(v == null ? '' : v).trim().slice(0, max);
+  const nome  = txt(d.nome, 100);
+  const tel   = txt(d.tel, 20);
+  const placa = txt(d.placa, 10).toUpperCase().replace(/[^A-Z0-9]/g, '');
+  const odo   = txt(d.odo, 10);
+  const obs   = txt(d.obs, 500);
+
+  if (!nome || !tel || !placa) return { erro: 'Preencha nome, telefone e placa.' };
+
+  const telDigitos = tel.replace(/\D/g, '');
+  if (telDigitos.length < 10 || telDigitos.length > 11) {
+    return { erro: 'Informe um telefone/WhatsApp válido com DDD (ex: 13 99999-9999).' };
+  }
+  if (!/^[A-Z]{3}[0-9][A-Z0-9][0-9]{2}$/.test(placa)) {
+    return { erro: 'Placa inválida. Utilize o formato ABC-1234 ou Mercosul ABC1D23.' };
+  }
+  if (odo && !(/^\d+$/.test(odo) && Number(odo) <= 999999)) {
+    return { erro: 'Informe o odômetro só com números (ex: 12500).' };
+  }
+  return {
+    erro: null,
+    cliente: { nome, tel, placa: placa.slice(0, 3) + '-' + placa.slice(3), odo, obs },
+  };
+}
+
+// Primeiro dia que o cliente pode escolher: o próximo dia útil depois de hoje.
+function dataMinimaAgendamento(hoje) {
+  const amanha = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate() + 1);
+  const iso = amanha.getFullYear() + '-' +
+    String(amanha.getMonth() + 1).padStart(2, '0') + '-' +
+    String(amanha.getDate()).padStart(2, '0');
+  return proximoDiaUtil(iso);
+}
+
 function capitalize(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
 function fmtDate(v) { if(!v) return ''; const[y,m,d]=v.split('-'); return `${d}/${m}/${y}`; }
 function fmtBRL(n) { return n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}); }

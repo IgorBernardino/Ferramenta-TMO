@@ -48,11 +48,11 @@ const dadosRevisao = {
      (12.000 e 24.000) acrescentam filtro de oleo, vela e oleo de CVT.
      A correia de transmissao CVT entra no 18.000 km. */
   ZT368G: {
-    1000:  [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
-    6000:  [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120}],
-    12000: [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
-    18000: [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'FILTRO-AR-368',nome:'Filtro de Ar (elemento)',qtd:1,valor:120},{codigo:'CORREIA-CVT-368',nome:'Correia de Transmissão CVT',qtd:1,valor:1150}],
-    24000: [{codigo:'FILTRO-OLEO-368',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'VELA-368',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
+    1000:  [{codigo:'1050876005000',nome:'Filtro do Óleo (ZT368-G)',qtd:1,valor:160},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45}],
+    6000:  [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'1226400259000',nome:'Filtro de Ar (elemento)',qtd:1,valor:195}],
+    12000: [{codigo:'1050876005000',nome:'Filtro do Óleo (ZT368-G)',qtd:1,valor:160},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{codigo:'1226400199000',nome:'Filtro Esponja Motor',qtd:1,valor:84}],
+    18000: [{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'1226400259000',nome:'Filtro de Ar (elemento)',qtd:1,valor:195},{codigo:'1050771003000',nome:'Correia de Transmissão CVT',qtd:1,valor:1150}],
+    24000: [{codigo:'1050876005000',nome:'Filtro do Óleo (ZT368-G)',qtd:1,valor:160},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor (SAE 10W-40/5W-40)',qtd:2,valor:90},{codigo:'CVT-OIL-368',nome:'Óleo Caixa de Velocidades (200mL)',qtd:1,valor:45},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'1226400199000',nome:'Filtro Esponja Motor',qtd:1,valor:84}],
     tmo:{1000:0.0,6000:0.8,12000:1.2,18000:2.0,24000:1.5},
   },
 
@@ -64,9 +64,9 @@ const dadosRevisao = {
     3000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
     6000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
     9000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    12000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+    12000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
     15000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    18000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
+    18000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150}],
     21000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
     24000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
     27000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
@@ -157,9 +157,9 @@ const checklist = {
   ZT368G: {
     1000:  {prazo:'3 meses',  T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL'], I:['Tampa antiqueimaduras do tubo de escape','Folgas do tubo de óleo','Velocidade de ralenti (marcha lenta)','Tubos de combustível','Desgaste das pastilhas de travão','Raios da roda','Tubo de óleo do filtro de ar','Líquido de refrigeração','Pneus (pressão e desgaste)','Freios (operação e líquido)','Óleo do motor (nível)'], A:['Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
     6000:  {T:['Óleo de Motor — 1,55L · SAE 10W-40/5W-40, API SN','Filtro de Ar (elemento) — 1 un.'], I:['Tampa antiqueimaduras do tubo de escape','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2 a cada 10.000 km'], A:['Abraçadeiras, parafusos e porcas do veículo']},
-    12000:  {prazo:'~15 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Roda ativa/motriz CVT','Correia de transmissão CVT (substituir se necessário)'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
+    12000:  {prazo:'~15 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Filtro Esponja do Motor — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Roda ativa/motriz CVT','Correia de transmissão CVT (substituir se necessário)'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas do tubo de escape','Parafusos e porcas dos mecanismos de direção']},
     18000: {T:['Óleo de Motor — 1,55L · SAE 10W-40/5W-40, API SN','Filtro de Ar (elemento) — 1 un.','Correia de Transmissão CVT — 1 un. (trocar a cada 2 anos ou quando necessário)'], I:['Tampa antiqueimaduras do tubo de escape','Velocidade de ralenti','Tubos do radiador','Travões (pastilhas, disco, líquido)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração','Tubo de óleo do filtro de ar','Rolamentos de direção','Abraçadeiras, parafusos e porcas do veículo','Folga das válvulas (Adm: 0,08–0,12mm / Esc: 0,18–0,22mm) — ajustar a cada 20.000 km']},
-    24000: {prazo:'~45 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL','Fluido de Freio — conf. necessário (substituir a cada 4 anos)'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Mangueira do líquido dos travões (substituir a cada 4 anos)','Travões (pastilhas, disco)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração (substituir a cada 30.000 km)','Tubo de óleo do filtro de ar','Rolamentos de direção','Mecanismo trava da direção — limpar e lubrificar (a cada 10.000 km)','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2','Correia de transmissão CVT'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas dos mecanismos de direção']},
+    24000: {prazo:'~45 meses', T:['Óleo de Motor — 1,75L (com filtro) · SAE 10W-40/5W-40, API SN','Filtro do Óleo — 1 un.','Filtro Esponja do Motor — 1 un.','Vela de Ignição — 1 un.','Óleo da Caixa de Velocidades (CVT) — 200mL','Fluido de Freio — conf. necessário (substituir a cada 4 anos)'], I:['Tampa antiqueimaduras do tubo de escape','Filtro de Ar (elemento)','Amortecimento da base (coxins)','Velocidade de ralenti','Tubos do radiador','Folgas do tubo de óleo','Mangueira do líquido dos travões (substituir a cada 4 anos)','Travões (pastilhas, disco)','Pneus (pressão e desgaste)','Raios da roda','Amortecedor dianteiro','Amortecedor traseiro','Líquido de refrigeração (substituir a cada 30.000 km)','Tubo de óleo do filtro de ar','Rolamentos de direção','Mecanismo trava da direção — limpar e lubrificar (a cada 10.000 km)','Roda ativa/motriz CVT — lubrif. Shell Gadus S3 V220 C2','Correia de transmissão CVT'], A:['Abraçadeiras, parafusos e porcas do veículo','Parafusos e porcas dos mecanismos de direção']},
   }
 };
 
@@ -201,7 +201,7 @@ const pecasAvulsas = [
 ];
 
 let itensAdicionais = [];
-function fmt(v){return 'R$ '+v.toFixed(2).replace('.',',');}
+function fmt(v){return 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
 
 
 // ─── 5. CARD HERO ─────────────────────────────────────────────
@@ -331,11 +331,11 @@ function renderizarItensAdicionais(){
 }
 function adicionarItemAdicional(){
   const sel=document.getElementById('selectAvulso');
-  const qtd=parseInt(document.getElementById('qtdAvulso').value)||1;
+  const qtd=Math.min(99,Math.max(1,parseInt(document.getElementById('qtdAvulso').value,10)||1));
   const idx=parseInt(sel.value); if(isNaN(idx))return;
   const peca=pecasAvulsas[idx];
   const ex=itensAdicionais.find(i=>i.codigo===peca.codigo);
-  if(ex){ex.qtd+=qtd;}else{itensAdicionais.push(Object.assign({},peca,{qtd}));}
+  if(ex){ex.qtd=Math.min(99,ex.qtd+qtd);}else{itensAdicionais.push(Object.assign({},peca,{qtd}));}
   sel.value=''; document.getElementById('qtdAvulso').value=1;
   renderizarItensAdicionais();
 }
@@ -397,6 +397,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const veiculoSelect = document.getElementById('veiculoSelect');
   const kmSelect = document.getElementById('kmSelect');
   const ckHeader = document.querySelector('.ck-header');
+
+  // Popular peças avulsas (faltava aqui: o menu ficava vazio na Zontes)
+  const selAvulso = document.getElementById('selectAvulso');
+  if(selAvulso){
+    pecasAvulsas.forEach((p,i)=>{
+      const o=document.createElement('option');
+      o.value=i; o.textContent=p.nome+' — '+fmt(p.valor);
+      selAvulso.appendChild(o);
+    });
+  }
+  renderizarItensAdicionais();
 
   if(veiculoSelect) veiculoSelect.addEventListener('change', onVeiculoChange);
   if(kmSelect) kmSelect.addEventListener('change', onKmChange);
