@@ -270,3 +270,95 @@ describe('dataMinimaAgendamento', () => {
     assert.equal(A.dataMinimaAgendamento(d(2024, 2, 28)), '2024-02-29');
   });
 });
+
+// ── Tipos de atendimento: Revisão · Serviços · Garantia ─────────
+describe('Tipos de atendimento', () => {
+  test('três tipos, com prazos de Serviços e Garantia', () => {
+    const T = A.TIPOS_ATENDIMENTO;
+    assert.equal(Object.keys(T).join(','), 'revisao,servicos,garantia');
+    assert.match(T.servicos.prazo, /72 ?h/);
+    assert.match(T.garantia.prazo, /72 ?h/);
+    assert.match(T.garantia.prazo, /30 dias/);
+  });
+
+  test('Revisão exige km; Serviços e Garantia exigem descrição', () => {
+    assert.equal(A.validarAtendimento({ tipo: 'revisao', km: 12000 }).erro, null);
+    assert.match(A.validarAtendimento({ tipo: 'revisao', km: null }).erro, /quilometragem/i);
+    assert.match(A.validarAtendimento({ tipo: 'servicos', descricao: '' }).erro, /Descreva/);
+    assert.match(A.validarAtendimento({ tipo: 'garantia', descricao: '   ' }).erro, /Descreva/);
+    assert.match(A.validarAtendimento({ tipo: 'garantia', descricao: 'abc' }).erro, /Descreva/, 'curta demais');
+    assert.equal(A.validarAtendimento({ tipo: 'servicos', descricao: 'Instalar baú traseiro' }).erro, null);
+    assert.match(A.validarAtendimento({ tipo: 'outro' }).erro, /tipo/i);
+    assert.match(A.validarAtendimento({}).erro, /tipo/i);
+  });
+
+  test('descrição longa é cortada em 500 caracteres', () => {
+    const r = A.validarAtendimento({ tipo: 'servicos', descricao: 'x'.repeat(2000) });
+    assert.equal(r.erro, null);
+    assert.equal(r.descricao.length, 500);
+  });
+
+  test('avisos da confirmação: Revisão mostra valores aproximados e certificado de garantia', () => {
+    const av = A.avisosConfirmacao('revisao').join(' ');
+    assert.match(av, /valores da revisão são aproximados/i);
+    assert.match(av, /certificado de garantia/i);
+  });
+  test('avisos: Garantia mostra prazo e certificado; Serviços só o prazo; nenhum fala de valores da revisão', () => {
+    const g = A.avisosConfirmacao('garantia').join(' ');
+    assert.match(g, /30 dias/);
+    assert.match(g, /certificado de garantia/i);
+    assert.doesNotMatch(g, /valores da revisão/i);
+    const sv = A.avisosConfirmacao('servicos').join(' ');
+    assert.match(sv, /72/);
+    assert.doesNotMatch(sv, /certificado/i);
+  });
+
+  test('Serviços/Garantia enviam TMO de 1 h (recepção), nunca "72 h" — senão o Calendar bloqueia 3 dias', async () => {
+    let enviado;
+    const X = carregarAgendamento({ fetch: async (u, o) => { enviado = JSON.parse(o.body.get('payload')); return { ok: true, json: async () => ({ ok: true }) }; } });
+    Object.assign(X.S, { unidade: 'guaruja', tipo: 'garantia', brand: 'haojue', modelo: 'DK160', km: null, descricao: 'Barulho no motor',
+      data: '2026-10-21', hora: '09:00', idAgendamento: 'AG-teste-1',
+      cliente: { nome: 'A', tel: '13999999999', placa: 'ABC-1234', odo: '', obs: '' } });
+    await X.confirmarNoBackend();
+    assert.equal(enviado.tmo, '1');
+    assert.equal(enviado.tipoAtendimento, 'Garantia');
+    assert.equal(enviado.idAgendamento, 'AG-teste-1');
+  });
+
+  test('cada agendamento ganha um id próprio, reaproveitado ao tentar de novo', async () => {
+    const ids = [];
+    const X = carregarAgendamento({ fetch: async (u, o) => { ids.push(JSON.parse(o.body.get('payload')).idAgendamento); return { ok: true, json: async () => ({ ok: true }) }; } });
+    Object.assign(X.S, { unidade: 'guaruja', tipo: 'revisao', brand: 'suzuki', modelo: 'HAYABUSA', km: 12000, data: '2026-10-21', hora: '09:00',
+      cliente: { nome: 'A', tel: '13999999999', placa: 'ABC-1234', odo: '', obs: '' } });
+    await X.confirmarNoBackend();
+    await X.confirmarNoBackend();
+    assert.match(ids[0], /^AG-/);
+    assert.equal(ids[0], ids[1], 'a segunda tentativa usa o mesmo id');
+  });
+
+  test('WhatsApp de Serviços leva tipo e descrição, sem preço', () => {
+    Object.assign(A.S, { unidade: 'guaruja', tipo: 'servicos', brand: 'haojue', modelo: 'DK160', km: null,
+      descricao: 'Instalar baú & protetor', data: '2026-10-21', hora: '09:00',
+      cliente: { nome: 'Ana', tel: '(13) 99999-9999', placa: 'ABC-1D23', odo: '', obs: '' } });
+    const t = decodeURIComponent(A.gerarMsgWA().split('text=')[1]);
+    assert.match(t, /Serviços/);
+    assert.match(t, /Instalar baú & protetor/);
+    assert.doesNotMatch(t, /Total estimado/);
+    A.S.tipo = 'revisao'; A.S.descricao = '';
+  });
+});
+
+describe('Mensagem do servidor chega ao cliente', () => {
+  test('erro vindo do Apps Script é marcado como "do servidor" (o site mostra o texto dele)', async () => {
+    const X = carregarAgendamento({ fetch: async () => ({ ok: true, json: async () => ({ ok: false, erro: 'Este horário acabou de ser ocupado.' }) }) });
+    Object.assign(X.S, { unidade: 'guaruja', tipo: 'revisao', brand: 'suzuki', modelo: 'HAYABUSA', km: 12000, data: '2026-10-21', hora: '09:00',
+      cliente: { nome: 'A', tel: '13999999999', placa: 'ABC-1234', odo: '', obs: '' } });
+    await assert.rejects(X.confirmarNoBackend(), e => e.doServidor === true && /ocupado/.test(e.message));
+  });
+  test('falha de rede não é "do servidor" (o site mostra a mensagem de conexão)', async () => {
+    const X = carregarAgendamento({ fetch: async () => { throw new TypeError('Failed to fetch'); } });
+    Object.assign(X.S, { unidade: 'guaruja', tipo: 'revisao', brand: 'suzuki', modelo: 'HAYABUSA', km: 12000, data: '2026-10-21', hora: '09:00',
+      cliente: { nome: 'A', tel: '13999999999', placa: 'ABC-1234', odo: '', obs: '' } });
+    await assert.rejects(X.confirmarNoBackend(), e => !e.doServidor);
+  });
+});

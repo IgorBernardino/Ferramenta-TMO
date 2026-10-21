@@ -129,3 +129,47 @@ describe('Zontes 368G — peças compartilhadas com a 350 E', () => {
     assert.equal(cod(6000, 'Filtro Esponja'), undefined);
   });
 });
+
+describe('Burgman ADX 125 — plano da tabela Haojue de 01/09/2026', () => {
+  const d = carregar('script/revisaohaojue.js', ['dadosRevisao', 'checklist']);
+  const adx = d.dadosRevisao.ADX125;
+  const nomes = km => JSON.parse(JSON.stringify((adx[km] || []).map(p => p.nome)));
+  const KMS = [1000,3000,6000,9000,12000,15000,18000,21000,24000,27000,30000,33000,36000,39000,42000,45000,48000,51000,54000,57000];
+
+  test('revisões de 1.000 a 57.000 km, com óleo de motor em todas', () => {
+    for (const km of KMS) assert.ok(nomes(km).includes('Óleo do Motor'), `${km} km`);
+    assert.equal(adx[60000], undefined);
+  });
+  test('ciclo de 18 mil km: 12.000 e 30.000 são revisões completas', () => {
+    for (const km of [12000, 30000, 48000]) {
+      for (const p of ['Filtro de Ar', 'Vela de Ignição', 'Fluido de Freio', 'Arruela de Dreno', 'Óleo de Transmissão']) {
+        assert.ok(nomes(km).includes(p), `${km} km: falta ${p}`);
+      }
+    }
+  });
+  test('3.000, 9.000, 15.000 (e equivalentes) só trocam óleo de motor', () => {
+    for (const km of [3000, 9000, 15000, 21000, 27000, 33000, 57000]) assert.deepEqual(nomes(km), ['Óleo do Motor'], `${km} km`);
+  });
+  test('6.000 e 18.000 (e equivalentes): óleo, arruela e óleo de transmissão', () => {
+    for (const km of [6000, 18000, 24000, 36000, 42000, 54000]) {
+      assert.deepEqual(nomes(km).sort(), ['Arruela de Dreno', 'Óleo de Transmissão', 'Óleo do Motor'].sort(), `${km} km`);
+    }
+  });
+  test('códigos e preços informados pela oficina', () => {
+    const p = (km, n) => adx[km].find(x => x.nome === n);
+    assert.deepEqual([p(12000, 'Vela de Ignição').codigo, p(12000, 'Vela de Ignição').valor], ['09482-00621-000', 150]);
+    assert.deepEqual([p(12000, 'Filtro de Ar').codigo, p(12000, 'Filtro de Ar').valor], ['13780H26L00H000', 90]);
+    assert.equal(p(1000, 'Óleo de Transmissão').valor, 100);
+  });
+  test('TMO igual ao da Lindy 125', () => {
+    assert.equal(JSON.stringify(adx.tmo), JSON.stringify(d.dadosRevisao.LINDY125.tmo));
+  });
+  test('checklist próprio: 12.000 km troca filtro de ar, vela e fluido; 3.000 só óleo', () => {
+    const ck = d.checklist.ADX125;
+    assert.ok(ck[12000].T.some(i => /Filtro de ar/i.test(i)));
+    assert.ok(ck[12000].T.some(i => /Vela/i.test(i)));
+    assert.ok(ck[12000].T.some(i => /Fluido de freio/i.test(i)));
+    assert.equal(ck[3000].T.length, 1);
+    assert.equal(JSON.stringify(ck[30000]), JSON.stringify(ck[12000]));
+  });
+});

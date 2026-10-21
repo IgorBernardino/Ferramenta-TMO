@@ -185,6 +185,11 @@ var dadosRevisao = {
   }
 };
 
+// GSX-S1000 GX e GT: mesmo motor da GSX-S1000 — mesmo plano de revisão.
+dadosRevisao.GSXS1000GX = dadosRevisao.GSXS1000;
+dadosRevisao.GSXS1000GT = dadosRevisao.GSXS1000;
+
+
 
 // ─── 2. CHECKLIST ─────────────────────────────────────────────
 /*
@@ -289,6 +294,8 @@ var checklist = {
     GSXR1000:    _ckSZ,
     GSX750:      _ckSZ,
     GSXS1000:    _ckSZ,
+    GSXS1000GX:  _ckSZ,
+    GSXS1000GT:  _ckSZ,
     SV650A:      _ckSZ,
     VSTROM650:   _ckSZ,
     VSTROM800:   _ckSZ,
@@ -301,14 +308,16 @@ var checklist = {
 
 var modeloInfo = {
     BURGMAN_I:   { nome:'Burgman i',          motor:'125cc · Scooter', trans:'CVT',      oleo:'Motul 10W40 · 1L',  intervalo:'6.000 km', img:'../images/SUZUKI/BURGMAN I.png'    },
-    GSX800:      { nome:'GSX 800',            motor:'800cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/GSX800.png'        },
+    GSX800:      { nome:'GSX-8R / GSX-8S',    motor:'800cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/GSX800.png'        },
     HAYABUSA:    { nome:'Hayabusa GSX1300R',  motor:'1300cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/HAYABUSA.png'      },
     GSXR1000:    { nome:'GSX-R1000 / A',      motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/GSXR1000.png'     },
     GSX750:      { nome:'GSX 750',            motor:'750cc · 4 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'../images/SUZUKI/GSX750.png'        },
-    GSXS1000:    { nome:'GSX-S1000A',         motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/GSX-S1000GX.png'  },
+    GSXS1000:    { nome:'GSX-S1000',          motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/GSX-S1000.png'    },
+    GSXS1000GX:  { nome:'GSX-S1000 GX',       motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/GSX-S1000GX.png'  },
+    GSXS1000GT:  { nome:'GSX-S1000 GT',       motor:'1000cc · 4 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/GSX1000GT.png'  },
     SV650A:      { nome:'SV 650A',            motor:'645cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'../images/SUZUKI/SV650A.png'        },
-    VSTROM650:   { nome:'V-Strom 650 A',      motor:'645cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'../images/SUZUKI/VSTROM650.png'    },
-    VSTROM800:   { nome:'V-Strom 800 DE',     motor:'776cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/VSTROM800DE.png'  },
+    VSTROM650:   { nome:'V-Strom 650 XT',     motor:'645cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 3L',  intervalo:'6.000 km', img:'../images/SUZUKI/VSTROM650.png'    },
+    VSTROM800:   { nome:'V-Strom 800 / 800 DE', motor:'776cc · 2 cil.',  trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/VSTROM800DE.png'  },
     VSTROM1000:  { nome:'V-Strom 1050',       motor:'1037cc · 2 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/VSTROM1050.png'   },
     VSTROM1050XT:{ nome:'V-Strom 1050 XT',   motor:'1037cc · 2 cil.', trans:'Corrente', oleo:'Motul 10W40 · 4L',  intervalo:'6.000 km', img:'../images/SUZUKI/VSTROM1050XT.png' },
 };

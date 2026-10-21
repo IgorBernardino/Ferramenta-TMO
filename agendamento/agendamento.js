@@ -2,8 +2,9 @@ const DADOS = {
 
   // ── HAOJUE ────────────────────────────────────────────
   haojue: {
-    modelos:  ['DK160','DR160','DL160','NK150','MASTER150','CHOPPER150','LINDY125'],
-    labels:   ['DK 160','DR 160','DL 160','NK 150','Master Ride 150','Chopper Road 150','Lindy 125'],
+    // Linha atual primeiro (ordem do catálogo); fora de linha no fim — ainda fazem revisão.
+    modelos:  ['MASTER150','DL160','NK160','DK160','DR160','ADX125','NK150','CHOPPER150','LINDY125'],
+    labels:   ['Master Ride 150','DL 160','NK 160','DK 160','DR 160','Burgman ADX 125','NK 150 (fora de linha)','Chopper Road 150 (fora de linha)','Lindy 125 (fora de linha)'],
     TMO_HORA: 110,
     tmoHJ: {1000:0,3000:0.5,6000:0.5,9000:0.5,12000:3,15000:0.5,18000:1,21000:0.5,24000:2.5,27000:0.5,30000:0.5,33000:0.5,36000:2.5,39000:0.5,42000:0.5,45000:0.5,48000:2.5,51000:0.5,54000:0.5,57000:0.5},
     pecasCiclo: {
@@ -109,9 +110,10 @@ const DADOS = {
 
   // ── SUZUKI ────────────────────────────────────────────
   suzuki: {
-    modelos: ['BURGMAN_I','GSX800','HAYABUSA','GSXR1000','GSX750','GSXS1000','SV650A','VSTROM650','VSTROM800','VSTROM1000','VSTROM1050XT'],
-    labels:  ['Burgman i','GSX 800','Hayabusa GSX1300R','GSX-R1000','GSX 750','GSX-S1000A','SV 650A','V-Strom 650 A','V-Strom 800 DE','V-Strom 1050','V-Strom 1050 XT'],
-    tmoHora: {BURGMAN_I:100,GSX800:800,HAYABUSA:1300,GSXR1000:1000,GSX750:750,GSXS1000:1000,SV650A:650,VSTROM650:650,VSTROM800:800,VSTROM1000:1000,VSTROM1050XT:1050},
+    // Linha atual primeiro (ordem do catálogo); fora de linha no fim — ainda fazem revisão.
+    modelos: ['HAYABUSA','GSXS1000GX','GSXS1000GT','GSXS1000','GSX800','VSTROM1050XT','VSTROM1000','VSTROM800','VSTROM650','BURGMAN_I','GSXR1000','GSX750','SV650A'],
+    labels:  ['Hayabusa','GSX-S1000 GX','GSX-S1000 GT','GSX-S1000','GSX-8R / GSX-8S','V-Strom 1050 XT','V-Strom 1050','V-Strom 800 / 800 DE','V-Strom 650 XT','Burgman i (fora de linha)','GSX-R1000 (fora de linha)','GSX 750 (fora de linha)','SV 650A (fora de linha)'],
+    tmoHora: {BURGMAN_I:100,GSX800:800,HAYABUSA:1300,GSXR1000:1000,GSX750:750,GSXS1000:1000,GSXS1000GX:1000,GSXS1000GT:1000,SV650A:650,VSTROM650:650,VSTROM800:800,VSTROM1000:1000,VSTROM1050XT:1050},
     tmo: {
       BURGMAN_I:   {1000:0,6000:0,12000:0.8,18000:2.5,24000:1,30000:1,36000:2.5,42000:1,48000:1,54000:2.5,60000:1},
       GSX800:      {1000:0,6000:0,12000:0.4,18000:0.2,24000:0.4,30000:0.2,36000:0.4,42000:0.2,48000:0.4,54000:0.2,60000:0.4},
@@ -141,6 +143,36 @@ const DADOS = {
   }
 };
 
+// GSX-S1000 GX e GT: mesmo motor e plano da GSX-S1000 (espelha revisaosuzuki.js).
+for (const m of ['GSXS1000GX', 'GSXS1000GT']) {
+  DADOS.suzuki.tmo[m]   = DADOS.suzuki.tmo.GSXS1000;
+  DADOS.suzuki.pecas[m] = DADOS.suzuki.pecas.GSXS1000;
+}
+
+// Burgman ADX 125 — espelha revisaohaojue.js (tabela Haojue de 01/09/2026).
+// Ciclo de 18 mil km repetido até 57.000; TMO da Lindy 125.
+{
+  const p = {
+    oleo:   {nome:'Óleo do Motor',qtd:1,valor:90},
+    arruela:{nome:'Arruela de Dreno',qtd:1,valor:10},
+    transm: {nome:'Óleo de Transmissão',qtd:1,valor:100},
+    ar:     {nome:'Filtro de Ar',qtd:1,valor:90},
+    vela:   {nome:'Vela de Ignição',qtd:1,valor:150},
+    freio:  {nome:'Fluido de Freio',qtd:1,valor:22},
+  };
+  const porPos = {
+    1000:['oleo','transm'], 3000:['oleo'], 9000:['oleo'], 15000:['oleo'],
+    6000:['oleo','arruela','transm'], 18000:['oleo','arruela','transm'],
+    12000:['ar','vela','oleo','arruela','transm','freio'],
+  };
+  const pos = km => km === 1000 ? 1000 : (((km / 1000 - 3) % 18) + 3) * 1000;
+  DADOS.haojue.pecasADX = {};
+  for (let km = 1000; km <= 57000; km += (km === 1000 ? 2000 : 3000)) {
+    DADOS.haojue.pecasADX[km] = porPos[pos(km)].map(k => ({ ...p[k] }));
+  }
+}
+
+
 
 
 // ── FUNÇÕES DE ACESSO AOS DADOS ───────────────────────
@@ -148,6 +180,7 @@ const DADOS = {
 function getKmsDisponiveis(brand, modelo) {
   if (brand === 'haojue') {
     if (modelo === 'LINDY125') return Object.keys(DADOS.haojue.pecasLindy).filter(k=>!isNaN(k)).map(Number).sort((a,b)=>a-b);
+    if (modelo === 'ADX125')   return Object.keys(DADOS.haojue.pecasADX).map(Number).sort((a,b)=>a-b);
     return [1000,3000,6000,9000,12000,15000,18000,21000,24000,27000,30000,33000,36000,39000,42000,45000,48000,51000,54000,57000];
   }
   if (brand === 'zontes') {
@@ -279,7 +312,7 @@ function getTmo(brand, modelo, km) {
 function getTmoReal(brand, modelo, km) {
   const k = parseInt(km);
   if (brand === 'haojue') {
-    if (modelo === 'LINDY125') return DADOS.haojue.tmoLindy[k] || 0;
+    if (modelo === 'LINDY125' || modelo === 'ADX125') return DADOS.haojue.tmoLindy[k] || 0;
     return DADOS.haojue.tmoHJ[k] || 0;
   }
   if (brand === 'zontes') {
@@ -300,7 +333,7 @@ function getChecklist(brand, modelo, km) {
   const k = parseInt(km);
   // Scooters/CVT: sem corrente de transmissão e sem cabo de embreagem
   const ehCVT = (brand === 'zontes' && ['E350','E350_ANTIGA','ZT368G'].includes(modelo))
-             || (brand === 'haojue' && modelo === 'LINDY125')
+             || (brand === 'haojue' && ['LINDY125','ADX125'].includes(modelo))
              || (brand === 'suzuki' && modelo === 'BURGMAN_I');
 
   // Checklist base — revisões leves (1k a 9k, e 15k,18k,21k...)
@@ -370,6 +403,7 @@ function getPecas(brand, modelo, km) {
   const k = parseInt(km);
   if (brand === 'haojue') {
     if (modelo === 'LINDY125') return DADOS.haojue.pecasLindy[k] || [];
+    if (modelo === 'ADX125')   return (DADOS.haojue.pecasADX[k] || []).map(p=>({...p}));
     // Ciclo padrão: rem=(km/1000)%12 → 0=completo | 3,9=simples | outros=arruela
     const rem = (k / 1000) % 12;
     const c   = DADOS.haojue.pecasCiclo;
@@ -408,7 +442,7 @@ function getPacote(brand, modelo, km) {
   // NOVA REGRA: Travar revisão de 6.000 km da Suzuki em R$ 520
   if (brand === 'suzuki' && k === 6000) {
     const modelos520 = [
-      'GSX800', 'HAYABUSA', 'GSXR1000', 'GSXS1000', 
+      'GSX800', 'HAYABUSA', 'GSXR1000', 'GSXS1000', 'GSXS1000GX', 'GSXS1000GT', 
       'VSTROM800', 'VSTROM1000', 'VSTROM1050XT',
       'SV650A', 'GSX750', 'VSTROM650'
     ];
@@ -449,9 +483,51 @@ const S = {
   data:       null,
   hora:       null,
   cliente:    { nome:'', tel:'', placa:'', odo:'', obs:'' },
+  tipo:       'revisao',  // chave de TIPOS_ATENDIMENTO
+  idAgendamento: null,    // gerado na 1ª tentativa; repetido se o cliente tentar de novo
+  descricao:  '',         // o que o cliente pede (Serviços / Garantia)
   calEventId: null,
   sheetUrl:   null,
 };
+
+// ── TIPOS DE ATENDIMENTO ──────────────────────────────
+// Revisão tem preço e km; Serviços e Garantia são orçados na oficina
+// e o veículo fica em posse da loja pelo prazo indicado.
+const TIPOS_ATENDIMENTO = {
+  revisao:  { label: 'Revisão',  icone: '🔧', sub: 'Plano de manutenção por km' },
+  servicos: { label: 'Serviços', icone: '🛠️', sub: 'Instalação ou verificação',
+    prazo: 'Prazo médio de 72 h com o veículo na oficina para orçamento e verificações.' },
+  garantia: { label: 'Garantia', icone: '🛡️', sub: 'Verificação dentro da garantia',
+    prazo: 'Prazo médio de 72 h para verificação e prazo máximo de 30 dias para o atendimento em garantia.' },
+};
+
+const AVISO_VALORES = 'Os valores da revisão são aproximados, podendo sofrer alterações. ' +
+  'O cliente será informado caso seja necessária a troca ou se algum item tiver atualização de preço.';
+const AVISO_CERTIFICADO = 'É obrigatória a apresentação do certificado de garantia para a realização das revisões. ' +
+  'A ausência deste documento impede a execução do serviço, que poderá ser reagendado assim que o certificado for apresentado.';
+
+// Valida a etapa "Atendimento". Devolve { erro } ou { erro: null, descricao }.
+function validarAtendimento({ tipo, km, descricao } = {}) {
+  if (!TIPOS_ATENDIMENTO[tipo]) return { erro: 'Escolha o tipo de atendimento.' };
+  if (tipo === 'revisao') {
+    return km ? { erro: null, descricao: '' } : { erro: 'Selecione a quilometragem de revisão.' };
+  }
+  const d = String(descricao == null ? '' : descricao).trim().slice(0, 500);
+  if (d.length < 5) return { erro: 'Descreva o que você precisa (ex: instalar baú, barulho na suspensão).' };
+  return { erro: null, descricao: d };
+}
+
+// Avisos exibidos na etapa de confirmação, conforme o tipo.
+function avisosConfirmacao(tipo) {
+  if (tipo === 'revisao')  return [AVISO_VALORES, AVISO_CERTIFICADO];
+  if (tipo === 'garantia') return [TIPOS_ATENDIMENTO.garantia.prazo, AVISO_CERTIFICADO];
+  return TIPOS_ATENDIMENTO[tipo] ? [TIPOS_ATENDIMENTO[tipo].prazo] : [];
+}
+
+// Linha curta "o que será feito", usada no WhatsApp, planilha e telas.
+function descricaoAtendimento() {
+  return S.tipo === 'revisao' ? 'Revisão ' + fmtKm(S.km) : TIPOS_ATENDIMENTO[S.tipo].label;
+}
 
 // ── APPS SCRIPT BACKEND ──────────────────────────────
 // A URL vive só em CONFIG.APPS_SCRIPT_URL (agendamento.html).
@@ -489,14 +565,26 @@ async function buscarOcupados(dateStr) {
 // ── CRIAR EVENTO + GRAVAR PLANILHA (via Apps Script) ──
 // Tudo enviado em uma única chamada ao backend
 async function confirmarNoBackend() {
-  const totais     = calcularTotais(S.brand, S.modelo, S.km);
+  const revisao    = S.tipo === 'revisao';
+  const totais     = revisao ? calcularTotais(S.brand, S.modelo, S.km) : null;
   const brand      = capitalize(S.brand);
   const labelModelo= getModeloLabel(S.brand, S.modelo);
   const unidadeInfo= CONFIG.UNIDADES[S.unidade];
-  const pecasStr   = totais.pecas.map(p => `${p.nome} (${p.qtd}x) - R$ ${fmtBRL(p.qtd * p.valor)}`).join('\n');
+  const pecasStr   = revisao
+    ? totais.pecas.map(p => `${p.nome} (${p.qtd}x) - R$ ${fmtBRL(p.qtd * p.valor)}`).join('\n')
+    : S.descricao;
 
+  // Mesmos campos de sempre (o Apps Script e a planilha continuam funcionando);
+  // em Serviços/Garantia vão sem preço, e a descrição entra também em "obs"
+  // para aparecer no dashboard sem precisar mudar o Apps Script.
+  const tipoLabel = TIPOS_ATENDIMENTO[S.tipo].label;
+  // Mesmo id em todas as tentativas: o Apps Script não grava duas vezes.
+  if (!S.idAgendamento) S.idAgendamento = 'AG-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7);
   const payload = {
-    action:      'confirmar_agendamento',
+    action:          'confirmar_agendamento',
+    idAgendamento:   S.idAgendamento,
+    tipoAtendimento: tipoLabel,
+    descricao:       S.descricao,
     unidade:     S.unidade,
     nomeUnidade: unidadeInfo.label,
     endUnidade:  unidadeInfo.end,
@@ -505,19 +593,25 @@ async function confirmarNoBackend() {
     hora:        S.hora,
     marca:       brand,
     modelo:      labelModelo,
-    kmLabel:     fmtKm(S.km),
-    tmo:         totais.tmo.toFixed(1).replace('.',','),
-    valorHora:   totais.hora,
-    totalPecas:  fmtBRL(totais.totalPecas),
-    totalMO:     fmtBRL(totais.totalMO),
-    total:       fmtBRL(totais.total),
+    kmLabel:     revisao ? fmtKm(S.km) : tipoLabel,
+    // Serviços/Garantia: 1 h de recepção no Calendar. O carro fica até 72 h, mas
+    // mandar "72" faria o Apps Script criar um evento de 3 dias e travar a agenda.
+    tmo:         revisao ? totais.tmo.toFixed(1).replace('.',',') : '1',
+    valorHora:   revisao ? totais.hora : '',
+    totalPecas:  revisao ? fmtBRL(totais.totalPecas) : 'A orçar',
+    totalMO:     revisao ? fmtBRL(totais.totalMO) : 'A orçar',
+    total:       revisao ? fmtBRL(totais.total) : 'A orçar',
     pecasStr:    pecasStr,
-    cliente:     S.cliente,
+    cliente:     revisao ? S.cliente
+      : { ...S.cliente, obs: `[${tipoLabel}] ${S.descricao}` + (S.cliente.obs ? ` | ${S.cliente.obs}` : '') },
   };
 
   const result = await chamarBackend(payload);
   // O Apps Script responde 200 mesmo quando falha por dentro; o erro vem no JSON.
-  if (result && (result.erro || result.error)) throw new Error(result.erro || result.error);
+  if (result && (result.erro || result.error)) {
+    // Mensagem escrita pelo Apps Script (ex.: horário ocupado) — o cliente vê o texto dela.
+    throw Object.assign(new Error(result.erro || result.error), { doServidor: true });
+  }
   return result;
 }
 
@@ -525,9 +619,10 @@ async function confirmarNoBackend() {
 function gerarMsgWA() {
   const brand       = capitalize(S.brand);
   const label       = getModeloLabel(S.brand, S.modelo);
-  const totais      = calcularTotais(S.brand, S.modelo, S.km);
   const unidadeInfo = CONFIG.UNIDADES[S.unidade];
-  const tmoExib     = getTmo(S.brand, S.modelo, S.km);
+  const revisao     = S.tipo === 'revisao';
+  const tipo        = TIPOS_ATENDIMENTO[S.tipo];
+  const tmoExib     = revisao ? getTmo(S.brand, S.modelo, S.km) : 0;
   const durLabel    = tmoExib >= 3 ? '3 horas' : tmoExib >= 1.5 ? '1h30' : '1 hora';
 
   const linhas = [
@@ -542,12 +637,13 @@ function gerarMsgWA() {
     S.cliente.odo ? `🔢 Odômetro: ${Number(S.cliente.odo).toLocaleString('pt-BR')} km` : null,
     ``,
     `🏍️ *${brand} ${label}*`,
-    `🔧 Revisão: *${fmtKm(S.km)}*`,
+    revisao ? `🔧 Revisão: *${fmtKm(S.km)}*` : `${tipo.icone} Atendimento: *${tipo.label}*`,
+    revisao ? null : `🗒️ ${S.descricao}`,
     ``,
     `📅 Data: *${fmtDate(S.data)}* às *${S.hora}*`,
-    `⏱ Duração estimada: ${durLabel}`,
-    ``,
-    `💵 *Total estimado: R$ ${fmtBRL(totais.total)}*`,
+    revisao ? `⏱ Duração estimada: ${durLabel}` : `⏱ ${tipo.prazo}`,
+    revisao ? `` : null,
+    revisao ? `💵 *Total estimado: R$ ${fmtBRL(calcularTotais(S.brand, S.modelo, S.km).total)}*` : null,
     S.cliente.obs ? `\n📝 Obs: ${S.cliente.obs}` : null,
   ].filter(l => l !== null);
 
@@ -586,6 +682,27 @@ function selectBrand(brand, el) {
   });
   sel.value = '';
   S.modelo = null;
+}
+
+// ── UI: TIPO DE ATENDIMENTO ───────────────────────────
+// Revisão mostra a grade de km; Serviços/Garantia pedem uma descrição
+// e mostram o prazo em que o veículo fica na oficina.
+function selectTipo(tipo) {
+  S.tipo = tipo;
+  if (tipo !== 'revisao') S.km = null;
+  document.querySelectorAll('.tipo-card').forEach(c => {
+    const sel = c.dataset.tipo === tipo;
+    c.classList.toggle('selected', sel);
+    c.setAttribute('aria-pressed', String(sel));
+  });
+  const revisao = tipo === 'revisao';
+  document.getElementById('bloco-revisao').hidden = !revisao;
+  document.getElementById('bloco-descricao').hidden = revisao;
+  if (!revisao) {
+    document.querySelectorAll('.km-btn').forEach(x => x.classList.remove('selected'));
+    document.getElementById('prazo-atendimento').textContent = TIPOS_ATENDIMENTO[tipo].prazo;
+  }
+  document.getElementById('alert2').hidden = true;
 }
 
 // ── UI: GRID DE KM ────────────────────────────────────
@@ -700,12 +817,14 @@ function buildTimeGrid(ocupados) {
 
 // ── UI: RESUMO ────────────────────────────────────────
 function buildSummary(container) {
-  if (!S.km) return;
+  const revisao = S.tipo === 'revisao';
+  if (revisao && !S.km) return;
+  const tipo   = TIPOS_ATENDIMENTO[S.tipo];
   const brand  = capitalize(S.brand);
   const label  = getModeloLabel(S.brand, S.modelo);
-  const tmo    = getTmo(S.brand, S.modelo, S.km);
+  const tmo    = revisao ? getTmo(S.brand, S.modelo, S.km) : 0;
 
-  const checklist = getChecklist(S.brand, S.modelo, S.km);
+  const checklist = revisao ? getChecklist(S.brand, S.modelo, S.km) : [];
   const opLabel   = { T:'Trocar', I:'Inspecionar', L:'Limpar', IAL:'Insp./Ajust./Lubr.', IL:'Insp./Lubr.', A:'Ajustar' };
   const checkRows = checklist.map(c =>
     `<div class="summary-row checklist-row">
@@ -713,6 +832,22 @@ function buildSummary(container) {
       <span class="check-item">${c.item}</span>
     </div>`
   ).join('');
+
+  // Revisão: checklist + total. Serviços/Garantia: o pedido do cliente + prazo.
+  const blocoAtendimento = revisao ? `
+    <div class="summary-section">
+      <div class="summary-section-title">Revisão ${fmtKm(S.km)} — o que será realizado</div>
+      ${checkRows}
+    </div>
+    <div class="summary-divider"></div>
+    <div class="summary-section">
+      <div class="total-row"><span>Total estimado</span><span class="total-val">R$ ${fmtBRL(calcularTotais(S.brand, S.modelo, S.km).total)}</span></div>
+    </div>` : `
+    <div class="summary-section">
+      <div class="summary-section-title">${tipo.icone} ${tipo.label}</div>
+      <div class="summary-row"><span class="lbl">Solicitação</span><span class="val" style="max-width:65%;text-align:right">${esc(S.descricao)}</span></div>
+      <div class="summary-row"><span class="lbl">Valor</span><span class="val">A orçar na oficina</span></div>
+    </div>`;
 
   const durLabel  = tmo >= 3 ? '3 horas' : tmo >= 1.5 ? '1h30' : tmo > 0 ? '1 hora' : '< 30 min';
   const unidadeInfo = S.unidade ? CONFIG.UNIDADES[S.unidade] : null;
@@ -732,14 +867,7 @@ function buildSummary(container) {
       ${S.cliente.odo ? `<div class="summary-row"><span class="lbl">Odômetro</span><span class="val">${Number(S.cliente.odo).toLocaleString('pt-BR')} km</span></div>` : ''}
     </div>
     <div class="summary-divider"></div>
-    <div class="summary-section">
-      <div class="summary-section-title">O que será realizado</div>
-      ${checkRows}
-    </div>
-    <div class="summary-divider"></div>
-    <div class="summary-section">
-      <div class="total-row"><span>Total estimado</span><span class="total-val">R$ ${fmtBRL(calcularTotais(S.brand, S.modelo, S.km).total)}</span></div>
-    </div>
+    ${blocoAtendimento}
     <div class="summary-divider"></div>
     <div class="summary-section">
       <div class="summary-section-title">Agendamento</div>
@@ -754,6 +882,10 @@ function buildSummary(container) {
       ${S.cliente.obs ? `<div class="summary-row"><span class="lbl">Obs</span><span class="val" style="max-width:60%;text-align:right">${esc(S.cliente.obs)}</span></div>` : ''}
     </div>
   `;
+
+  // Avisos ao cliente, logo acima do botão "Confirmar"
+  document.getElementById('avisos-confirmacao').innerHTML = avisosConfirmacao(S.tipo)
+    .map(t => `<li>${esc(t)}</li>`).join('');
 }
 
 // ── FLUXO: CONFIRMAR ──────────────────────────────────
@@ -780,6 +912,8 @@ async function confirmar() {
     console.warn('Backend error:', e.message);
     overlay.hidden    = true;
     nav.style.display = 'flex';
+    alerta.textContent = e.doServidor ? e.message
+      : 'Não foi possível registrar o agendamento. Verifique sua conexão e toque em “Confirmar” de novo.';
     alerta.hidden     = false;
     return;
   }
@@ -796,8 +930,9 @@ function mostrarSucesso() {
   markDone(5);
 
   const unidade = S.unidade ? CONFIG.UNIDADES[S.unidade].label : '';
-  const tmo     = getTmo(S.brand, S.modelo, S.km);
-  const duracao = tmo > 0 ? tmo.toFixed(1).replace('.',',') + ' h' : '< 30 min';
+  const revisao = S.tipo === 'revisao';
+  const tmo     = revisao ? getTmo(S.brand, S.modelo, S.km) : 0;
+  const duracao = !revisao ? 'até 72 h na oficina' : tmo > 0 ? tmo.toFixed(1).replace('.',',') + ' h' : '< 30 min';
 
   document.getElementById('success-sub').textContent =
     `${S.cliente.nome}, seu agendamento foi confirmado!`;
@@ -812,9 +947,11 @@ function mostrarSucesso() {
       <div class="summary-divider"></div>
       <div class="summary-row"><span class="lbl">Veículo</span><span class="val">${capitalize(S.brand)} ${getModeloLabel(S.brand, S.modelo)}</span></div>
       <div class="summary-row"><span class="lbl">Placa</span><span class="val">${esc(S.cliente.placa)}</span></div>
-      <div class="summary-row"><span class="lbl">Revisão</span><span class="val">${fmtKm(S.km)}</span></div>
+      <div class="summary-row"><span class="lbl">Atendimento</span><span class="val">${descricaoAtendimento()}</span></div>
       <div class="summary-divider"></div>
-      <div class="total-row"><span>Total estimado</span><span class="total-val">R$ ${fmtBRL(calcularTotais(S.brand, S.modelo, S.km).total)}</span></div>
+      ${revisao
+        ? `<div class="total-row"><span>Total estimado</span><span class="total-val">R$ ${fmtBRL(calcularTotais(S.brand, S.modelo, S.km).total)}</span></div>`
+        : `<div class="summary-row"><span class="lbl">Valor</span><span class="val">A orçar na oficina</span></div>`}
     </div>
   `;
 
@@ -845,11 +982,18 @@ function goNext(from) {
     hideAlert('alert1');
     buildKmGrid();
     renderUnidadeBadge(2);
+    selectTipo(S.tipo);
     document.getElementById('duration-display').value = '';
   }
-  // Step 2 → Quilometragem
+  // Step 2 → Atendimento (Revisão com km, ou Serviços/Garantia com descrição)
   if (from === 2) {
-    if (!S.km && S.km !== 0) { showAlert('alert2'); return; }
+    const r = validarAtendimento({ tipo: S.tipo, km: S.km, descricao: document.getElementById('atend-descricao').value });
+    if (r.erro) {
+      document.getElementById('alert2').textContent = r.erro;
+      showAlert('alert2');
+      return;
+    }
+    S.descricao = r.descricao;
     hideAlert('alert2');
     renderUnidadeBadge(3);
     const inp = document.getElementById('appt-date');
@@ -857,8 +1001,9 @@ function goNext(from) {
     inp.value = ''; S.data = null; S.hora = null;
     document.getElementById('cal-status').innerHTML = '';
     buildTimeGrid([]);
-    const tmo = getTmo(S.brand, S.modelo, S.km);
-    const durLabel = tmo >= 3 ? '3 horas' : tmo >= 1.5 ? '1h30' : tmo > 0 ? '1 hora' : '< 30 min';
+    const tmo = S.tipo === 'revisao' ? getTmo(S.brand, S.modelo, S.km) : 0;
+    const durLabel = S.tipo !== 'revisao' ? 'Até 72 h na oficina'
+      : tmo >= 3 ? '3 horas' : tmo >= 1.5 ? '1h30' : tmo > 0 ? '1 hora' : '< 30 min';
     document.getElementById('duration-display').value = durLabel;
   }
   // Step 3 → Data / Hora

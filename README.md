@@ -19,8 +19,8 @@ Tabelas interativas de revisão com quilometragem, peças correspondentes e TMO 
 
 | Marca | Modelos | Descrição |
 |-------|---------|-----------|
-| **Suzuki** | 11 modelos — Burgman i a Hayabusa | Peças, códigos, TMO e checklist por KM |
-| **Haojue** | DK/DR/DL 160, NK 150, NK 160, Master Ride, Chopper Road, Lindy 125 | Peças, códigos, TMO e checklist por KM |
+| **Suzuki** | Hayabusa, GSX-S1000 (GX · GT · naked), GSX-8R/8S, V-Strom 1050/XT, 800/800 DE, 650 XT + 4 fora de linha | Peças, códigos, TMO e checklist por KM |
+| **Haojue** | Master Ride 150, DL/NK/DK/DR 160, Burgman ADX 125 + NK 150, Chopper Road e Lindy 125 (fora de linha) | Peças, códigos, TMO e checklist por KM |
 | **Zontes** | V/T/GK/S/R 350, 350 E (nova e antiga), 368G | Peças, códigos, TMO e checklist por KM |
 
 > **350 E — duas versões:** as unidades vendidas **a partir de 01/02/2026** seguem o plano
@@ -37,6 +37,11 @@ Tabelas interativas de revisão com quilometragem, peças correspondentes e TMO 
 > |----|------|------|------|-------|-------|-------|-------|
 > | Total | R$ 260 | R$ 660 | R$ 980 | R$ 800 | R$ 980 | R$ 2.300 | R$ 1.200 |
 
+> **Burgman ADX 125:** tabela Haojue de 01/09/2026 — ciclo de 18 mil km (3·6·9·12·15·18)
+> repetido até 57.000 km. O 12.000 (e 30.000, 48.000) é a revisão completa: filtro de ar,
+> vela, fluido de freio, arruela e óleo de transmissão. TMO emprestado da Lindy 125.
+> O código do óleo de transmissão (`OLEO-TRANSM-ADX`) é provisório.
+
 > **368G:** plano de 6 em 6 mil km — 1.000 (entrega), 6.000, 12.000, 18.000 e 24.000.
 > As revisões de 6.000 e 18.000 são leves (óleo + filtro de ar); as de 12.000 e 24.000
 > são completas (acrescentam filtro de óleo, vela e óleo de CVT). A correia de
@@ -52,6 +57,18 @@ Formulário público de agendamento de revisão para as 5 unidades da Baixada Sa
 estimado, validação de dia útil e feriados, e envio por WhatsApp para a loja escolhida.
 O dashboard interno mostra o calendário mensal e permite alterar o status de cada
 agendamento (Agendado · Confirmado · Concluído · Cancelado).
+
+Três tipos de atendimento na etapa 3:
+- **Revisão** — escolhe o km; mostra checklist e total estimado.
+- **Serviços** — instalação ou verificação pedida pelo cliente; prazo médio de 72 h com o
+  veículo na oficina para orçamento/verificações. Sem preço (a orçar).
+- **Garantia** — verificação dentro dos termos de garantia; prazo médio de 72 h para
+  verificação e máximo de 30 dias para o atendimento. Sem preço.
+
+Em Serviços/Garantia a descrição do cliente vai em `descricao` e também no início de
+`cliente.obs` (`[Garantia] …`), para aparecer no dashboard sem mudar o Apps Script.
+Na confirmação, a Revisão exibe os avisos de valores aproximados e de certificado de
+garantia obrigatório; Serviços/Garantia exibem o prazo.
 
 > ⚠️ O dashboard **não tem autenticação** e expõe dados de clientes. Ver *Pendências*.
 
@@ -100,6 +117,9 @@ Ferramenta-TMO/
 │   ├── style.css
 │   └── acessorios/                 # Fotos dos produtos
 │
+├── apps-script/
+│   └── Codigo.gs                   # Backend (Google Apps Script) — cópia versionada
+│
 ├── test/                           # Testes automatizados (npm test)
 ├── package.json                    # Só o comando de teste — sem dependências
 │
@@ -108,6 +128,20 @@ Ferramenta-TMO/
 ```
 
 ---
+
+## ☁️ Apps Script (backend do agendamento)
+
+O código do backend fica em `apps-script/Codigo.gs` e é testado com planilha e Calendar
+falsos (`test/apps-script.test.js`). Para publicar uma mudança:
+
+1. Abra a planilha → **Extensões → Apps Script** e substitua o conteúdo pelo de `Codigo.gs`.
+2. **Implantar → Gerenciar implantações** → lápis → Versão: **Nova versão** → **Implantar**.
+   Editar a implantação existente mantém a mesma URL, e o site não precisa mudar.
+
+O que ele garante: não grava o mesmo agendamento duas vezes (`idAgendamento`), recusa um
+horário que acabou de ser ocupado, devolve erro se a planilha falhar (e apaga o evento criado)
+e limita a duração do evento no Calendar a 8 h. As colunas **Tipo Atendimento** e
+**Descrição** são criadas sozinhas no fim da planilha, depois de "Status".
 
 ## 🚀 Como Usar
 

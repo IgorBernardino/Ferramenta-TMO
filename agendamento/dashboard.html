@@ -351,7 +351,8 @@ function renderCalendario(lista) {
           <div class="ag-card-body">
             <div class="ag-info"><strong>${esc(ag.nomeCliente)}</strong> · ${esc(ag.telefone)}</div>
             <div class="ag-info">🏍 ${esc(ag.marca)} ${esc(ag.modelo)} · Placa: <strong>${esc(ag.placa)}</strong></div>
-            <div class="ag-info">🔧 Revisão ${esc(ag.revisaoKm)} · ⏱ ${esc(ag.duracao || '1 hora')}</div>
+            <div class="ag-info">🔧 ${/\d/.test(ag.revisaoKm) ? 'Revisão ' : ''}${esc(ag.revisaoKm)} · ⏱ ${esc(ag.duracao || '1 hora')}</div>
+            ${ag.descricao && !String(ag.obs || '').includes(ag.descricao) ? `<div class="ag-obs">🗒️ ${esc(ag.descricao)}</div>` : ''}
             ${ag.obs ? `<div class="ag-obs">📝 ${esc(ag.obs)}</div>` : ''}
           </div>
           <div class="ag-card-footer">

@@ -597,3 +597,90 @@ body {
 @media (max-width: 640px) {
   .btn-home { top: 12px; left: 12px; width: 42px; height: 42px; font-size: 1.1rem; }
 }
+
+/* ── TIPO DE ATENDIMENTO (Revisão · Serviços · Garantia) ── */
+.tipo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.tipo-card {
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem .75rem;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+  transition: border-color .2s, background .2s, transform .1s;
+}
+.tipo-card:hover { border-color: var(--red); transform: translateY(-2px); }
+.tipo-card.selected { border-color: var(--red); background: #fff5f5; }
+.tipo-card:focus-visible { outline: 3px solid var(--red); outline-offset: 2px; }
+.tipo-icone { font-size: 22px; }
+.tipo-nome  { font-size: 15px; font-weight: 700; color: var(--gray-dark); }
+.tipo-sub   { font-size: 11px; color: var(--gray-mid); line-height: 1.4; }
+
+.panel-subtitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-dark);
+  margin: 0 0 .75rem;
+}
+
+.field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 14px;
+  color: var(--gray-dark);
+  background: var(--white);
+  resize: vertical;
+  min-height: 96px;
+}
+.field textarea:focus { outline: none; border-color: var(--red); }
+
+/* Prazo de Serviços/Garantia — azul para diferenciar do aviso de preço */
+.aviso-prazo {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: #EEF4FF;
+  border: 1px solid #B9CCF5;
+  border-left: 4px solid #2563EB;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #1E3A8A;
+  line-height: 1.55;
+  margin-bottom: 1.25rem;
+}
+
+/* Avisos obrigatórios antes de confirmar */
+.avisos-confirmacao {
+  background: #FFF8E6;
+  border: 1px solid #F5C842;
+  border-left: 4px solid #E0A800;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 1.25rem;
+  color: #5C4500;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.avisos-confirmacao strong { display: block; margin-bottom: 6px; font-size: 13px; color: #4A3700; }
+.avisos-confirmacao ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 6px; }
+
+@media (max-width: 480px) {
+  .tipo-grid { grid-template-columns: 1fr; }
+  .tipo-card { flex-direction: row; justify-content: flex-start; text-align: left; gap: 12px; padding: .8rem 1rem; }
+  .tipo-card .tipo-sub { margin-left: auto; text-align: right; }
+}

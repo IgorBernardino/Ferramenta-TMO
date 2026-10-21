@@ -80,6 +80,93 @@ var dadosRevisao = {
 };
 
 
+// ─── BURGMAN ADX 125 — tabela Haojue de 01/09/2026 ───────────
+// Ciclo de 18 mil km (3·6·9·12·15·18), repetido até 57.000 km.
+// A posição no ciclo decide peças e checklist; 1.000 km é a de entrega.
+var _ADX_KMS = [1000,3000,6000,9000,12000,15000,18000,21000,24000,27000,30000,33000,36000,39000,42000,45000,48000,51000,54000,57000];
+function _posADX(km) { return km === 1000 ? 1000 : (((km / 1000 - 3) % 18) + 3) * 1000; }
+
+var _pecaADX = {
+    oleo:   { codigo: 'MT114',           nome: 'Óleo do Motor',       qtd: 1, valor: 90  },
+    arruela:{ codigo: 'ARRUELA',         nome: 'Arruela de Dreno',    qtd: 1, valor: 10  },
+    transm: { codigo: 'OLEO-TRANSM-ADX', nome: 'Óleo de Transmissão', qtd: 1, valor: 100 },  // código a confirmar
+    ar:     { codigo: '13780H26L00H000', nome: 'Filtro de Ar',        qtd: 1, valor: 90  },
+    vela:   { codigo: '09482-00621-000', nome: 'Vela de Ignição',     qtd: 1, valor: 150 },
+    freio:  { codigo: '324950',          nome: 'Fluido de Freio',     qtd: 1, valor: 22  },
+};
+var _pecasPorPosADX = {
+    1000:  ['oleo', 'transm'],
+    3000:  ['oleo'], 9000: ['oleo'], 15000: ['oleo'],
+    6000:  ['oleo', 'arruela', 'transm'],
+    18000: ['oleo', 'arruela', 'transm'],
+    12000: ['ar', 'vela', 'oleo', 'arruela', 'transm', 'freio'],
+};
+
+/* Checklist da tabela: [item, op em 1.000, 6.000, 12.000, 18.000].
+   Em 3.000 / 9.000 / 15.000 a tabela só troca o óleo do motor. */
+var _ckTabelaADX = [
+    ['Arruela do dreno',                     '',    'T',   'T',   'T'  ],
+    ['Elemento filtro de ar',                '',    'I',   'T',   'I'  ],
+    ['Suspensão dianteira',                  'I',   'I',   'I',   'I'  ],
+    ['Tela de filtro de óleo',               'L',   'I',   'L',   'I'  ],
+    ['Folga das válvulas',                   'I',   'I',   'I',   'I'  ],
+    ['Sistema evaporativo / respiro do motor','',   '',    'L',   ''   ],
+    ['Vedação da tampa de válvulas',         'I',   'I',   'I',   'I'  ],
+    ['Correia do CVT',                       '',    'L',   'L',   'L'  ],
+    ['CVT (roletes)',                        'I',   'I',   'I',   'I'  ],
+    ['Óleo de transmissão',                  'T',   'T',   'T',   'T'  ],
+    ['Vela de ignição',                      '',    'I',   'T',   'I'  ],
+    ['Limpeza do TBI',                       '',    'L',   'L',   'L'  ],
+    ['Marcha lenta',                         'I',   'I',   'I',   'I'  ],
+    ['Mangueira de combustível',             'I',   'I',   'I',   'I'  ],
+    ['Facho do farol',                       'I',   'I',   'I',   'I'  ],
+    ['Sistema de iluminação',                'I',   'I',   'I',   'I'  ],
+    ['Manetes de freio',                     'IAL', 'IAL', 'IAL', 'IAL'],
+    ['Fluido de freio',                      'I',   'I',   'T',   'I'  ],
+    ['Articulação do manete',                'IAL', 'IAL', 'IAL', 'IAL'],
+    ['Coluna de direção',                    'I',   'I',   'IL',  'I'  ],
+    ['Eixos das rodas',                      'I',   'I',   'IL',  'I'  ],
+    ['Embreagem centrífuga',                 '',    'I',   'I',   'I'  ],
+    ['Suspensão traseira',                   'I',   'I',   'IL',  'I'  ],
+    ['Freios',                               'I',   'I',   'I',   'I'  ],
+    ['Pressão dos pneus',                    'I',   'I',   'I',   'I'  ],
+    ['Pneus',                                'I',   'I',   'I',   'I'  ],
+    ['Rodas',                                'I',   'I',   'I',   'I'  ],
+    ['Parafusos e porcas do escapamento',    'I',   'A',   'A',   'A'  ],
+    ['Parafusos e porcas do cabeçote',       'I',   'A',   'A',   'A'  ],
+    ['Parafusos e porcas do chassi',         'I',   'A',   'A',   'A'  ],
+    ['Cabos de comandos',                    'I',   'I',   'I',   'I'  ],
+    ['Bateria',                              'I',   'I',   'I',   'I'  ],
+];
+
+function _gerarADX() {
+    var res = {};
+    _ADX_KMS.forEach(function(km) {
+        res[km] = _pecasPorPosADX[_posADX(km)].map(function(k) { return Object.assign({}, _pecaADX[k]); });
+    });
+    res.tmo = dadosRevisao.LINDY125.tmo;   // tempo médio da Lindy 125, a pedido da oficina
+    return res;
+}
+dadosRevisao.ADX125 = _gerarADX();
+
+function _gerarChecklistADX() {
+    var col = { 1000: 1, 6000: 2, 12000: 3, 18000: 4 };
+    var res = {};
+    _ADX_KMS.forEach(function(km) {
+        var pos = _posADX(km);
+        var ck = { T: ['Óleo de motor 10W40 — 1L'] };
+        if (col[pos]) {
+            _ckTabelaADX.forEach(function(l) {
+                var op = l[col[pos]];
+                if (op) (ck[op] = ck[op] || []).push(l[0]);
+            });
+        }
+        res[km] = ck;
+    });
+    return res;
+}
+
+
 // ─── 2. CHECKLIST ────────────────────────────────────────────
 
 var _ckI_base = [
@@ -192,7 +279,7 @@ var _ckHJ = _gerarChecklistHJ();
 var checklist = {
     DK160: _ckHJ, DR160: _ckHJ, DL160: _ckHJ,
     NK150: _ckHJ, MASTER150: _ckHJ, CHOPPER150: _ckHJ, LINDY125: _ckHJ,
-    NK160: _ckHJ,  ADX125: _ckHJ
+    NK160: _ckHJ,  ADX125: _gerarChecklistADX()
 };
 
 
@@ -207,7 +294,7 @@ var modeloInfo = {
     CHOPPER150:{ nome: 'Chopper Road 150', motor: '150cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/CHOPPER150.png' },
     LINDY125:  { nome: 'Lindy 125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/LINDY125.png'   },
     NK160:     { nome: 'NK 160',           motor: '160cc · Mono', trans: 'Corrente', oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/NK160.png'      },
-    ADX125:  { nome: 'ADX125',        motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/ADX125.png'   },
+    ADX125:  { nome: 'Burgman ADX',   motor: '125cc · Mono', trans: 'CVT',      oleo: 'Motul 10W40 · 1L', intervalo: '3.000 km', img: '../images/HAOJUE/ADX125.png'   },
     
 };
 

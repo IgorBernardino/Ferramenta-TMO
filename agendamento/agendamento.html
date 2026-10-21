@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agendamento de Revisão — COMERI MOTOS</title>
-  <meta name="description" content="Agende a revisão da sua moto Suzuki, Haojue ou Zontes em uma das 5 unidades COMERI da Baixada Santista.">
+  <title>Agendamento — COMERI MOTOS</title>
+  <meta name="description" content="Agende revisão, serviços ou garantia da sua moto Suzuki, Haojue ou Zontes em uma das 5 unidades COMERI da Baixada Santista.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📅</text></svg>">
   <link rel="stylesheet" href="./agendamento.css">
 </head>
@@ -12,7 +12,7 @@
 
   <header class="site-header">
     <div class="header-brand">
-      <span class="header-title">Agendamento de Revisão</span>
+      <span class="header-title">Agendamento</span>
       <span class="header-sub">Suzuki · Haojue · Zontes</span>
     </div>
   </header>
@@ -23,7 +23,7 @@
     <nav class="stepper" aria-label="Etapas do agendamento">
       <div class="step active" id="st0"><div class="step-circle">1</div><div class="step-label">Unidade</div></div>
       <div class="step" id="st1"><div class="step-circle">2</div><div class="step-label">Veículo</div></div>
-      <div class="step" id="st2"><div class="step-circle">3</div><div class="step-label">Revisão</div></div>
+      <div class="step" id="st2"><div class="step-circle">3</div><div class="step-label">Atendimento</div></div>
       <div class="step" id="st3"><div class="step-circle">4</div><div class="step-label">Data/Hora</div></div>
       <div class="step" id="st4"><div class="step-circle">5</div><div class="step-label">Dados</div></div>
       <div class="step" id="st5"><div class="step-circle">6</div><div class="step-label">Resumo</div></div>
@@ -97,15 +97,49 @@
       </div>
     </section>
 
-    <!-- STEP 3: QUILOMETRAGEM -->
-    <section class="panel" id="panel2" aria-label="Selecione a quilometragem">
-      <h2 class="panel-title">Quilometragem da revisão</h2>
+    <!-- STEP 3: ATENDIMENTO (Revisão · Serviços · Garantia) -->
+    <section class="panel" id="panel2" aria-label="Tipo de atendimento">
+      <h2 class="panel-title">Qual atendimento você precisa?</h2>
       <div class="unidade-badge" id="unidade-badge-2"></div>
-      <div class="km-grid" id="km-grid"></div>
-      <div class="aviso-preco" role="note">
-        <span class="aviso-icon">&#9432;</span>
-        Os preços informados neste site são sugeridos, podendo variar de acordo com a região. Consulte a concessionária de sua preferência e confira as condições. Sujeito a disponibilidade de estoque no momento da consulta.
+      <div class="tipo-grid" role="group" aria-label="Tipo de atendimento">
+        <button type="button" class="tipo-card selected" data-tipo="revisao" aria-pressed="true" onclick="selectTipo('revisao')">
+          <span class="tipo-icone" aria-hidden="true">🔧</span>
+          <span class="tipo-nome">Revisão</span>
+          <span class="tipo-sub">Plano de manutenção por km</span>
+        </button>
+        <button type="button" class="tipo-card" data-tipo="servicos" aria-pressed="false" onclick="selectTipo('servicos')">
+          <span class="tipo-icone" aria-hidden="true">🛠️</span>
+          <span class="tipo-nome">Serviços</span>
+          <span class="tipo-sub">Instalação ou verificação</span>
+        </button>
+        <button type="button" class="tipo-card" data-tipo="garantia" aria-pressed="false" onclick="selectTipo('garantia')">
+          <span class="tipo-icone" aria-hidden="true">🛡️</span>
+          <span class="tipo-nome">Garantia</span>
+          <span class="tipo-sub">Verificação dentro da garantia</span>
+        </button>
       </div>
+
+      <div id="bloco-revisao">
+        <h3 class="panel-subtitle">Quilometragem da revisão</h3>
+        <div class="km-grid" id="km-grid"></div>
+        <div class="aviso-preco" role="note">
+          <span class="aviso-icon">&#9432;</span>
+          Os preços informados neste site são sugeridos, podendo variar de acordo com a região. Consulte a concessionária de sua preferência e confira as condições. Sujeito a disponibilidade de estoque no momento da consulta.
+        </div>
+      </div>
+
+      <div id="bloco-descricao" hidden>
+        <div class="field">
+          <label for="atend-descricao">Descreva o que você precisa</label>
+          <textarea id="atend-descricao" rows="4" maxlength="500"
+            placeholder="Ex: instalar baú traseiro; barulho na suspensão dianteira; luz de injeção acesa..."></textarea>
+        </div>
+        <div class="aviso-prazo" role="note">
+          <span class="aviso-icon" aria-hidden="true">⏱</span>
+          <span id="prazo-atendimento"></span>
+        </div>
+      </div>
+
       <p class="alert" id="alert2" role="alert" hidden>Selecione a quilometragem de revisão.</p>
       <div class="nav-row">
         <button class="btn-back" onclick="goBack(2)">&#8592; Voltar</button>
@@ -187,9 +221,9 @@
         <span class="badge badge-wa">&#128242; WhatsApp</span>
       </div>
       <div class="summary-card" id="summary-content"></div>
-      <div class="aviso-preco" role="note">
-        <span class="aviso-icon">&#9432;</span>
-        Os preços informados neste site são sugeridos, podendo variar de acordo com a região. Consulte a concessionária de sua preferência e confira as condições. Sujeito a disponibilidade de estoque no momento da consulta.
+      <div class="avisos-confirmacao" role="note" aria-labelledby="avisos-titulo">
+        <strong id="avisos-titulo">Importante — leia antes de confirmar</strong>
+        <ul id="avisos-confirmacao"></ul>
       </div>
       <div class="confirming-overlay" id="confirming-overlay" hidden>
         <div class="spinner" aria-label="Carregando"></div>
