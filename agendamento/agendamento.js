@@ -63,8 +63,8 @@ const DADOS = {
        oleo de caixa, que nao entram nessa revisao. */
     pecasE350: {
       1000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120}],
-      4000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro Esponja Motor (ZT350-E)',qtd:1,valor:84}],
-      8000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120}],
+      4000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do CVT (esponja)',qtd:1,valor:84}],
+      8000: [{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Filtro do CVT (esponja)',qtd:1,valor:84},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120}],
       12000:[{nome:'Óleo de Motor',qtd:2,valor:90}],
       16000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
       20000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Correia CVT',qtd:1,valor:1150}],

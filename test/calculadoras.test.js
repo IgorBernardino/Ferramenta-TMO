@@ -124,7 +124,7 @@ describe('Zontes 368G — peças compartilhadas com a 350 E', () => {
     const e350 = (km, nome) => d.E350[km].find(p => p.nome.startsWith(nome)).codigo;
     assert.equal(cod(18000, 'Correia').codigo, e350(20000, 'Correia'));
     assert.equal(cod(12000, 'Vela').codigo, e350(16000, 'Vela'));
-    assert.equal(cod(12000, 'Filtro Esponja').codigo, e350(4000, 'Filtro Esponja'));
+    assert.equal(cod(12000, 'Filtro Esponja').codigo, e350(4000, 'Filtro do CVT'));
     assert.ok(cod(24000, 'Filtro Esponja'));
     assert.equal(cod(6000, 'Filtro Esponja'), undefined);
   });
@@ -171,5 +171,20 @@ describe('Burgman ADX 125 — plano da tabela Haojue de 01/09/2026', () => {
     assert.ok(ck[12000].T.some(i => /Fluido de freio/i.test(i)));
     assert.equal(ck[3000].T.length, 1);
     assert.equal(JSON.stringify(ck[30000]), JSON.stringify(ck[12000]));
+  });
+});
+
+describe('Zontes 350 E — revisão de 8.000 km', () => {
+  const d = carregar('script/revisaozontes.js', ['dadosRevisao']).dadosRevisao;
+  const p = nome => d.E350[8000].find(x => x.nome.startsWith(nome));
+  test('troca filtro de ar e filtro do CVT, como manda o checklist', () => {
+    assert.deepEqual([p('Filtro de Ar').codigo, p('Filtro de Ar').valor], ['1226400175000', 180]);
+    assert.deepEqual([p('Filtro do CVT').codigo, p('Filtro do CVT').valor], ['1226400199000', 84]);
+    assert.ok(p('Óleo de Motor') && p('Filtro do Óleo'));
+  });
+  test('preço fechado continua R$ 980; a mão de obra é o que sobra', () => {
+    const pecas = d.E350[8000].reduce((s, x) => s + x.qtd * x.valor, 0);
+    assert.equal(d.E350.pacote[8000], 980);
+    assert.ok(pecas < 980);
   });
 });

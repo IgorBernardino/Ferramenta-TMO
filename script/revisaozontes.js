@@ -31,8 +31,8 @@ const dadosRevisao = {
   },
   E350: {
     1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
-    4000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1226400199000',nome:'Filtro Esponja Motor (ZT350-E)',qtd:1,valor:84}],
-    8000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
+    4000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1226400199000',nome:'Filtro do CVT (esponja)',qtd:1,valor:84}],
+    8000:  [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1226400199000',nome:'Filtro do CVT (esponja)',qtd:1,valor:84},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
     12000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
     16000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
     20000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150}],
