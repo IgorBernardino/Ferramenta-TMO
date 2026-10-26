@@ -58,7 +58,7 @@ function carregarAgendamento(extras = {}) {
     'getPacote', 'calcularTotais', 'isFeriado', 'isDiaUtil', 'proximoDiaUtil',
     'getFeriadosMoveis', 'esc', 'fmtDate', 'fmtBRL', 'fmtKm', 'chamarBackend',
     'buscarOcupados', 'confirmarNoBackend', 'gerarMsgWA', 'validarCliente', 'dataMinimaAgendamento',
-    'TIPOS_ATENDIMENTO', 'validarAtendimento', 'avisosConfirmacao',
+    'TIPOS_ATENDIMENTO', 'validarAtendimento', 'avisosConfirmacao', 'MO_1000_FORA_GARANTIA', 'avisoAntesDeConfirmar',
   ], { CONFIG: structuredClone(CONFIG_TESTE), ...extras });
 }
 

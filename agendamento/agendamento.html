@@ -232,7 +232,7 @@
       <p class="alert" id="alert5" role="alert" hidden>Não foi possível registrar o agendamento. Verifique sua conexão e toque em “Confirmar” de novo.</p>
       <div class="nav-row" id="confirm-nav">
         <button class="btn-back" onclick="goBack(5)">&#8592; Voltar</button>
-        <button class="btn-confirm" onclick="confirmar()">&#10003; Confirmar agendamento</button>
+        <button class="btn-confirm" onclick="pedirConfirmacao()">&#10003; Confirmar agendamento</button>
       </div>
     </section>
 
@@ -252,6 +252,19 @@
     </section>
 
   </main>
+
+  <!-- AVISO ANTES DE CONFIRMAR (certificado e prazo da garantia) -->
+  <div class="modal-aviso" id="modal-aviso" hidden>
+    <div class="modal-aviso-caixa" role="alertdialog" aria-modal="true" aria-labelledby="modal-aviso-titulo" aria-describedby="modal-aviso-texto">
+      <div class="modal-aviso-icone" aria-hidden="true">📄</div>
+      <h2 id="modal-aviso-titulo">Antes de confirmar</h2>
+      <p id="modal-aviso-texto"></p>
+      <div class="modal-aviso-botoes">
+        <button type="button" class="btn-back" onclick="fecharAviso()">Voltar</button>
+        <button type="button" class="btn-confirm" id="modal-aviso-ok" onclick="aceitarAviso()">Entendi, confirmar</button>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     &copy; 2025 Portal TMO Oficina – Suzuki, Haojue e Zontes

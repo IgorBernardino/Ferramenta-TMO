@@ -11,13 +11,13 @@ function _basePecas(filtroAr, vela) {
         simples: [
             { codigo: 'MT114',   nome: 'Óleo do Motor',         qtd: 1, valor: 90   },
             { codigo: 'LUBMINI', nome: 'Lubrificante Corrente', qtd: 1, valor: 25   },
-            { codigo: 'DESMINI', nome: 'Desingripante',         qtd: 1, valor: 20   },
+            { codigo: 'DESMINI', nome: 'Desingripante',         qtd: 1, valor: 25   },
         ],
         arruela: [
             { codigo: 'MT114',   nome: 'Óleo do Motor',         qtd: 1, valor: 90   },
             { codigo: 'ARRUELA', nome: 'Arruela de Dreno',      qtd: 1, valor: 10    },
             { codigo: 'LUBMINI', nome: 'Lubrificante Corrente', qtd: 1, valor: 25   },
-            { codigo: 'DESMINI', nome: 'Desingripante',         qtd: 1, valor: 20   },
+            { codigo: 'DESMINI', nome: 'Desingripante',         qtd: 1, valor: 25   },
         ],
         completo: [
             { codigo: filtroAr,           nome: 'Filtro de Ar',         qtd: 1, valor: 85   },
@@ -27,7 +27,7 @@ function _basePecas(filtroAr, vela) {
             { codigo: '14181H11200H000',  nome: 'Junta Escapamento',    qtd: 1, valor: 21   },
             { codigo: vela,               nome: 'Vela de Ignição',       qtd: 1, valor: 90   },
             { codigo: 'LUBMINI',          nome: 'Lubrificante Corrente', qtd: 1, valor: 25   },
-            { codigo: 'DESMINI',          nome: 'Desingripante',         qtd: 1, valor: 20   },
+            { codigo: 'DESMINI',          nome: 'Desingripante',         qtd: 1, valor: 25   },
         ],
     };
 }
@@ -148,6 +148,22 @@ function _gerarADX() {
     return res;
 }
 dadosRevisao.ADX125 = _gerarADX();
+
+// Arruela do bujão (R$ 5) em TODAS as revisões de todos os modelos.
+// Um único ponto: onde já havia arruela, ela é trocada por esta (sem duplicar).
+(function () {
+    var ARRUELA = { codigo: 'Arruela Bujão', nome: 'Arruela do Bujão', qtd: 1, valor: 5 };
+    Object.keys(dadosRevisao).forEach(function (m) {
+        Object.keys(dadosRevisao[m]).forEach(function (km) {
+            var lista = dadosRevisao[m][km];
+            if (!/^\d+$/.test(km) || !Array.isArray(lista)) return;
+            var existente = lista.find(function (p) { return /^arruela/i.test(p.nome); });
+            if (existente) Object.assign(existente, ARRUELA);
+            else lista.push(Object.assign({}, ARRUELA));
+        });
+    });
+})();
+
 
 function _gerarChecklistADX() {
     var col = { 1000: 1, 6000: 2, 12000: 3, 18000: 4 };
@@ -313,7 +329,7 @@ var pecasAvulsas = [
     { codigo: '328185',     nome: 'Produto: Kit Revisão',                     valor: 70  },
     { codigo: 'DESC01',     nome: 'Descarbonizante',                          valor: 35  },
     { codigo: 'LUBMINI',    nome: 'Lubrificante Corrente',                    valor: 25  },
-    { codigo: 'DESMINI',    nome: 'Desingripante',                            valor: 20  },
+    { codigo: 'DESMINI',    nome: 'Desingripante',                            valor: 25  },
 ];
 
 var itensAdicionais = [];
@@ -546,6 +562,8 @@ function atualizarTotaisGerais() {
     var n = revisao.length + itensAdicionais.length;
     document.getElementById('subPecas').textContent = n ? n + ' item(ns) no orçamento' : 'Sem itens selecionados';
     document.getElementById('subTMO').textContent   = tmoH.toFixed(1).replace('.', ',') + ' h × R$ ' + TMO_HORA + ',00/h';
+    // Revisão de 1.000 km: mão de obra gratuita na garantia; fora dela, R$ 150 (documento de revisões).
+    if (parseInt(km) === 1000) document.getElementById('subTMO').textContent = 'Grátis na garantia · fora dela: R$ 150,00';
     document.getElementById('subTotal').textContent = 'Peças + Mão de Obra';
 }
 

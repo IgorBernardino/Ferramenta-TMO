@@ -48,8 +48,9 @@ describe('Regras de preço', () => {
   test('Haojue segue o ciclo de peças de 12 mil km (completo / simples / arruela)', () => {
     const nomes = km => A.getPecas('haojue', 'DK160', km).map(p => p.nome);
     assert.ok(nomes(12000).includes('Vela de Ignição'), '12.000 é revisão completa');
-    assert.ok(!nomes(3000).includes('Arruela de Dreno'), '3.000 é ciclo simples');
-    assert.ok(nomes(6000).includes('Arruela de Dreno'), '6.000 é ciclo arruela');
+    // Desde a arruela do bujão em todas as revisões, 3.000 e 6.000 levam o mesmo kit.
+    assert.ok(!nomes(3000).includes('Vela de Ignição'), '3.000 não é revisão completa');
+    assert.ok(nomes(3000).includes('Arruela do Bujão') && nomes(6000).includes('Arruela do Bujão'));
   });
 
   test('getPecas devolve cópias: alterar o resultado não corrompe a tabela', () => {
@@ -361,4 +362,62 @@ describe('Mensagem do servidor chega ao cliente', () => {
       cliente: { nome: 'A', tel: '13999999999', placa: 'ABC-1234', odo: '', obs: '' } });
     await assert.rejects(X.confirmarNoBackend(), e => !e.doServidor);
   });
+});
+
+describe('Agendamento: arruela do bujão em todas as revisões', () => {
+  test('cada revisão de cada modelo tem exatamente uma arruela de R$ 5', () => {
+    for (const marca of MARCAS) for (const modelo of A.DADOS[marca].modelos) for (const km of A.getKmsDisponiveis(marca, modelo)) {
+      const arruelas = A.getPecas(marca, modelo, km).filter(p => /arruela/i.test(p.nome));
+      assert.equal(arruelas.length, 1, `${marca} ${modelo} ${km}`);
+      assert.equal(arruelas[0].nome, 'Arruela do Bujão');
+      assert.equal(arruelas[0].valor, 5);
+    }
+  });
+  test('chamar getPecas várias vezes não acumula arruelas', () => {
+    A.getPecas('suzuki', 'HAYABUSA', 12000); A.getPecas('suzuki', 'HAYABUSA', 12000);
+    assert.equal(A.getPecas('suzuki', 'HAYABUSA', 12000).filter(p => /arruela/i.test(p.nome)).length, 1);
+  });
+});
+
+// ── Valores alinhados ao documento "Revisoes - completo.docx" ──────
+describe('Valores do documento de revisões aplicados ao site', () => {
+  const X = carregarAgendamento();
+  const peca = (b, m, km, re) => X.getPecas(b, m, km).find(p => re.test(p.nome));
+
+  test('arruela do bujão a R$ 5 e desengripante a R$ 25', () => {
+    assert.equal(peca('suzuki', 'HAYABUSA', 12000, /arruela/i).valor, 5);
+    assert.equal(peca('haojue', 'DK160', 3000, /desingripante|desengripante/i).valor, 25);
+    assert.equal(peca('zontes', 'V350', 3000, /desingripante|desengripante/i).valor, 25);
+  });
+  test('filtro de óleo da 350 E (nova e antiga) a R$ 130', () => {
+    assert.equal(peca('zontes', 'E350', 8000, /^Filtro do Óleo/).valor, 130);
+    assert.equal(peca('zontes', 'E350_ANTIGA', 6000, /^Filtro do Óleo/).valor, 130);
+  });
+  test('350 E antiga, 1.000 km: óleo, filtro, arruela e desengripante = R$ 340', () => {
+    assert.equal(X.calcularTotais('zontes', 'E350_ANTIGA', 1000).total, 340);
+  });
+  test('troca intermediária Zontes (3, 9, 15... mil km): mão de obra fixa de R$ 85', () => {
+    assert.equal(X.calcularTotais('zontes', 'V350', 3000).totalMO, 85);
+    const t = X.calcularTotais('zontes', 'E350_ANTIGA', 3000);   // como no documento:
+    assert.equal(t.totalMO, 85);                                  // óleo 2× R$ 90 + arruela R$ 5
+    assert.equal(t.total, 270);                                   // + mão de obra R$ 85 = R$ 270
+    assert.equal(X.calcularTotais('zontes', 'E350_ANTIGA', 21000).totalMO, 85);
+    assert.notEqual(X.calcularTotais('zontes', 'V350', 6000).totalMO, 85, '6.000 não é intermediária');
+  });
+  test('1.000 km: mão de obra fora da garantia é R$ 150', () => {
+    assert.equal(X.MO_1000_FORA_GARANTIA, 150);
+  });
+});
+
+describe('Aviso antes de confirmar (certificado e prazo da garantia)', () => {
+  test('Revisão e Garantia mostram o aviso; Serviços não', () => {
+    const r = X2().avisoAntesDeConfirmar('revisao');
+    assert.match(r, /certificado de garantia/i);
+    assert.match(r, /pode não ser (realizada|efetuada)/i);
+    assert.match(r, /prazo/i);
+    assert.match(r, /fora da garantia/i);
+    assert.ok(X2().avisoAntesDeConfirmar('garantia'));
+    assert.equal(X2().avisoAntesDeConfirmar('servicos'), null);
+  });
+  function X2() { return carregarAgendamento(); }
 });

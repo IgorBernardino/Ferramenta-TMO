@@ -684,3 +684,35 @@ body {
   .tipo-card { flex-direction: row; justify-content: flex-start; text-align: left; gap: 12px; padding: .8rem 1rem; }
   .tipo-card .tipo-sub { margin-left: auto; text-align: right; }
 }
+
+/* ── POP-UP: aviso antes de confirmar ── */
+.modal-aviso {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(20, 20, 18, .55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal-aviso[hidden] { display: none; }
+.modal-aviso-caixa {
+  background: var(--white);
+  border-radius: var(--radius);
+  border-top: 5px solid #E0A800;
+  box-shadow: 0 12px 40px rgba(0,0,0,.25);
+  max-width: 440px;
+  width: 100%;
+  padding: 1.5rem 1.5rem 1.25rem;
+  display: grid;
+  gap: .75rem;
+}
+.modal-aviso-icone { font-size: 28px; line-height: 1; }
+.modal-aviso-caixa h2 { margin: 0; font-size: 19px; color: var(--gray-dark); }
+.modal-aviso-caixa p { margin: 0; font-size: 14px; line-height: 1.6; color: var(--gray-dark); }
+.modal-aviso-botoes { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; margin-top: .5rem; }
+@media (max-width: 480px) {
+  .modal-aviso-botoes { flex-direction: column-reverse; }
+  .modal-aviso-botoes button { width: 100%; }
+}

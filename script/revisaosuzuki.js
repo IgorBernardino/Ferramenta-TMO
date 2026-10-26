@@ -189,6 +189,22 @@ var dadosRevisao = {
 dadosRevisao.GSXS1000GX = dadosRevisao.GSXS1000;
 dadosRevisao.GSXS1000GT = dadosRevisao.GSXS1000;
 
+// Arruela do bujão (R$ 5) em TODAS as revisões de todos os modelos.
+// Um único ponto: onde já havia arruela, ela é trocada por esta (sem duplicar).
+(function () {
+    var ARRUELA = { codigo: 'Arruela Bujão', nome: 'Arruela do Bujão', qtd: 1, valor: 5 };
+    Object.keys(dadosRevisao).forEach(function (m) {
+        Object.keys(dadosRevisao[m]).forEach(function (km) {
+            var lista = dadosRevisao[m][km];
+            if (!/^\d+$/.test(km) || !Array.isArray(lista)) return;
+            var existente = lista.find(function (p) { return /^arruela/i.test(p.nome); });
+            if (existente) Object.assign(existente, ARRUELA);
+            else lista.push(Object.assign({}, ARRUELA));
+        });
+    });
+})();
+
+
 
 
 // ─── 2. CHECKLIST ─────────────────────────────────────────────
@@ -337,7 +353,7 @@ var pecasAvulsas = [
     { codigo:'328185',      nome:'Produto: Kit Revisão',                      valor:90  },
     { codigo:'328186',      nome:'Produto: Kit Scooter',                      valor:70  },
     { codigo:'LUBMINI',     nome:'Lubrificante Corrente',                     valor:25  },
-    { codigo:'DESMINI',     nome:'Desingripante',                             valor:20  },
+    { codigo:'DESMINI',     nome:'Desingripante',                             valor:25  },
     { codigo:'DESC01',      nome:'Descarbonizante',                           valor:35  },
 ];
 
@@ -553,6 +569,8 @@ function atualizarTotaisGerais() {
     document.getElementById('subTMO').textContent   = tmoHora
         ? tmoH.toFixed(1).replace('.', ',') + ' h × R$ ' + tmoHora.toFixed(0) + ',00/h'
         : '0,0 h';
+    // Revisão de 1.000 km: mão de obra gratuita na garantia; fora dela, R$ 150 (documento de revisões).
+    if (parseInt(km) === 1000) document.getElementById('subTMO').textContent = 'Grátis na garantia · fora dela: R$ 150,00';
     document.getElementById('subTotal').textContent = 'Peças + Mão de Obra';
 }
 

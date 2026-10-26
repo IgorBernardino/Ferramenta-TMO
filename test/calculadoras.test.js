@@ -142,17 +142,17 @@ describe('Burgman ADX 125 — plano da tabela Haojue de 01/09/2026', () => {
   });
   test('ciclo de 18 mil km: 12.000 e 30.000 são revisões completas', () => {
     for (const km of [12000, 30000, 48000]) {
-      for (const p of ['Filtro de Ar', 'Vela de Ignição', 'Fluido de Freio', 'Arruela de Dreno', 'Óleo de Transmissão']) {
+      for (const p of ['Filtro de Ar', 'Vela de Ignição', 'Fluido de Freio', 'Arruela do Bujão', 'Óleo de Transmissão']) {
         assert.ok(nomes(km).includes(p), `${km} km: falta ${p}`);
       }
     }
   });
-  test('3.000, 9.000, 15.000 (e equivalentes) só trocam óleo de motor', () => {
-    for (const km of [3000, 9000, 15000, 21000, 27000, 33000, 57000]) assert.deepEqual(nomes(km), ['Óleo do Motor'], `${km} km`);
+  test('3.000, 9.000, 15.000 (e equivalentes) só trocam óleo de motor (+ arruela do bujão)', () => {
+    for (const km of [3000, 9000, 15000, 21000, 27000, 33000, 57000]) assert.deepEqual(nomes(km), ['Óleo do Motor', 'Arruela do Bujão'], `${km} km`);
   });
   test('6.000 e 18.000 (e equivalentes): óleo, arruela e óleo de transmissão', () => {
     for (const km of [6000, 18000, 24000, 36000, 42000, 54000]) {
-      assert.deepEqual(nomes(km).sort(), ['Arruela de Dreno', 'Óleo de Transmissão', 'Óleo do Motor'].sort(), `${km} km`);
+      assert.deepEqual(nomes(km).sort(), ['Arruela do Bujão', 'Óleo de Transmissão', 'Óleo do Motor'].sort(), `${km} km`);
     }
   });
   test('códigos e preços informados pela oficina', () => {
@@ -187,4 +187,25 @@ describe('Zontes 350 E — revisão de 8.000 km', () => {
     assert.equal(d.E350.pacote[8000], 980);
     assert.ok(pecas < 980);
   });
+});
+
+describe('Arruela do bujão em todas as revisões (todas as marcas)', () => {
+  for (const arquivo of ['script/revisaosuzuki.js', 'script/revisaohaojue.js', 'script/revisaozontes.js']) {
+    test(`${arquivo}: exatamente uma "Arruela Bujão" de R$ 5 em cada revisão`, () => {
+      const d = carregar(arquivo, ['dadosRevisao']).dadosRevisao;
+      let revisoes = 0;
+      for (const [modelo, plano] of Object.entries(d)) {
+        for (const [km, pecas] of Object.entries(plano)) {
+          if (!/^\d+$/.test(km)) continue;
+          revisoes++;
+          const arruelas = pecas.filter(p => /arruela/i.test(p.nome));
+          assert.equal(arruelas.length, 1, `${modelo} ${km} km: ${arruelas.length} arruelas`);
+          assert.equal(arruelas[0].codigo, 'Arruela Bujão', `${modelo} ${km} km`);
+          assert.equal(arruelas[0].valor, 5);
+          assert.equal(arruelas[0].qtd, 1);
+        }
+      }
+      assert.ok(revisoes > 50);
+    });
+  }
 });

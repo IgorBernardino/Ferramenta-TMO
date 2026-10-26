@@ -7,36 +7,36 @@
 
 const dadosRevisao = {
   V350: {
-    1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    3000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    6000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    9000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    12000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    15000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    18000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    21000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    24000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    27000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    30000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    33000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    36000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    39000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    42000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    45000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    48000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    51000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    54000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
-    57000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:20}],
+    1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    3000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    6000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    9000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    12000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    15000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    18000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    21000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    24000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    27000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    30000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    33000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    36000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    39000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    42000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    45000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    48000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    51000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    54000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
+    57000: [{codigo:'1224300125000',nome:'Filtro de Ar',qtd:1,valor:106},{codigo:'1051158001000',nome:'Vela de Ignição',qtd:1,valor:108},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'4134300001000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30},{codigo:'LUBMINI',nome:'Lubrificante Corrente',qtd:1,valor:25},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
     tmo:{1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:1.0,21000:0.3,24000:1.5,27000:0.3,30000:0.6,33000:0.3,36000:1.5,39000:0.3,42000:0.6,45000:0.3,48000:1.5,51000:0.3,54000:1.0,57000:1.5},
   },
   E350: {
-    1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
+    1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130}],
     4000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1226400199000',nome:'Filtro do CVT (esponja)',qtd:1,valor:84}],
-    8000:  [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1226400199000',nome:'Filtro do CVT (esponja)',qtd:1,valor:84},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
+    8000:  [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1226400199000',nome:'Filtro do CVT (esponja)',qtd:1,valor:84},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130}],
     12000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    16000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+    16000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
     20000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150}],
-    24000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
+    24000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
     tmo:{1000:0.0,4000:0.5,8000:0.8,12000:0.3,16000:1.0,20000:0.3,24000:2.0},
     /* Pacote fechado: a 350 E e vendida com preco por revisao, nao por TMO x hora.
        Havendo 'pacote', o total e ele e a mao de obra vira (pacote - pecas).
@@ -60,22 +60,38 @@ const dadosRevisao = {
      Plano de revisão de 3 em 3 mil km (troca de óleo a cada 3.000 km).
      A partir de 01/02/2026 o modelo passou a seguir o plano E350 (4 em 4 mil km). */
   E350_ANTIGA: {
-    1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
+    1000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'DESMINI',nome:'Desingripante',qtd:1,valor:25}],
     3000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    6000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
+    6000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130}],
     9000:  [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    12000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+    12000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
     15000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    18000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150}],
+    18000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150}],
     21000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    24000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120}],
+    24000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130}],
     27000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    30000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+    30000: [{codigo:'1226400175000',nome:'Filtro de Ar',qtd:1,valor:180},{codigo:'1050970004000',nome:'Vela de Ignição',qtd:1,valor:165},{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'319717',nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
     33000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90}],
-    36000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:120},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
+    36000: [{codigo:'123079',nome:'Óleo de Motor',qtd:2,valor:90},{codigo:'1050871006000',nome:'Filtro do Óleo',qtd:1,valor:130},{codigo:'1050771003000',nome:'Correia CVT',qtd:1,valor:1150},{codigo:'324950',nome:'Fluido de Freio',qtd:1,valor:22}],
     tmo:{1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:2.0,21000:0.3,24000:0.6,27000:0.3,30000:1.5,33000:0.3,36000:2.0},
   },
 };
+
+// Arruela do bujão (R$ 5) em TODAS as revisões de todos os modelos.
+// Um único ponto: onde já havia arruela, ela é trocada por esta (sem duplicar).
+(function () {
+    var ARRUELA = { codigo: 'Arruela Bujão', nome: 'Arruela do Bujão', qtd: 1, valor: 5 };
+    Object.keys(dadosRevisao).forEach(function (m) {
+        Object.keys(dadosRevisao[m]).forEach(function (km) {
+            var lista = dadosRevisao[m][km];
+            if (!/^\d+$/.test(km) || !Array.isArray(lista)) return;
+            var existente = lista.find(function (p) { return /^arruela/i.test(p.nome); });
+            if (existente) Object.assign(existente, ARRUELA);
+            else lista.push(Object.assign({}, ARRUELA));
+        });
+    });
+})();
+
 
 dadosRevisao.T350  = dadosRevisao.V350;
 dadosRevisao.GK350 = dadosRevisao.V350;
@@ -196,7 +212,7 @@ const pecasAvulsas = [
   {codigo:'328185',      nome:'Produto: Kit Revisão',                      valor:90},
   {codigo:'328186',      nome:'Produto: Kit Scooter',                      valor:90},
   {codigo:'LUBMINI',     nome:'Lubrificante Corrente',                     valor:25},
-  {codigo:'DESMINI',     nome:'Desingripante',                             valor:20},
+  {codigo:'DESMINI',     nome:'Desingripante',                             valor:25},
   {codigo:'DESC01',      nome:'Descarbonizante',                           valor:35},
 ];
 
@@ -362,7 +378,10 @@ function atualizarTotaisGerais(){
      das pecas da revisao. Itens adicionais entram por fora, somando no total. */
   const pacote=(veiculo&&km&&dadosRevisao[veiculo]&&dadosRevisao[veiculo].pacote)
     ? dadosRevisao[veiculo].pacote[parseInt(km)] : undefined;
-  const totalT=(pacote!==undefined) ? Math.max(0,pacote-pecasRevisao) : tmoH*TMO_HORA;
+  /* Troca intermediária (350 de corrente e 350 E antiga, aos 3, 9, 15... mil km):
+     mão de obra fixa de R$ 85, como no documento de revisões. */
+  const intermediaria=veiculo&&km&&!['E350','ZT368G'].includes(veiculo)&&(parseInt(km)/1000)%6===3;
+  const totalT=(pacote!==undefined) ? Math.max(0,pacote-pecasRevisao) : intermediaria ? 85 : tmoH*TMO_HORA;
 
   document.getElementById('totalPecas').textContent=fmt(totalP);
   document.getElementById('totalTMO').textContent=fmt(totalT);
@@ -372,6 +391,8 @@ function atualizarTotaisGerais(){
   document.getElementById('subTMO').textContent=(pacote!==undefined)
     ? 'Incluída no pacote da revisão'
     : tmoH.toFixed(1).replace('.',',')+' h × R$ '+TMO_HORA+',00/h';
+  if(intermediaria) document.getElementById('subTMO').textContent='Troca intermediária: valor fixo';
+  if(parseInt(km)===1000 && pacote===undefined) document.getElementById('subTMO').textContent='Grátis na garantia · fora dela: R$ 150,00';
   document.getElementById('subTotal').textContent='Peças + Mão de Obra';
 }
 

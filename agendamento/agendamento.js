@@ -8,9 +8,9 @@ const DADOS = {
     TMO_HORA: 110,
     tmoHJ: {1000:0,3000:0.5,6000:0.5,9000:0.5,12000:3,15000:0.5,18000:1,21000:0.5,24000:2.5,27000:0.5,30000:0.5,33000:0.5,36000:2.5,39000:0.5,42000:0.5,45000:0.5,48000:2.5,51000:0.5,54000:0.5,57000:0.5},
     pecasCiclo: {
-      simples:  [{nome:'Óleo do Motor',qtd:1,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      arruela:  [{nome:'Óleo do Motor',qtd:1,valor:90},{nome:'Arruela de Dreno',qtd:1,valor:10},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      completo: [{nome:'Filtro de Ar',qtd:1,valor:85},{nome:'Óleo do Motor',qtd:1,valor:90},{nome:'Junta Capa Óleo',qtd:1,valor:12.5},{nome:'Junta Tampa Direita',qtd:1,valor:85},{nome:'Junta Escapamento',qtd:1,valor:21},{nome:'Vela de Ignição',qtd:1,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
+      simples:  [{nome:'Óleo do Motor',qtd:1,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      arruela:  [{nome:'Óleo do Motor',qtd:1,valor:90},{nome:'Arruela de Dreno',qtd:1,valor:10},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      completo: [{nome:'Filtro de Ar',qtd:1,valor:85},{nome:'Óleo do Motor',qtd:1,valor:90},{nome:'Junta Capa Óleo',qtd:1,valor:12.5},{nome:'Junta Tampa Direita',qtd:1,valor:85},{nome:'Junta Escapamento',qtd:1,valor:21},{nome:'Vela de Ignição',qtd:1,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
     },
     pecasLindy: {
       1000: [{nome:'Óleo do Motor',qtd:1,valor:90},{nome:'Filtro de Óleo',qtd:1,valor:43},{nome:'Junta Tampa Filtro',qtd:1,valor:21}],
@@ -36,39 +36,39 @@ const DADOS = {
     labels:  ['V 350','T 350 / T 350 X','GK 350','S 350','R 350','350 E (a partir de 01/02/2026)','350 E (antiga — até 31/01/2026)','368G'],
     TMO_HORA: 350,
     pecas350: {
-      1000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      3000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      6000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      9000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      12000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      15000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      18000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      21000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      24000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      27000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      30000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      33000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      36000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      39000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      42000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      45000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      48000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      51000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      54000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
-      57000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:20}],
+      1000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      3000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      6000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      9000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      12000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      15000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      18000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      21000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      24000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      27000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      30000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      33000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      36000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      39000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      42000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      45000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      48000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      51000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      54000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
+      57000:[{nome:'Filtro de Ar',qtd:1,valor:106},{nome:'Vela de Ignição',qtd:1,valor:108},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30},{nome:'Lubrificante Corrente',qtd:1,valor:25},{nome:'Desingripante',qtd:1,valor:25}],
     },
     tmo350: {1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:1.0,21000:0.3,24000:1.5,27000:0.3,30000:0.6,33000:0.3,36000:1.5,39000:0.3,42000:0.6,45000:0.3,48000:1.5,51000:0.3,54000:1.0,57000:1.5},
     /* Espelha revisaozontes.js -> dadosRevisao.E350. O 1.000 km sai R$ 260
        (oleo + filtro), confirmado pela oficina: antes somava filtro do CVT e
        oleo de caixa, que nao entram nessa revisao. */
     pecasE350: {
-      1000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120}],
+      1000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130}],
       4000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do CVT (esponja)',qtd:1,valor:84}],
-      8000: [{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Filtro do CVT (esponja)',qtd:1,valor:84},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120}],
+      8000: [{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Filtro do CVT (esponja)',qtd:1,valor:84},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130}],
       12000:[{nome:'Óleo de Motor',qtd:2,valor:90}],
-      16000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+      16000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
       20000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Correia CVT',qtd:1,valor:1150}],
-      24000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Fluido de Freio',qtd:1,valor:22}],
+      24000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Fluido de Freio',qtd:1,valor:22}],
     },
     tmoE350: {1000:0.0,4000:0.5,8000:0.8,12000:0.3,16000:1.0,20000:0.3,24000:2.0},
     /* Preco fechado por revisao (mesma tabela de revisaozontes.js). */
@@ -76,19 +76,19 @@ const DADOS = {
 
     // 350E ANTIGA — ciclo de 3.000 km (tabela revisão antiga)
     pecasE350Antiga: {
-      1000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120}],
+      1000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Desingripante',qtd:1,valor:25}],
       3000: [{nome:'Óleo de Motor',qtd:2,valor:90}],
-      6000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120}],
+      6000: [{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130}],
       9000: [{nome:'Óleo de Motor',qtd:2,valor:90}],
-      12000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+      12000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
       15000:[{nome:'Óleo de Motor',qtd:2,valor:90}],
-      18000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Correia CVT',qtd:1,valor:1150}],
+      18000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Correia CVT',qtd:1,valor:1150}],
       21000:[{nome:'Óleo de Motor',qtd:2,valor:90}],
-      24000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120}],
+      24000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130}],
       27000:[{nome:'Óleo de Motor',qtd:2,valor:90}],
-      30000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
+      30000:[{nome:'Filtro de Ar',qtd:1,valor:180},{nome:'Vela de Ignição',qtd:1,valor:165},{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Líquido de Arrefecimento',qtd:1,valor:30}],
       33000:[{nome:'Óleo de Motor',qtd:2,valor:90}],
-      36000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:120},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Correia CVT',qtd:1,valor:1150}],
+      36000:[{nome:'Óleo de Motor',qtd:2,valor:90},{nome:'Filtro do Óleo',qtd:1,valor:130},{nome:'Fluido de Freio',qtd:1,valor:22},{nome:'Correia CVT',qtd:1,valor:1150}],
     },
     tmoE350Antiga: {
       1000:0,3000:0.3,6000:0.6,9000:0.3,12000:1.5,15000:0.3,18000:2.0,
@@ -399,7 +399,18 @@ function getChecklist(brand, modelo, km) {
 }
 
 
+// Arruela do bujão (R$ 5) em todas as revisões, de todas as marcas.
+// Entra aqui, num ponto só: devolve uma cópia da lista com a arruela no fim
+// (a antiga "Arruela de Dreno" da Haojue é substituída, sem duplicar).
+// Espelha o laço equivalente em revisaosuzuki/haojue/zontes.js.
+const ARRUELA_BUJAO = { nome: 'Arruela do Bujão', qtd: 1, valor: 5 };
 function getPecas(brand, modelo, km) {
+  const base = getPecasTabela(brand, modelo, km);
+  if (!base.length) return [];
+  return [...base.filter(p => !/^arruela/i.test(p.nome)).map(p => ({ ...p })), { ...ARRUELA_BUJAO }];
+}
+
+function getPecasTabela(brand, modelo, km) {
   const k = parseInt(km);
   if (brand === 'haojue') {
     if (modelo === 'LINDY125') return DADOS.haojue.pecasLindy[k] || [];
@@ -455,6 +466,18 @@ function getPacote(brand, modelo, km) {
   return undefined;
 }
 
+// Valores do documento "Revisoes - completo.docx":
+// troca intermediária Zontes (350 de corrente e 350 E antiga, aos 3, 9, 15... mil km)
+// com mão de obra fixa de R$ 85; e R$ 150 de mão de obra na revisão de 1.000 km
+// quando o veículo está fora da garantia (dentro dela, é gratuita).
+const MO_INTERMEDIARIA_ZONTES = 85;
+const MO_1000_FORA_GARANTIA   = 150;
+function getMoFixa(brand, modelo, km) {
+  const k = parseInt(km);
+  if (brand === 'zontes' && !['E350', 'ZT368G'].includes(modelo) && (k / 1000) % 6 === 3) return MO_INTERMEDIARIA_ZONTES;
+  return undefined;
+}
+
 function calcularTotais(brand, modelo, km) {
   const pecas      = getPecas(brand, modelo, km);
   const tmo        = getTmo(brand, modelo, km);        // duração exibida (mín 1h)
@@ -470,7 +493,8 @@ function calcularTotais(brand, modelo, km) {
     return { pecas, tmo, tmoReal, hora, totalPecas, totalMO: moPacote, total: pacote, pacote };
   }
 
-  const totalMO    = tmoReal * hora;                   // custo usa TMO real
+  const moFixa     = getMoFixa(brand, modelo, km);
+  const totalMO    = moFixa !== undefined ? moFixa : tmoReal * hora;   // custo usa TMO real
   return { pecas, tmo, tmoReal, hora, totalPecas, totalMO, total: totalPecas + totalMO };
 }
 
@@ -522,6 +546,34 @@ function avisosConfirmacao(tipo) {
   if (tipo === 'revisao')  return [AVISO_VALORES, AVISO_CERTIFICADO];
   if (tipo === 'garantia') return [TIPOS_ATENDIMENTO.garantia.prazo, AVISO_CERTIFICADO];
   return TIPOS_ATENDIMENTO[tipo] ? [TIPOS_ATENDIMENTO[tipo].prazo] : [];
+}
+
+// Aviso em pop-up exibido ao tocar em "Confirmar" (Revisão e Garantia).
+// O certificado não se aplica a Serviços, que segue direto.
+function avisoAntesDeConfirmar(tipo) {
+  if (tipo !== 'revisao' && tipo !== 'garantia') return null;
+  return 'Leve o certificado de garantia no dia do atendimento. Sem o certificado, a revisão pode não ser realizada ' +
+    'e precisará ser reagendada. Atenção: se o prazo de alguma revisão (por quilometragem ou por tempo) for perdido, ' +
+    'o veículo fica automaticamente fora da garantia, conforme as regras do fabricante.';
+}
+
+function pedirConfirmacao() {
+  const aviso = avisoAntesDeConfirmar(S.tipo);
+  if (!aviso) return confirmar();
+  const modal = document.getElementById('modal-aviso');
+  document.getElementById('modal-aviso-texto').textContent = aviso;
+  modal.hidden = false;
+  document.getElementById('modal-aviso-ok').focus();
+}
+
+function fecharAviso() {
+  document.getElementById('modal-aviso').hidden = true;
+  document.querySelector('.btn-confirm').focus();
+}
+
+function aceitarAviso() {
+  document.getElementById('modal-aviso').hidden = true;
+  confirmar();
 }
 
 // Linha curta "o que será feito", usada no WhatsApp, planilha e telas.
@@ -842,6 +894,8 @@ function buildSummary(container) {
     <div class="summary-divider"></div>
     <div class="summary-section">
       <div class="total-row"><span>Total estimado</span><span class="total-val">R$ ${fmtBRL(calcularTotais(S.brand, S.modelo, S.km).total)}</span></div>
+      ${parseInt(S.km) === 1000 && getPacote(S.brand, S.modelo, 1000) === undefined
+        ? `<div class="summary-row"><span class="lbl">Mão de obra</span><span class="val" style="max-width:65%;text-align:right">Gratuita na garantia. Fora da garantia: + R$ ${fmtBRL(MO_1000_FORA_GARANTIA)}</span></div>` : ''}
     </div>` : `
     <div class="summary-section">
       <div class="summary-section-title">${tipo.icone} ${tipo.label}</div>
@@ -1131,6 +1185,11 @@ function renderUnidadeBadge(stepIdx) {
 }
 
 window.addEventListener('load', () => {
+  document.addEventListener('keydown', e => {
+    const m = document.getElementById('modal-aviso');
+    if (e.key === 'Escape' && m && !m.hidden) fecharAviso();
+  });
+
   // Evento model-select
   const modelSelect = document.getElementById('model-select');
   if (modelSelect) {
